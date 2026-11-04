@@ -1,0 +1,559 @@
+{
+ "subject": "science",
+ "subjectName": "Наука",
+ "island": 2,
+ "source": {
+  "notionPageId": "40ecfa33-bed4-8165-af4c-c14c5d39e1cb",
+  "title": "🔬 Kids Game – вопросы: остров 2, Year 7, наука",
+  "lastEdited": "2026-11-04T19:00:24.375Z"
+ },
+ "topics": [
+  {
+   "id": "science-2-1",
+   "n": 1,
+   "title": "Клетки и организмы",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка (если что-то подзабыл, не страшно, начнём с самого начала):",
+   "explanation": [
+    "Клетка (cell) — самый маленький «кирпичик» живого. Клетки видны только в микроскоп (microscope).",
+    "Части клетки: ядро (nucleus) управляет клеткой; мембрана (cell membrane) решает, что входит в клетку и выходит; митохондрии (mitochondria) дают клетке энергию (дыхание клетки).",
+    "У растительных клеток есть клеточная стенка (cell wall), а у животных её нет. Есть также хлоропласты (chloroplasts), где идёт фотосинтез. Фотосинтез — процесс, в котором растение за счёт энергии света делает пищу из воды и углекислого газа.",
+    "Клетки → ткань (tissue, несколько одинаковых клеток) → орган (organ, например сердце) → система органов → организм."
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "science-2-1-1",
+     "n": 1,
+     "text": "What is the smallest unit of life?",
+     "options": [
+      "an organ",
+      "a cell",
+      "a tissue"
+     ],
+     "answer": 1,
+     "why": "клетка — самая маленькая живая единица."
+    },
+    {
+     "id": "science-2-1-2",
+     "n": 2,
+     "text": "Which part of the cell controls what the cell does?",
+     "options": [
+      "the cell wall",
+      "the chloroplast",
+      "the nucleus"
+     ],
+     "answer": 2,
+     "why": "ядро управляет клеткой."
+    },
+    {
+     "id": "science-2-1-3",
+     "n": 3,
+     "text": "Which part is found in plant cells but NOT in animal cells?",
+     "options": [
+      "the cell membrane",
+      "the cell wall",
+      "the cytoplasm"
+     ],
+     "answer": 1,
+     "why": "у растительной клетки клеточная стенка есть, а у животной нет. Мембрана и цитоплазма есть у всех клеток."
+    },
+    {
+     "id": "science-2-1-4",
+     "n": 4,
+     "text": "What happens in the chloroplasts?",
+     "options": [
+      "respiration",
+      "photosynthesis",
+      "controlling the cell"
+     ],
+     "answer": 1,
+     "why": "в хлоропластах идёт фотосинтез."
+    },
+    {
+     "id": "science-2-1-5",
+     "n": 5,
+     "text": "A group of similar cells working together is called a:",
+     "options": [
+      "organ",
+      "system",
+      "tissue"
+     ],
+     "answer": 2,
+     "why": "tissue — ткань, группа одинаковых клеток."
+    },
+    {
+     "id": "science-2-1-6",
+     "n": 6,
+     "text": "The heart is an example of:",
+     "options": [
+      "an organ",
+      "a cell",
+      "a tissue"
+     ],
+     "answer": 0,
+     "why": "сердце состоит из нескольких тканей, это орган."
+    },
+    {
+     "id": "science-2-1-7",
+     "n": 7,
+     "text": "Which instrument do we use to see cells?",
+     "options": [
+      "a telescope",
+      "a microscope",
+      "a thermometer"
+     ],
+     "answer": 1,
+     "why": "микроскоп увеличивает очень маленькие предметы. Телескоп — для далёких."
+    },
+    {
+     "id": "science-2-1-8",
+     "n": 8,
+     "text": "What does the cell membrane do?",
+     "options": [
+      "controls what enters and leaves the cell",
+      "makes food",
+      "stores the energy of the Sun"
+     ],
+     "answer": 0,
+     "why": "мембрана — как контролёр на входе в клетку."
+    },
+    {
+     "id": "science-2-1-9",
+     "n": 9,
+     "text": "Which part of the cell releases energy from food (respiration)?",
+     "options": [
+      "the vacuole",
+      "the cell wall",
+      "the mitochondria"
+     ],
+     "answer": 2,
+     "why": "именно в митохондриях высвобождается энергия."
+    },
+    {
+     "id": "science-2-1-10",
+     "n": 10,
+     "text": "Which list is in order from smallest to largest?",
+     "options": [
+      "organ, cell, tissue",
+      "cell, tissue, organ",
+      "tissue, cell, organ"
+     ],
+     "answer": 1,
+     "why": "из клеток собирается ткань, из тканей — орган."
+    }
+   ]
+  },
+  {
+   "id": "science-2-2",
+   "n": 2,
+   "title": "Частицы, элементы, соединения и кислоты",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка (если что-то подзабыл, не страшно, начнём с самого начала):",
+   "explanation": [
+    "Всё вокруг состоит из маленьких частиц (particles). В тёрдом веществе частицы плотно стоят на месте и лишь дрожат. В газе они далеко друг от друга и быстро летают.",
+    "Элемент (element) — вещество из атомов одного вида: кислород, железо, гелий. Химический символ кислорода — O.",
+    "Соединение (compound) — два или больше элементов, химически соединённых: углекислый газ (углерод + кислород), вода. Смесь (mixture) — вещества просто перемешаны, не соединены: воздух.",
+    "Кислоты (acids) имеют pH меньше 7, щёлочи (alkalis) — больше 7, чистая вода нейтральна, pH 7. Уксус — кислота, раствор гидроксида натрия — щёлочь.",
+    "Физическое изменение (лёд тает, сахар растворяется) не создаёт нового вещества. Химическая реакция (ржавение железа) создаёт новое вещество."
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "science-2-2-1",
+     "n": 1,
+     "text": "In a solid, the particles:",
+     "options": [
+      "vibrate in fixed positions, close together",
+      "move freely, far apart",
+      "are always moving fast"
+     ],
+     "answer": 0,
+     "why": "в тёрдом веществе частицы держатся на месте и дрожат."
+    },
+    {
+     "id": "science-2-2-2",
+     "n": 2,
+     "text": "Which state of matter has particles that are far apart and moving fast?",
+     "options": [
+      "solid",
+      "liquid",
+      "gas"
+     ],
+     "answer": 2,
+     "why": "у газа частицы далеко друг от друга."
+    },
+    {
+     "id": "science-2-2-3",
+     "n": 3,
+     "text": "Which of these is an element?",
+     "options": [
+      "water",
+      "salt",
+      "oxygen"
+     ],
+     "answer": 2,
+     "why": "кислород — элемент, атомы только одного вида. Вода и соль — соединения."
+    },
+    {
+     "id": "science-2-2-4",
+     "n": 4,
+     "text": "Which of these is a compound?",
+     "options": [
+      "iron",
+      "carbon dioxide",
+      "helium"
+     ],
+     "answer": 1,
+     "why": "углекислый газ состоит из углерода и кислорода."
+    },
+    {
+     "id": "science-2-2-5",
+     "n": 5,
+     "text": "Air is:",
+     "options": [
+      "a mixture of gases",
+      "a compound",
+      "an element"
+     ],
+     "answer": 0,
+     "why": "в воздухе газы просто перемешаны, они не соединены химически."
+    },
+    {
+     "id": "science-2-2-6",
+     "n": 6,
+     "text": "The pH of an acid is:",
+     "options": [
+      "below 7",
+      "exactly 7",
+      "above 7"
+     ],
+     "answer": 0,
+     "why": "pH меньше 7 у кислот."
+    },
+    {
+     "id": "science-2-2-7",
+     "n": 7,
+     "text": "Which of these is an alkali?",
+     "options": [
+      "vinegar",
+      "lemon juice",
+      "sodium hydroxide solution"
+     ],
+     "answer": 2,
+     "why": "раствор гидроксида натрия — щёлочь. Уксус и лимонный сок — кислоты."
+    },
+    {
+     "id": "science-2-2-8",
+     "n": 8,
+     "text": "What is the pH of pure water?",
+     "options": [
+      "1",
+      "7",
+      "14"
+     ],
+     "answer": 1,
+     "why": "чистая вода нейтральна, pH 7."
+    },
+    {
+     "id": "science-2-2-9",
+     "n": 9,
+     "text": "Which of these is a chemical change?",
+     "options": [
+      "dissolving sugar in water",
+      "melting ice",
+      "iron rusting"
+     ],
+     "answer": 2,
+     "why": "при ржавении появляется новое вещество (ржавчина)."
+    },
+    {
+     "id": "science-2-2-10",
+     "n": 10,
+     "text": "What is the chemical symbol for oxygen?",
+     "options": [
+      "Ox",
+      "O",
+      "Oy"
+     ],
+     "answer": 1,
+     "why": "символ кислорода — буква O."
+    }
+   ]
+  },
+  {
+   "id": "science-2-3",
+   "n": 3,
+   "title": "Силы и движение",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка (если что-то подзабыл, не страшно, начнём с самого начала):",
+   "explanation": [
+    "Скорость = расстояние ÷ время. Расстояние = скорость × время.",
+    "Масса (mass) — сколько вещества в теле, меряется в килограммах, на Луне остаётся той же. Вес (weight) — сила, с которой Тяжесть тянет тело, меряется в ньютонах, на Луне меньше, потому что масса Луны меньше массы Земли.",
+    "Равнодействующая сила (resultant) — одна сила взамен всех, если силы в одну сторону складываем, в противоположные вычитаем. Если силы равны и направлены противоположно, они уравновешены (balanced): движение не меняется.",
+    "Трение сильнее на шероховатой поверхности. Сопротивление воздуха тормозит движение в воздухе.",
+    "На графике «расстояние — время» горизонтальная линия означает, что предмет стоит на месте."
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "science-2-3-1",
+     "n": 1,
+     "text": "A car travels 120 km in 2 hours. What is its average speed?",
+     "options": [
+      "240 km/h",
+      "60 km/h",
+      "122 km/h"
+     ],
+     "answer": 1,
+     "why": "скорость = 120 ÷ 2 = 60 км/ч."
+    },
+    {
+     "id": "science-2-3-2",
+     "n": 2,
+     "text": "A cyclist rides at 15 km/h for 3 hours. How far does the cyclist go?",
+     "options": [
+      "18 km",
+      "5 km",
+      "45 km"
+     ],
+     "answer": 2,
+     "why": "расстояние = 15 × 3 = 45 км."
+    },
+    {
+     "id": "science-2-3-3",
+     "n": 3,
+     "text": "Weight is measured in:",
+     "options": [
+      "kilograms",
+      "newtons",
+      "seconds"
+     ],
+     "answer": 1,
+     "why": "вес — это сила, её меряют в ньютонах."
+    },
+    {
+     "id": "science-2-3-4",
+     "n": 4,
+     "text": "An astronaut goes from the Earth to the Moon. What happens to the astronaut's mass?",
+     "options": [
+      "It stays the same.",
+      "It becomes zero.",
+      "It doubles."
+     ],
+     "answer": 0,
+     "why": "масса — это количество вещества, оно не меняется. Меняется вес."
+    },
+    {
+     "id": "science-2-3-5",
+     "n": 5,
+     "text": "When all the forces on an object are balanced, the object:",
+     "options": [
+      "speeds up",
+      "keeps its motion the same (stays still or keeps moving at the same speed in a straight line)",
+      "always stops"
+     ],
+     "answer": 1,
+     "why": "уравновешенные силы не меняют движение."
+    },
+    {
+     "id": "science-2-3-6",
+     "n": 6,
+     "text": "A rocket is pushed 10 N to the right and 4 N to the left. What is the resultant force?",
+     "options": [
+      "14 N to the right",
+      "6 N to the right",
+      "6 N to the left"
+     ],
+     "answer": 1,
+     "why": "вычитаем противоположные силы: 10 − 4 = 6 Н, в сторону большей силы."
+    },
+    {
+     "id": "science-2-3-7",
+     "n": 7,
+     "text": "On which surface is friction the greatest?",
+     "options": [
+      "a rough carpet",
+      "oiled metal",
+      "ice"
+     ],
+     "answer": 0,
+     "why": "чем шероховатей поверхность, тем больше трение."
+    },
+    {
+     "id": "science-2-3-8",
+     "n": 8,
+     "text": "Air resistance acts:",
+     "options": [
+      "against the direction of motion through the air",
+      "in the same direction as the motion",
+      "only downwards"
+     ],
+     "answer": 0,
+     "why": "воздух тормозит движущийся предмет."
+    },
+    {
+     "id": "science-2-3-9",
+     "n": 9,
+     "text": "Gravity on the Moon is weaker than on the Earth because the Moon:",
+     "options": [
+      "has more mass",
+      "is hotter",
+      "has less mass"
+     ],
+     "answer": 2,
+     "why": "чем меньше масса тела, тем слабее его притяжение."
+    },
+    {
+     "id": "science-2-3-10",
+     "n": 10,
+     "text": "On a distance–time graph, a horizontal line means the object is:",
+     "options": [
+      "speeding up",
+      "moving at a constant speed",
+      "stationary (not moving)"
+     ],
+     "answer": 2,
+     "why": "время идёт, а расстояние не меняется: предмет стоит."
+    }
+   ]
+  },
+  {
+   "id": "science-2-4",
+   "n": 4,
+   "title": "Энергия, звук и свет",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка (если что-то подзабыл, не страшно, начнём с самого начала):",
+   "explanation": [
+    "Энергия не рождается и не исчезает, она переходит из одного вида в другой. Её меряют в джоулях (joule).",
+    "Виды энергии: химическая (в еде, батарейке, топливе), кинетическая (у движущегося тела), тепловая. Лампочка превращает электрическую энергию в свет и тепло (часть тепла — потеря).",
+    "Звук — это колебания, он идёт только через вещество (воздух, воду, металл), в пустоте (vacuum) звука нет. В тёрдых телах звук быстрее, чем в воздухе.",
+    "Частота (frequency) — сколько колебаний в секунду: чем выше частота, тем выше звук (pitch). Амплитуда (amplitude) — размах колебаний: больше размах — громче.",
+    "Нормаль (normal) — воображаемая линия, перпендикулярная зеркалу в точке, куда упал луч. Угол падения — угол между падающим лучом и нормалью, угол отражения — угол между отражённым лучом и нормалью. Свет отражается от зеркала так, что эти два угла равны."
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "science-2-4-1",
+     "n": 1,
+     "text": "Energy is never created or destroyed. What happens to it instead?",
+     "options": [
+      "It is transferred from one store to another.",
+      "It is created by machines.",
+      "It disappears when used."
+     ],
+     "answer": 0,
+     "why": "энергия только переходит от одного вида к другому."
+    },
+    {
+     "id": "science-2-4-2",
+     "n": 2,
+     "text": "Which of these has a store of chemical energy?",
+     "options": [
+      "a stretched spring",
+      "a battery",
+      "a moving steel ball"
+     ],
+     "answer": 1,
+     "why": "в батарейке энергия запасена химически. У движущегося шара — кинетическая."
+    },
+    {
+     "id": "science-2-4-3",
+     "n": 3,
+     "text": "A moving car has energy in which store?",
+     "options": [
+      "thermal",
+      "gravitational",
+      "kinetic"
+     ],
+     "answer": 2,
+     "why": "kinetic — энергия движения."
+    },
+    {
+     "id": "science-2-4-4",
+     "n": 4,
+     "text": "In which unit is energy measured?",
+     "options": [
+      "watt",
+      "joule",
+      "newton"
+     ],
+     "answer": 1,
+     "why": "энергию меряют в джоулях."
+    },
+    {
+     "id": "science-2-4-5",
+     "n": 5,
+     "text": "A light bulb transfers electrical energy into light and also into:",
+     "options": [
+      "thermal energy (heat)",
+      "sound only",
+      "chemical energy"
+     ],
+     "answer": 0,
+     "why": "лампочка нагревается, это потеря энергии в виде тепла."
+    },
+    {
+     "id": "science-2-4-6",
+     "n": 6,
+     "text": "Sound needs a ____ to travel through.",
+     "options": [
+      "light",
+      "material (medium)",
+      "empty space"
+     ],
+     "answer": 1,
+     "why": "в пустоте звука нет, нужно вещество."
+    },
+    {
+     "id": "science-2-4-7",
+     "n": 7,
+     "text": "Sound travels fastest through:",
+     "options": [
+      "air",
+      "water",
+      "steel"
+     ],
+     "answer": 2,
+     "why": "в тёрдых телах частицы плотнее, звук передаётся быстрее."
+    },
+    {
+     "id": "science-2-4-8",
+     "n": 8,
+     "text": "The pitch of a sound depends on its:",
+     "options": [
+      "amplitude",
+      "frequency",
+      "speed"
+     ],
+     "answer": 1,
+     "why": "больше частота — выше звук."
+    },
+    {
+     "id": "science-2-4-9",
+     "n": 9,
+     "text": "If the amplitude of a sound wave gets larger, the sound becomes:",
+     "options": [
+      "quieter",
+      "louder",
+      "higher in pitch"
+     ],
+     "answer": 1,
+     "why": "больше амплитуда — громче."
+    },
+    {
+     "id": "science-2-4-10",
+     "n": 10,
+     "text": "When light reflects from a mirror, the angle of incidence is ____ the angle of reflection.",
+     "options": [
+      "greater than",
+      "equal to",
+      "smaller than"
+     ],
+     "answer": 1,
+     "why": "закон отражения: угол падения равен углу отражения."
+    }
+   ]
+  }
+ ]
+}

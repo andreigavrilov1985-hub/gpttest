@@ -1,0 +1,747 @@
+{
+ "subject": "english",
+ "subjectName": "Английский",
+ "island": 1,
+ "source": {
+  "notionPageId": "40ecfa33-bed4-81e0-b7b6-e542933179b1",
+  "title": "📖 Kids Game – вопросы: остров 1, Year 6, английский",
+  "lastEdited": "2026-11-04T18:59:39.971Z"
+ },
+ "topics": [
+  {
+   "id": "english-1-1",
+   "n": 1,
+   "title": "Словарный запас: слова-противоположности и синонимы",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка (если что-то подзабыл, не страшно, начнём с самого начала):",
+   "explanation": [
+    "Синонимы — это слова, которые значат почти одно и то же. Например, big (большой) и large (большой). Антонимы — слова с противоположным значением: hot (горячий) и cold (холодный).",
+    "Существительное (noun) называет предмет или существо: dog, table. Глагол (verb) называет действие: run, eat. Прилагательное (adjective) говорит, какой предмет: big, red.",
+    "Если не знаешь слово, подумай, где оно стоит в предложении и какие слова рядом. Это подсказывает смысл."
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "english-1-1-1",
+     "n": 1,
+     "text": "What is the opposite of \"hot\"?",
+     "options": [
+      "warm",
+      "cold",
+      "sunny"
+     ],
+     "answer": 1,
+     "why": "hot значит горячий, а противоположность это cold, холодный."
+    },
+    {
+     "id": "english-1-1-2",
+     "n": 2,
+     "text": "Which word means the same as \"big\"?",
+     "options": [
+      "large",
+      "tiny",
+      "short"
+     ],
+     "answer": 0,
+     "why": "big и large оба значат большой. Tiny значит крошечный."
+    },
+    {
+     "id": "english-1-1-3",
+     "n": 3,
+     "text": "What is the opposite of \"happy\"?",
+     "options": [
+      "glad",
+      "sad",
+      "funny"
+     ],
+     "answer": 1,
+     "why": "happy значит счастливый, sad значит грустный."
+    },
+    {
+     "id": "english-1-1-4",
+     "n": 4,
+     "text": "In the sentence \"I run every day\", which word is a verb (an action word)?",
+     "options": [
+      "table",
+      "run",
+      "blue"
+     ],
+     "answer": 1,
+     "why": "run значит бежать, это действие. Table это предмет, blue это цвет."
+    },
+    {
+     "id": "english-1-1-5",
+     "n": 5,
+     "text": "Which word means the same as \"begin\"?",
+     "options": [
+      "end",
+      "start",
+      "stop"
+     ],
+     "answer": 1,
+     "why": "begin и start оба значат начинать."
+    },
+    {
+     "id": "english-1-1-6",
+     "n": 6,
+     "text": "What is the opposite of \"fast\"?",
+     "options": [
+      "quick",
+      "slow",
+      "early"
+     ],
+     "answer": 1,
+     "why": "fast быстрый, slow медленный."
+    },
+    {
+     "id": "english-1-1-7",
+     "n": 7,
+     "text": "Which word is an adjective (it describes something)?",
+     "options": [
+      "tall",
+      "jump",
+      "house"
+     ],
+     "answer": 0,
+     "why": "tall значит высокий, это описание."
+    },
+    {
+     "id": "english-1-1-8",
+     "n": 8,
+     "text": "A \"cold\" can be a sickness or low temperature. What does \"I caught a cold\" mean?",
+     "options": [
+      "I found a cold place",
+      "I became ill with a cold",
+      "I ate cold food"
+     ],
+     "answer": 1,
+     "why": "caught a cold значит заболел простудой."
+    },
+    {
+     "id": "english-1-1-9",
+     "n": 9,
+     "text": "Which word means the same as \"tiny\"?",
+     "options": [
+      "huge",
+      "very small",
+      "very loud"
+     ],
+     "answer": 1,
+     "why": "tiny значит очень маленький."
+    },
+    {
+     "id": "english-1-1-10",
+     "n": 10,
+     "text": "What is the opposite of \"open\"?",
+     "options": [
+      "close",
+      "push",
+      "empty"
+     ],
+     "answer": 0,
+     "why": "open открыть, close закрыть."
+    }
+   ]
+  },
+  {
+   "id": "english-1-2",
+   "n": 2,
+   "title": "Грамматика: времена и части речи",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка (если что-то подзабыл, не страшно, начнём с самого начала):",
+   "explanation": [
+    "В английском глагол меняется в зависимости от времени. Настоящее (present): I play. Прошедшее (past): I played. Будущее (future): I will play.",
+    "У некоторых глаголов прошедшее время особое, их нужно запомнить: go — went, eat — ate, see — saw.",
+    "Артикли: a и an значат «один». Перед согласным звуком ставим a (a dog), перед гласным звуком ставим an (an apple).",
+    "Местоимения (pronouns) заменяют имена: he (он), she (она), they (они), it (оно).",
+    "Вопросительные слова: what (что), where (где), who (кто), why (почему)."
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "english-1-2-1",
+     "n": 1,
+     "text": "Choose the correct sentence.",
+     "options": [
+      "She go to school every day.",
+      "She goes to school every day.",
+      "She going to school every day."
+     ],
+     "answer": 1,
+     "why": "с she глагол в настоящем времени получает -s: goes."
+    },
+    {
+     "id": "english-1-2-2",
+     "n": 2,
+     "text": "Yesterday I ____ pizza.",
+     "options": [
+      "eat",
+      "ate",
+      "eated"
+     ],
+     "answer": 1,
+     "why": "yesterday значит вчера, это прошлое. Прошедшее от eat это ate."
+    },
+    {
+     "id": "english-1-2-3",
+     "n": 3,
+     "text": "Choose the right article (a or an, not a particular apple): I have ____ apple.",
+     "options": [
+      "a",
+      "an",
+      "the"
+     ],
+     "answer": 1,
+     "why": "apple начинается с гласного звука, поэтому an."
+    },
+    {
+     "id": "english-1-2-4",
+     "n": 4,
+     "text": "Which word can replace \"Tom\" in the sentence \"Tom likes football\"?",
+     "options": [
+      "she",
+      "he",
+      "they"
+     ],
+     "answer": 1,
+     "why": "Tom мальчик, поэтому he (он)."
+    },
+    {
+     "id": "english-1-2-5",
+     "n": 5,
+     "text": "Choose the question word: ____ is your name?",
+     "options": [
+      "Where",
+      "What",
+      "Who"
+     ],
+     "answer": 1,
+     "why": "what is your name значит как тебя зовут."
+    },
+    {
+     "id": "english-1-2-6",
+     "n": 6,
+     "text": "Tomorrow we ____ go to the zoo.",
+     "options": [
+      "went",
+      "go",
+      "will"
+     ],
+     "answer": 2,
+     "why": "tomorrow значит завтра, это будущее. will go значит пойдём."
+    },
+    {
+     "id": "english-1-2-7",
+     "n": 7,
+     "text": "Choose the correct sentence.",
+     "options": [
+      "They are playing in the garden.",
+      "They is playing in the garden.",
+      "They am playing in the garden."
+     ],
+     "answer": 0,
+     "why": "с they используем are."
+    },
+    {
+     "id": "english-1-2-8",
+     "n": 8,
+     "text": "Last week we ____ the film.",
+     "options": [
+      "see",
+      "saw",
+      "seed"
+     ],
+     "answer": 1,
+     "why": "last week значит на прошлой неделе, это прошлое. Прошедшее от see это saw."
+    },
+    {
+     "id": "english-1-2-9",
+     "n": 9,
+     "text": "Which sentence is a question?",
+     "options": [
+      "You like pizza.",
+      "Do you like pizza?",
+      "I like pizza."
+     ],
+     "answer": 1,
+     "why": "вопрос начинается с do и заканчивается знаком вопроса."
+    },
+    {
+     "id": "english-1-2-10",
+     "n": 10,
+     "text": "Choose the correct word: This is ____ book.",
+     "options": [
+      "I",
+      "my",
+      "me"
+     ],
+     "answer": 1,
+     "why": "my значит мой, это слово показывает, чьё."
+    }
+   ]
+  },
+  {
+   "id": "english-1-3",
+   "n": 3,
+   "title": "Чтение с пониманием",
+   "type": "reading",
+   "explanationLabel": "Объяснение для ребёнка (если что-то подзабыл, не страшно, начнём с самого начала):",
+   "explanation": [
+    "Сначала прочитай текст целиком, потом вопрос. Ответ на вопрос всегда есть в тексте, его нужно найти.",
+    "Слова-подсказки в вопросе помогают найти нужное место: who (кто), where (где), when (когда).",
+    "Если слово незнакомое, подумай, о чём весь абзац. Это поможет угадать смысл."
+   ],
+   "passages": [
+    {
+     "id": "r1",
+     "kind": "reading",
+     "text": "Sam has a small dog called Max. Every morning, Sam takes Max to the park. Max loves to chase a red ball. After the walk, they go home and Max drinks water."
+    },
+    {
+     "id": "r2",
+     "kind": "reading",
+     "text": "Anna lives in Dubai. It is very hot in summer, so she goes swimming every Friday. Her brother Omar prefers to play football in the evening, when it is cooler."
+    },
+    {
+     "id": "r3",
+     "kind": "reading",
+     "text": "A bee collects sweet nectar from flowers. It carries the nectar back to the hive, where other bees turn it into honey."
+    }
+   ],
+   "questions": [
+    {
+     "id": "english-1-3-1",
+     "n": 1,
+     "text": "What is the dog's name?",
+     "passage": "r1",
+     "options": [
+      "Sam",
+      "Max",
+      "Red"
+     ],
+     "answer": 1,
+     "why": "в тексте сказано a small dog called Max, то есть собаку зовут Max."
+    },
+    {
+     "id": "english-1-3-2",
+     "n": 2,
+     "text": "Where does Sam take Max every morning?",
+     "passage": "r1",
+     "options": [
+      "to school",
+      "to the beach",
+      "to the park"
+     ],
+     "answer": 2,
+     "why": "в тексте сказано Sam takes Max to the park."
+    },
+    {
+     "id": "english-1-3-3",
+     "n": 3,
+     "text": "What does Max love to chase?",
+     "passage": "r1",
+     "options": [
+      "a cat",
+      "a red ball",
+      "a bird"
+     ],
+     "answer": 1,
+     "why": "Max loves to chase a red ball."
+    },
+    {
+     "id": "english-1-3-4",
+     "n": 4,
+     "text": "What does Max do after the walk?",
+     "passage": "r1",
+     "options": [
+      "drinks water",
+      "sleeps",
+      "eats a bone"
+     ],
+     "answer": 0,
+     "why": "в тексте After the walk, they go home and Max drinks water."
+    },
+    {
+     "id": "english-1-3-5",
+     "n": 5,
+     "text": "Why does Anna go swimming?",
+     "passage": "r2",
+     "options": [
+      "She is tired.",
+      "It is very hot in summer.",
+      "It is her birthday."
+     ],
+     "answer": 1,
+     "why": "в тексте так как летом очень жарко, она ходит плавать."
+    },
+    {
+     "id": "english-1-3-6",
+     "n": 6,
+     "text": "When does Omar play football?",
+     "passage": "r2",
+     "options": [
+      "in the morning",
+      "in the evening",
+      "on Friday"
+     ],
+     "answer": 1,
+     "why": "в тексте in the evening, when it is cooler."
+    },
+    {
+     "id": "english-1-3-7",
+     "n": 7,
+     "text": "What does \"cooler\" mean in the text?",
+     "passage": "r2",
+     "options": [
+      "hotter",
+      "less hot",
+      "very cold"
+     ],
+     "answer": 1,
+     "why": "cooler значит прохладнее, менее жарко."
+    },
+    {
+     "id": "english-1-3-8",
+     "n": 8,
+     "text": "What does a bee collect from flowers?",
+     "passage": "r3",
+     "options": [
+      "water",
+      "nectar",
+      "honey"
+     ],
+     "answer": 1,
+     "why": "в тексте a bee collects sweet nectar from flowers. Мёд делают потом в улье."
+    },
+    {
+     "id": "english-1-3-9",
+     "n": 9,
+     "text": "Where do bees turn nectar into honey?",
+     "passage": "r3",
+     "options": [
+      "in the garden",
+      "in a tree",
+      "in the hive"
+     ],
+     "answer": 2,
+     "why": "в тексте the hive, where other bees turn it into honey."
+    },
+    {
+     "id": "english-1-3-10",
+     "n": 10,
+     "text": "Which sentence is true?",
+     "passage": "r3",
+     "options": [
+      "Bees make honey from water.",
+      "Bees make honey from nectar.",
+      "Bees live in flowers."
+     ],
+     "answer": 1,
+     "why": "из текста видно, что мёд делают из нектара."
+    }
+   ]
+  },
+  {
+   "id": "english-1-4",
+   "n": 4,
+   "title": "Правописание и письмо",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка (если что-то подзабыл, не страшно, начнём с самого начала):",
+   "explanation": [
+    "Предложение начинается с большой буквы и заканчивается точкой, вопросительным знаком или восклицательным знаком.",
+    "Имена людей, города и страны пишутся с большой буквы: Anna, Dubai, England.",
+    "Множественное число существительных обычно получается добавлением -s: cat — cats. Если слово оканчивается на -s, -sh, -ch, -x, добавляем -es: box — boxes.",
+    "Слова, которые звучат одинаково, но пишутся по-разному: there (там) и their (их). Их нужно различать по смыслу.",
+    "Запятая отделяет слова в списке: apples, oranges and bananas."
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "english-1-4-1",
+     "n": 1,
+     "text": "Choose the correct spelling.",
+     "options": [
+      "freind",
+      "friend",
+      "frend"
+     ],
+     "answer": 1,
+     "why": "правильно friend, буква i идёт перед e."
+    },
+    {
+     "id": "english-1-4-2",
+     "n": 2,
+     "text": "Which sentence is written correctly?",
+     "options": [
+      "my name is lily.",
+      "My name is Lily.",
+      "my name is Lily."
+     ],
+     "answer": 1,
+     "why": "предложение начинается с большой буквы, и имя Lily тоже с большой."
+    },
+    {
+     "id": "english-1-4-3",
+     "n": 3,
+     "text": "What is the plural of \"box\"?",
+     "options": [
+      "boxs",
+      "boxes",
+      "boxies"
+     ],
+     "answer": 1,
+     "why": "после -x добавляем -es: boxes."
+    },
+    {
+     "id": "english-1-4-4",
+     "n": 4,
+     "text": "Choose the correct word: ____ going to the park.",
+     "options": [
+      "There",
+      "We're",
+      "Were"
+     ],
+     "answer": 1,
+     "why": "We're значит we are, мы идём в парк."
+    },
+    {
+     "id": "english-1-4-5",
+     "n": 5,
+     "text": "Which sentence has the right punctuation?",
+     "options": [
+      "Where do you live",
+      "Where do you live?",
+      "Where do you live."
+     ],
+     "answer": 1,
+     "why": "вопрос заканчивается вопросительным знаком."
+    },
+    {
+     "id": "english-1-4-6",
+     "n": 6,
+     "text": "Choose the correct spelling.",
+     "options": [
+      "beutiful",
+      "beautiful",
+      "beautifull"
+     ],
+     "answer": 1,
+     "why": "правильно beautiful."
+    },
+    {
+     "id": "english-1-4-7",
+     "n": 7,
+     "text": "Which sentence uses commas correctly?",
+     "options": [
+      "I like apples oranges, and bananas.",
+      "I like apples, oranges and bananas.",
+      "I, like apples oranges and bananas."
+     ],
+     "answer": 1,
+     "why": "запятая отделяет слова в списке: apples, oranges and bananas."
+    },
+    {
+     "id": "english-1-4-8",
+     "n": 8,
+     "text": "What is the plural of \"city\"?",
+     "options": [
+      "citys",
+      "cities",
+      "cityes"
+     ],
+     "answer": 1,
+     "why": "если слово оканчивается на согласный и y, то y заменяем на ies: cities."
+    },
+    {
+     "id": "english-1-4-9",
+     "n": 9,
+     "text": "Choose the correct word: The children left ____ bags in the classroom.",
+     "options": [
+      "there",
+      "their",
+      "they're"
+     ],
+     "answer": 1,
+     "why": "their значит их, то есть чьи сумки."
+    },
+    {
+     "id": "english-1-4-10",
+     "n": 10,
+     "text": "Which is the best way to start a letter to a friend?",
+     "options": [
+      "Dear Sara,",
+      "dear sara",
+      "Hello sara."
+     ],
+     "answer": 0,
+     "why": "Dear Sara, имя с большой буквы и запятая в конце."
+    }
+   ]
+  },
+  {
+   "id": "english-1-5",
+   "n": 5,
+   "title": "Аудирование (слушаем и отвечаем)",
+   "type": "listening",
+   "explanationLabel": "Объяснение для ребёнка (если что-то подзабыл, не страшно, начнём с самого начала):",
+   "explanation": [
+    "Слушай внимательно и лови главные слова: числа, имена, места, время. Именно о них обычно спрашивают.",
+    "Время по-английски: o'clock значит ровно (eight o'clock — ровно восемь), half past значит и полчаса (half past eight — полдевятого, то есть 8:30).",
+    "Слова-подсказки: how old (сколько лет), how many (сколько), where (где), when (когда), what (что).",
+    "Слово not значит «не»: do not bring значит «не приноси». Не пропусти его!"
+   ],
+   "devNotes": [
+    "Как это работает в игре: браузер озвучивает английский текст вслух, ребёнок текста не видит, а только вопрос и три ответа. Ниже в блоках «Аудио» — текст, который озвучивается."
+   ],
+   "passages": [
+    {
+     "id": "l1",
+     "kind": "listening",
+     "text": "Hello! My name is Lucy. I am ten years old. I have two brothers and one sister. On Saturdays we go to the beach with our dad. We build sandcastles and eat ice cream."
+    },
+    {
+     "id": "l2",
+     "kind": "listening",
+     "text": "Attention, please. The school bus will leave at half past eight tomorrow morning. Please bring your lunch and a bottle of water. Do not bring toys."
+    },
+    {
+     "id": "l3",
+     "kind": "listening",
+     "text": "Today the weather in Dubai is sunny and hot. Tomorrow it will be cloudy, and there may be a little rain in the evening. At the weekend it will be sunny again."
+    }
+   ],
+   "questions": [
+    {
+     "id": "english-1-5-1",
+     "n": 1,
+     "text": "How old is Lucy?",
+     "passage": "l1",
+     "options": [
+      "ten",
+      "twelve",
+      "two"
+     ],
+     "answer": 0,
+     "why": "Lucy говорит I am ten years old, то есть ей десять лет."
+    },
+    {
+     "id": "english-1-5-2",
+     "n": 2,
+     "text": "How many brothers does Lucy have?",
+     "passage": "l1",
+     "options": [
+      "one",
+      "two",
+      "three"
+     ],
+     "answer": 1,
+     "why": "она говорит two brothers and one sister: два брата и одна сестра."
+    },
+    {
+     "id": "english-1-5-3",
+     "n": 3,
+     "text": "Where does the family go on Saturdays?",
+     "passage": "l1",
+     "options": [
+      "to the park",
+      "to the zoo",
+      "to the beach"
+     ],
+     "answer": 2,
+     "why": "в аудио сказано On Saturdays we go to the beach, то есть по субботам они идут на пляж."
+    },
+    {
+     "id": "english-1-5-4",
+     "n": 4,
+     "text": "What do they eat at the beach?",
+     "passage": "l1",
+     "options": [
+      "ice cream",
+      "pizza",
+      "cake"
+     ],
+     "answer": 0,
+     "why": "в конце аудио they eat ice cream, едят мороженое."
+    },
+    {
+     "id": "english-1-5-5",
+     "n": 5,
+     "text": "When will the school bus leave?",
+     "passage": "l2",
+     "options": [
+      "at eight o'clock",
+      "at half past eight",
+      "at nine o'clock"
+     ],
+     "answer": 1,
+     "why": "half past eight значит 8:30, полдевятого."
+    },
+    {
+     "id": "english-1-5-6",
+     "n": 6,
+     "text": "What should the children bring?",
+     "passage": "l2",
+     "options": [
+      "lunch and a bottle of water",
+      "toys and books",
+      "a coat only"
+     ],
+     "answer": 0,
+     "why": "в аудио сказано bring your lunch and a bottle of water, то есть обед и бутылку воды."
+    },
+    {
+     "id": "english-1-5-7",
+     "n": 7,
+     "text": "What must the children NOT bring?",
+     "passage": "l2",
+     "options": [
+      "water",
+      "lunch",
+      "toys"
+     ],
+     "answer": 2,
+     "why": "в аудио Do not bring toys, игрушки брать нельзя."
+    },
+    {
+     "id": "english-1-5-8",
+     "n": 8,
+     "text": "What is the weather like today?",
+     "passage": "l3",
+     "options": [
+      "rainy",
+      "sunny and hot",
+      "cloudy"
+     ],
+     "answer": 1,
+     "why": "в аудио Today ... sunny and hot, то есть сегодня солнечно и жарко."
+    },
+    {
+     "id": "english-1-5-9",
+     "n": 9,
+     "text": "When may it rain?",
+     "passage": "l3",
+     "options": [
+      "this morning",
+      "at the weekend",
+      "tomorrow evening"
+     ],
+     "answer": 2,
+     "why": "в аудио Tomorrow ... a little rain in the evening, то есть завтра вечером возможен небольшой дождь."
+    },
+    {
+     "id": "english-1-5-10",
+     "n": 10,
+     "text": "What will the weather be like at the weekend?",
+     "passage": "l3",
+     "options": [
+      "sunny",
+      "rainy",
+      "cloudy"
+     ],
+     "answer": 0,
+     "why": "в аудио At the weekend it will be sunny again, то есть в выходные снова будет солнечно."
+    }
+   ]
+  }
+ ]
+}

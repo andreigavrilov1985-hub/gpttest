@@ -1,0 +1,749 @@
+{
+ "subject": "english",
+ "subjectName": "Английский",
+ "island": 2,
+ "source": {
+  "notionPageId": "40ecfa33-bed4-8140-890b-c5c5221cf16d",
+  "title": "📖 Kids Game – вопросы: остров 2, Year 7, английский",
+  "lastEdited": "2026-11-04T18:59:40.591Z"
+ },
+ "topics": [
+  {
+   "id": "english-2-1",
+   "n": 1,
+   "title": "Словарный запас: приставки, суффиксы, синонимы",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка (если что-то подзабыл, не страшно, начнём с самого начала):",
+   "explanation": [
+    "Приставка (prefix) стоит в начале слова и меняет его смысл: happy (счастливый) → unhappy (несчастный). Приставка un- и dis- часто значит «не», re- значит «снова».",
+    "Суффикс (suffix) стоит в конце слова: care (забота) → careful (заботливый, осторожный), careless (небрежный, без заботы). -ful значит «полный чего-то», -less значит «без чего-то».",
+    "Синонимы — слова с похожим значением: huge и enormous. Антонимы — слова с противоположным значением: ancient (древний) и modern (современный).",
+    "Если слово незнакомое, посмотри на остальные слова в предложении: они подсказывают смысл."
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "english-2-1-1",
+     "n": 1,
+     "text": "The word \"unhappy\" starts with the prefix \"un-\". What does \"un-\" mean here?",
+     "options": [
+      "not",
+      "again",
+      "very"
+     ],
+     "answer": 0,
+     "why": "un- значит «не», unhappy — не счастливый."
+    },
+    {
+     "id": "english-2-1-2",
+     "n": 2,
+     "text": "The word \"replay\" starts with \"re-\". What does \"re-\" mean?",
+     "options": [
+      "not",
+      "again",
+      "before"
+     ],
+     "answer": 1,
+     "why": "re- значит «снова», replay — играть или воспроизводить снова."
+    },
+    {
+     "id": "english-2-1-3",
+     "n": 3,
+     "text": "Which word means the opposite of \"agree\"?",
+     "options": [
+      "reagree",
+      "misagree",
+      "disagree"
+     ],
+     "answer": 2,
+     "why": "dis- значит «не», disagree — не соглашаться. Слов reagree и misagree в английском нет."
+    },
+    {
+     "id": "english-2-1-4",
+     "n": 4,
+     "text": "The word \"careless\" ends with \"-less\". What does \"careless\" mean?",
+     "options": [
+      "without care",
+      "full of care",
+      "with more care"
+     ],
+     "answer": 0,
+     "why": "-less значит «без», careless — делающий что-то без внимания."
+    },
+    {
+     "id": "english-2-1-5",
+     "n": 5,
+     "text": "The word \"helpful\" ends with \"-ful\". What does it mean?",
+     "options": [
+      "without help",
+      "full of help (gives help)",
+      "help again"
+     ],
+     "answer": 1,
+     "why": "-ful значит «полный», helpful — полезный, тот, кто помогает."
+    },
+    {
+     "id": "english-2-1-6",
+     "n": 6,
+     "text": "Which word means the same as \"enormous\"?",
+     "options": [
+      "tiny",
+      "quiet",
+      "huge"
+     ],
+     "answer": 2,
+     "why": "enormous и huge оба значат огромный."
+    },
+    {
+     "id": "english-2-1-7",
+     "n": 7,
+     "text": "Which word means the same as \"brave\"?",
+     "options": [
+      "afraid",
+      "courageous",
+      "lazy"
+     ],
+     "answer": 1,
+     "why": "brave и courageous значат смелый. Afraid — испуганный."
+    },
+    {
+     "id": "english-2-1-8",
+     "n": 8,
+     "text": "Which word is the opposite of \"ancient\"?",
+     "options": [
+      "old",
+      "historic",
+      "modern"
+     ],
+     "answer": 2,
+     "why": "ancient — древний, а modern — современный. Ancient — древний, old — просто старый, historic — исторически важный; ни одно из них не противоположно ancient."
+    },
+    {
+     "id": "english-2-1-9",
+     "n": 9,
+     "text": "\"The old man was reluctant to leave his home.\" What does \"reluctant\" mean?",
+     "options": [
+      "unwilling",
+      "eager",
+      "happy"
+     ],
+     "answer": 0,
+     "why": "reluctant значит не желающий что-то делать. Eager — наоборот, очень желающий."
+    },
+    {
+     "id": "english-2-1-10",
+     "n": 10,
+     "text": "\"The room was silent.\" What does \"silent\" mean?",
+     "options": [
+      "noisy",
+      "very quiet",
+      "crowded"
+     ],
+     "answer": 1,
+     "why": "silent значит тихий, без звуков. Noisy — шумный, наоборот."
+    }
+   ]
+  },
+  {
+   "id": "english-2-2",
+   "n": 2,
+   "title": "Грамматика: сравнения, глаголы can/must, союзы, времена",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка (если что-то подзабыл, не страшно, начнём с самого начала):",
+   "explanation": [
+    "Сравнительная степень сравнивает два предмета: tall → taller (than). У коротких слов добавляем -er: big → bigger. Если слово кончается на -y, меняем y на i: heavy → heavier. У длинных слов ставим more: more interesting.",
+    "Превосходная степень выбирает самого-самого из многих: tall → the tallest. У длинных слов most: the most interesting.",
+    "Модальные глаголы показывают отношение к действию: can (могу), must (должен, обязан), should (стоит, следует). После них глагол стоит без to: I must go.",
+    "Союзы соединяют части предложения: and (и), but (но), so (поэтому), because (потому что).",
+    "Present perfect — это have/has + третья форма глагола (past participle). I have seen = я уже видел. Для see: saw — прошедшее, seen — третья форма. С he, she, it используем has.",
+    "Наречие (adverb) говорит, как делается действие, и часто оканчивается на -ly: quick (быстрый) → quickly (быстро).",
+    "Условное предложение: If it rains, we will stay at home. После if — настоящее время, в главной части will."
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "english-2-2-1",
+     "n": 1,
+     "text": "This box is ____ than that one.",
+     "options": [
+      "heavy",
+      "heavier",
+      "heaviest"
+     ],
+     "answer": 1,
+     "why": "слово than показывает сравнение двух предметов, поэтому heavier."
+    },
+    {
+     "id": "english-2-2-2",
+     "n": 2,
+     "text": "She is the ____ girl in the class.",
+     "options": [
+      "taller",
+      "tall",
+      "tallest"
+     ],
+     "answer": 2,
+     "why": "the ... in the class — самая высокая из всех, поэтому the tallest."
+    },
+    {
+     "id": "english-2-2-3",
+     "n": 3,
+     "text": "This book is ____ interesting than the film.",
+     "options": [
+      "more",
+      "most",
+      "many"
+     ],
+     "answer": 0,
+     "why": "interesting длинное слово, для сравнения ставим more."
+    },
+    {
+     "id": "english-2-2-4",
+     "n": 4,
+     "text": "You ____ wear a seatbelt in a car. It is the law.",
+     "options": [
+      "can",
+      "must",
+      "might"
+     ],
+     "answer": 1,
+     "why": "must значит обязан. Закон требует, поэтому must."
+    },
+    {
+     "id": "english-2-2-5",
+     "n": 5,
+     "text": "I was tired, ____ I went to bed early.",
+     "options": [
+      "so",
+      "but",
+      "or"
+     ],
+     "answer": 0,
+     "why": "so значит поэтому: устал, поэтому лёг спать рано."
+    },
+    {
+     "id": "english-2-2-6",
+     "n": 6,
+     "text": "I like tennis, ____ I don't like football.",
+     "options": [
+      "so",
+      "because",
+      "but"
+     ],
+     "answer": 2,
+     "why": "but значит но, две части предложения противопоставляются."
+    },
+    {
+     "id": "english-2-2-7",
+     "n": 7,
+     "text": "I have ____ this film twice.",
+     "options": [
+      "see",
+      "seen",
+      "saw"
+     ],
+     "answer": 1,
+     "why": "после have нужна третья форма глагола: seen."
+    },
+    {
+     "id": "english-2-2-8",
+     "n": 8,
+     "text": "Which sentence is correct?",
+     "options": [
+      "She has finished her homework.",
+      "She have finished her homework.",
+      "She has finish her homework."
+     ],
+     "answer": 0,
+     "why": "с she используем has, а после него третья форму глагола: finished."
+    },
+    {
+     "id": "english-2-2-9",
+     "n": 9,
+     "text": "Which word is an adverb?",
+     "options": [
+      "speed",
+      "quickly",
+      "quickness"
+     ],
+     "answer": 1,
+     "why": "quickly оканчивается на -ly и говорит, как делают действие. Speed и quickness — существительные."
+    },
+    {
+     "id": "english-2-2-10",
+     "n": 10,
+     "text": "If it rains tomorrow, we ____ stay at home.",
+     "options": [
+      "would",
+      "stayed",
+      "will"
+     ],
+     "answer": 2,
+     "why": "после If it rains (настоящее) в главной части ставим will: will stay."
+    }
+   ]
+  },
+  {
+   "id": "english-2-3",
+   "n": 3,
+   "title": "Чтение с пониманием",
+   "type": "reading",
+   "explanationLabel": "Объяснение для ребёнка (если что-то подзабыл, не страшно, начнём с самого начала):",
+   "explanation": [
+    "Сначала прочитай текст целиком, потом вопросы. Ответ всегда есть в тексте.",
+    "Ищи в тексте слова из вопроса. Цифры, имена и даты легко найти глазами.",
+    "Если вопрос про чувства героя, смотри на его действия и слова.",
+    "Если в вопросе слово true (верно), проверь каждый вариант по тексту."
+   ],
+   "passages": [
+    {
+     "id": "r1",
+     "kind": "reading",
+     "text": "The Burj Khalifa in Dubai is the tallest building in the world. It is 828 metres high and has more than 160 floors. It was opened in 2010. Every day, many tourists visit the observation deck to enjoy the view of the city."
+    },
+    {
+     "id": "r2",
+     "kind": "reading",
+     "text": "Mia was nervous. Today was her first day at her new school. She walked slowly through the gate, holding her bag tightly. Then a girl with a friendly smile said, \"Hi! I'm Zara. Would you like to sit with me?\" Mia felt much better."
+    },
+    {
+     "id": "r3",
+     "kind": "reading",
+     "text": "Recycling means using materials again instead of throwing them away. Paper, glass and plastic can all be recycled. Recycling saves energy and reduces the amount of rubbish in the ground."
+    }
+   ],
+   "questions": [
+    {
+     "id": "english-2-3-1",
+     "n": 1,
+     "text": "How tall is the Burj Khalifa?",
+     "passage": "r1",
+     "options": [
+      "160 metres",
+      "2010 metres",
+      "828 metres"
+     ],
+     "answer": 2,
+     "why": "в тексте 828 metres high. 160 — это этажи, а 2010 — год."
+    },
+    {
+     "id": "english-2-3-2",
+     "n": 2,
+     "text": "In which year was it opened?",
+     "passage": "r1",
+     "options": [
+      "2008",
+      "2010",
+      "2012"
+     ],
+     "answer": 1,
+     "why": "в тексте It was opened in 2010."
+    },
+    {
+     "id": "english-2-3-3",
+     "n": 3,
+     "text": "Why do tourists visit the observation deck?",
+     "passage": "r1",
+     "options": [
+      "to enjoy the view of the city",
+      "to live there",
+      "to work there"
+     ],
+     "answer": 0,
+     "why": "в тексте to enjoy the view of the city."
+    },
+    {
+     "id": "english-2-3-4",
+     "n": 4,
+     "text": "Which sentence is true?",
+     "passage": "r1",
+     "options": [
+      "It has fewer than 100 floors.",
+      "It is the smallest building in Dubai.",
+      "It is the tallest building in the world."
+     ],
+     "answer": 2,
+     "why": "в тексте it is the tallest building in the world, а этажей больше 160."
+    },
+    {
+     "id": "english-2-3-5",
+     "n": 5,
+     "text": "How did Mia feel at the start of the day?",
+     "passage": "r2",
+     "options": [
+      "nervous",
+      "angry",
+      "bored"
+     ],
+     "answer": 0,
+     "why": "в тексте Mia was nervous, то есть волновалась."
+    },
+    {
+     "id": "english-2-3-6",
+     "n": 6,
+     "text": "Why did Mia feel better?",
+     "passage": "r2",
+     "options": [
+      "She went home.",
+      "Zara was kind to her.",
+      "The lessons finished."
+     ],
+     "answer": 1,
+     "why": "Zara улыбнулась и предложила сесть вместе, после этого Mia felt much better."
+    },
+    {
+     "id": "english-2-3-7",
+     "n": 7,
+     "text": "Which word best describes Zara?",
+     "passage": "r2",
+     "options": [
+      "shy",
+      "rude",
+      "friendly"
+     ],
+     "answer": 2,
+     "why": "в тексте a friendly smile и она сама пригласила Мию."
+    },
+    {
+     "id": "english-2-3-8",
+     "n": 8,
+     "text": "What does \"recycling\" mean?",
+     "passage": "r3",
+     "options": [
+      "burning rubbish",
+      "using materials again",
+      "buying new things"
+     ],
+     "answer": 1,
+     "why": "в тексте using materials again instead of throwing them away."
+    },
+    {
+     "id": "english-2-3-9",
+     "n": 9,
+     "text": "Which of these can be recycled, according to the text?",
+     "passage": "r3",
+     "options": [
+      "sand",
+      "water",
+      "glass"
+     ],
+     "answer": 2,
+     "why": "в тексте Paper, glass and plastic can all be recycled."
+    },
+    {
+     "id": "english-2-3-10",
+     "n": 10,
+     "text": "What is one benefit of recycling?",
+     "passage": "r3",
+     "options": [
+      "It saves energy.",
+      "It costs more money.",
+      "It makes more rubbish."
+     ],
+     "answer": 0,
+     "why": "в тексте Recycling saves energy and reduces the amount of rubbish."
+    }
+   ]
+  },
+  {
+   "id": "english-2-4",
+   "n": 4,
+   "title": "Правописание и письмо",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка (если что-то подзабыл, не страшно, начнём с самого начала):",
+   "explanation": [
+    "Апостроф (') ставим в сокращениях: don't = do not, it's = it is. Ещё апостроф показывает, чьё: the dog's bone — косточка собаки.",
+    "Слова, которые звучат одинаково, но пишутся по-разному и значат разное, называются омофонами. Например: they're (они есть), their (их), there (там); your (твой), you're (ты есть); to (к), too (тоже, слишком), two (два).",
+    "Абзац (paragraph) — группа предложений об одной мысли. Новый абзац начинаем с новой строки.",
+    "Формальный стиль (formal) нужен для писем учителю или директору: Could you please help me? Неформальный (informal) — для друзей: Can you help me?"
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "english-2-4-1",
+     "n": 1,
+     "text": "____ going to win!",
+     "options": [
+      "Their",
+      "There",
+      "They're"
+     ],
+     "answer": 2,
+     "why": "They're значит They are, они (обязательно) выиграют. Their — их, there — там."
+    },
+    {
+     "id": "english-2-4-2",
+     "n": 2,
+     "text": "Which phrase shows that the bone belongs to one dog?",
+     "options": [
+      "the dogs bone",
+      "the dog's bone",
+      "the dog bone's"
+     ],
+     "answer": 1,
+     "why": "апостроф перед s показывает, что кость принадлежит одной собаке."
+    },
+    {
+     "id": "english-2-4-3",
+     "n": 3,
+     "text": "\"Don't\" is short for:",
+     "options": [
+      "do not",
+      "did not",
+      "does not"
+     ],
+     "answer": 0,
+     "why": "don't = do not."
+    },
+    {
+     "id": "english-2-4-4",
+     "n": 4,
+     "text": "Is this ____ coat?",
+     "options": [
+      "you're",
+      "your",
+      "yore"
+     ],
+     "answer": 1,
+     "why": "your значит твой. You're = you are, а в этом предложении нужно «твоё»."
+    },
+    {
+     "id": "english-2-4-5",
+     "n": 5,
+     "text": "I want to come ____.",
+     "options": [
+      "to",
+      "two",
+      "too"
+     ],
+     "answer": 2,
+     "why": "too значит тоже, I want to come too — я тоже хочу прийти."
+    },
+    {
+     "id": "english-2-4-6",
+     "n": 6,
+     "text": "Choose the correct spelling.",
+     "options": [
+      "neccessary",
+      "necessary",
+      "necesary"
+     ],
+     "answer": 1,
+     "why": "правильно necessary: одна c, две s."
+    },
+    {
+     "id": "english-2-4-7",
+     "n": 7,
+     "text": "Choose the correct spelling.",
+     "options": [
+      "definately",
+      "definitly",
+      "definitely"
+     ],
+     "answer": 2,
+     "why": "правильно definitely."
+    },
+    {
+     "id": "english-2-4-8",
+     "n": 8,
+     "text": "What is a paragraph?",
+     "options": [
+      "a long word",
+      "a group of sentences about one idea",
+      "a type of punctuation mark"
+     ],
+     "answer": 1,
+     "why": "абзац — это группа предложений об одной мысли."
+    },
+    {
+     "id": "english-2-4-9",
+     "n": 9,
+     "text": "Which sentence is more formal?",
+     "options": [
+      "Hey, can u help me?",
+      "Could you please help me?",
+      "Help me now!"
+     ],
+     "answer": 1,
+     "why": "Could you please вежливо и подходит для письма учителю."
+    },
+    {
+     "id": "english-2-4-10",
+     "n": 10,
+     "text": "Which sentence has the apostrophe in the right place?",
+     "options": [
+      "It's a sunny day.",
+      "Its a sunny day.",
+      "Its' a sunny day."
+     ],
+     "answer": 0,
+     "why": "It's = It is, апостроф стоит после t."
+    }
+   ]
+  },
+  {
+   "id": "english-2-5",
+   "n": 5,
+   "title": "Аудирование (слушаем и отвечаем)",
+   "type": "listening",
+   "explanationLabel": "Объяснение для ребёнка (если что-то подзабыл, не страшно, начнём с самого начала):",
+   "explanation": [
+    "Слушай внимательно и лови главные слова: числа, имена, места, время.",
+    "Будь осторожен с похожими числами: forty (40) и fourteen (14) звучат почти одинаково. Fourteen заканчивается на -teen, а forty нет.",
+    "Слово not значит «не»: Do not touch значит «не трогай»."
+   ],
+   "devNotes": [
+    "Как это работает в игре: браузер озвучивает английский текст вслух, ребёнок текста не видит, а только вопрос и три ответа."
+   ],
+   "passages": [
+    {
+     "id": "l1",
+     "kind": "listening",
+     "text": "Good morning, everyone. This is your captain speaking. We will land in Dubai in forty minutes. The weather is clear and the temperature on the ground is thirty-six degrees. Please stay in your seats and keep your seatbelts fastened."
+    },
+    {
+     "id": "l2",
+     "kind": "listening",
+     "text": "Tom: What are you doing this weekend, Ella? Ella: On Saturday I'm going to my grandmother's house. She lives in the countryside. On Sunday I'm going to play basketball with my team. Tom: Sounds great! I'm going to stay at home and read my new book."
+    },
+    {
+     "id": "l3",
+     "kind": "listening",
+     "text": "Welcome to the science museum. The museum opens at ten o'clock and closes at five o'clock. Tickets cost twenty dirhams for children and fifty dirhams for adults. Cameras are allowed, but please do not touch the exhibits."
+    }
+   ],
+   "questions": [
+    {
+     "id": "english-2-5-1",
+     "n": 1,
+     "text": "How long until the plane lands?",
+     "passage": "l1",
+     "options": [
+      "forty minutes",
+      "fourteen minutes",
+      "four hours"
+     ],
+     "answer": 0,
+     "why": "в аудио in forty minutes, то есть через 40 минут."
+    },
+    {
+     "id": "english-2-5-2",
+     "n": 2,
+     "text": "What is the temperature on the ground?",
+     "passage": "l1",
+     "options": [
+      "sixteen degrees",
+      "thirty-six degrees",
+      "thirteen degrees"
+     ],
+     "answer": 1,
+     "why": "в аудио thirty-six degrees, 36 градусов."
+    },
+    {
+     "id": "english-2-5-3",
+     "n": 3,
+     "text": "What must the passengers do?",
+     "passage": "l1",
+     "options": [
+      "walk around the plane",
+      "open the windows",
+      "stay in their seats"
+     ],
+     "answer": 2,
+     "why": "в аудио Please stay in your seats and keep your seatbelts fastened."
+    },
+    {
+     "id": "english-2-5-4",
+     "n": 4,
+     "text": "Where does Ella's grandmother live?",
+     "passage": "l2",
+     "options": [
+      "in the countryside",
+      "in the city",
+      "by the sea"
+     ],
+     "answer": 0,
+     "why": "в аудио She lives in the countryside, то есть за городом."
+    },
+    {
+     "id": "english-2-5-5",
+     "n": 5,
+     "text": "What will Ella do on Sunday?",
+     "passage": "l2",
+     "options": [
+      "visit her grandmother",
+      "play basketball",
+      "read a book"
+     ],
+     "answer": 1,
+     "why": "в аудио On Sunday I'm going to play basketball."
+    },
+    {
+     "id": "english-2-5-6",
+     "n": 6,
+     "text": "What is Tom going to do?",
+     "passage": "l2",
+     "options": [
+      "play basketball",
+      "go to the countryside",
+      "stay at home and read"
+     ],
+     "answer": 2,
+     "why": "в аудио I'm going to stay at home and read my new book."
+    },
+    {
+     "id": "english-2-5-7",
+     "n": 7,
+     "text": "When is Ella going to her grandmother's house?",
+     "passage": "l2",
+     "options": [
+      "on Friday",
+      "on Saturday",
+      "on Sunday"
+     ],
+     "answer": 1,
+     "why": "в аудио On Saturday I'm going to my grandmother's house."
+    },
+    {
+     "id": "english-2-5-8",
+     "n": 8,
+     "text": "What time does the museum close?",
+     "passage": "l3",
+     "options": [
+      "ten o'clock",
+      "six o'clock",
+      "five o'clock"
+     ],
+     "answer": 2,
+     "why": "в аудио closes at five o'clock."
+    },
+    {
+     "id": "english-2-5-9",
+     "n": 9,
+     "text": "How much is a child's ticket?",
+     "passage": "l3",
+     "options": [
+      "fifty dirhams",
+      "twenty dirhams",
+      "twelve dirhams"
+     ],
+     "answer": 1,
+     "why": "в аудио twenty dirhams for children. Fifty — билет для взрослых."
+    },
+    {
+     "id": "english-2-5-10",
+     "n": 10,
+     "text": "What is NOT allowed in the museum?",
+     "passage": "l3",
+     "options": [
+      "touching the exhibits",
+      "using cameras",
+      "buying tickets"
+     ],
+     "answer": 0,
+     "why": "в аудио Cameras are allowed, but please do not touch the exhibits."
+    }
+   ]
+  }
+ ]
+}

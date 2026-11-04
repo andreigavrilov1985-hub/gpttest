@@ -1,0 +1,559 @@
+{
+ "subject": "science",
+ "subjectName": "Наука",
+ "island": 1,
+ "source": {
+  "notionPageId": "40ecfa33-bed4-81fe-81cf-fc7f85d419d7",
+  "title": "🔬 Kids Game – вопросы: остров 1, Year 6, наука",
+  "lastEdited": "2026-11-04T19:00:23.498Z"
+ },
+ "topics": [
+  {
+   "id": "science-1-1",
+   "n": 1,
+   "title": "Живые организмы: растения и животные",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка (если что-то подзабыл, не страшно, начнём с самого начала):",
+   "explanation": [
+    "У растения есть корень (держит в земле и вбирает воду), стебель (поддерживает и переводит воду вверх), листья (ловят свет и делают пищу) и цветок (нужен для семян).",
+    "Фотосинтез (photosynthesis) — как растение делает себе пищу из воды, углекислого газа и света. Углекислый газ — газ из воздуха, который мы выдыхаем. Растение выделяет кислород.",
+    "Позвоночные (vertebrates) — животные с позвоночником: рыбы, птицы, млекопитающие. Млекопитающие (mammals) кормят детёнышей молоком: собака, дельфин. Насекомые (insects) — шесть ног: муравей, пчела. Жабры (gills) — органы рыб, которыми они берут кислород, растворённый в воде.",
+    "Цепь питания: трава → кролик → лиса. Производитель (producer) — то, что делает пищу само (растение). Травоядное (herbivore) ест только растения. Хищник (predator) ест других животных."
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "science-1-1-1",
+     "n": 1,
+     "text": "Which part of a plant takes in water from the soil?",
+     "options": [
+      "the leaf",
+      "the root",
+      "the flower"
+     ],
+     "answer": 1,
+     "why": "корень находится в земле и вбирает воду."
+    },
+    {
+     "id": "science-1-1-2",
+     "n": 2,
+     "text": "The process in which plants make food using sunlight is called:",
+     "options": [
+      "digestion",
+      "evaporation",
+      "photosynthesis"
+     ],
+     "answer": 2,
+     "why": "фотосинтез — это процесс, при котором растение использует энергию света, чтобы сделать пищу из воды и углекислого газа."
+    },
+    {
+     "id": "science-1-1-3",
+     "n": 3,
+     "text": "Which gas do plants take in from the air for photosynthesis?",
+     "options": [
+      "oxygen",
+      "carbon dioxide",
+      "nitrogen"
+     ],
+     "answer": 1,
+     "why": "растения берут углекислый газ (carbon dioxide), а кислород выделяют."
+    },
+    {
+     "id": "science-1-1-4",
+     "n": 4,
+     "text": "Which animal is a vertebrate (has a backbone)?",
+     "options": [
+      "a fish",
+      "a spider",
+      "a worm"
+     ],
+     "answer": 0,
+     "why": "у рыбы есть позвоночник, а у паука и червя нет."
+    },
+    {
+     "id": "science-1-1-5",
+     "n": 5,
+     "text": "Which animal is a mammal?",
+     "options": [
+      "a shark",
+      "a dolphin",
+      "a frog"
+     ],
+     "answer": 1,
+     "why": "дельфин кормит детёнышей молоком и дышит воздухом. Акула — рыба, лягушка — амфибия."
+    },
+    {
+     "id": "science-1-1-6",
+     "n": 6,
+     "text": "Which animal is an insect?",
+     "options": [
+      "a snail",
+      "a spider",
+      "an ant"
+     ],
+     "answer": 2,
+     "why": "у муравья шесть ног, это насекомое. У паука восемь ног, он не насекомое."
+    },
+    {
+     "id": "science-1-1-7",
+     "n": 7,
+     "text": "In the food chain grass → rabbit → fox, which one is the producer?",
+     "options": [
+      "grass",
+      "rabbit",
+      "fox"
+     ],
+     "answer": 0,
+     "why": "трава сама делает пищу из света, это производитель."
+    },
+    {
+     "id": "science-1-1-8",
+     "n": 8,
+     "text": "In that food chain, the rabbit is:",
+     "options": [
+      "a predator",
+      "a herbivore",
+      "a producer"
+     ],
+     "answer": 1,
+     "why": "кролик ест только траву, значит он травоядный."
+    },
+    {
+     "id": "science-1-1-9",
+     "n": 9,
+     "text": "What does the stem of a plant do?",
+     "options": [
+      "makes seeds",
+      "supports the plant and carries water",
+      "takes in sunlight"
+     ],
+     "answer": 1,
+     "why": "стебель держит растение и поднимает воду. Свет ловят листья."
+    },
+    {
+     "id": "science-1-1-10",
+     "n": 10,
+     "text": "Fish breathe mainly using:",
+     "options": [
+      "lungs",
+      "gills",
+      "a nose"
+     ],
+     "answer": 1,
+     "why": "жабры берут кислород из воды."
+    }
+   ]
+  },
+  {
+   "id": "science-1-2",
+   "n": 2,
+   "title": "Тело человека",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка (если что-то подзабыл, не страшно, начнём с самого начала):",
+   "explanation": [
+    "Орган — часть тела со своей работой. Сердце (heart) прогоняет кровь по телу. Лёгкие (lungs) дают телу кислород из воздуха. Желудок (stomach) и кишечник переваривают еду.",
+    "Артерии (arteries) — сосуды, по которым кровь идёт от сердца. Кровь несёт кислород к мышцам.",
+    "Питательные вещества: углеводы (хлеб, рис) дают энергию, белки (мясо, рыба, бобы) нужны для роста и восстановления тела.",
+    "Кости держат тело и защищают органы. Резцы (incisors) — передние зубы, они откусывают; коренные (molars) перетирают еду.",
+    "Пульс — сколько раз в минуту бьётся сердце. При беге пульс учащается."
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "science-1-2-1",
+     "n": 1,
+     "text": "What does the heart do?",
+     "options": [
+      "digests food",
+      "pumps blood around the body",
+      "cleans the air"
+     ],
+     "answer": 1,
+     "why": "сердце — насос для крови."
+    },
+    {
+     "id": "science-1-2-2",
+     "n": 2,
+     "text": "Which organs do we use to breathe?",
+     "options": [
+      "the heart",
+      "the stomach",
+      "the lungs"
+     ],
+     "answer": 2,
+     "why": "лёгкие берут кислород из воздуха."
+    },
+    {
+     "id": "science-1-2-3",
+     "n": 3,
+     "text": "Which gas from the air does our body need?",
+     "options": [
+      "oxygen",
+      "carbon dioxide",
+      "helium"
+     ],
+     "answer": 0,
+     "why": "тело берёт кислород (oxygen) при вдохе, а углекислый газ выдыхает."
+    },
+    {
+     "id": "science-1-2-4",
+     "n": 4,
+     "text": "Which organ is part of the digestive system (it helps us digest food)?",
+     "options": [
+      "the stomach",
+      "the lung",
+      "the heart"
+     ],
+     "answer": 0,
+     "why": "желудок переваривает еду."
+    },
+    {
+     "id": "science-1-2-5",
+     "n": 5,
+     "text": "Which nutrient helps the body grow and repair itself?",
+     "options": [
+      "fats only",
+      "protein",
+      "sugar only"
+     ],
+     "answer": 1,
+     "why": "белки (protein) — строительный материал для роста и восстановления."
+    },
+    {
+     "id": "science-1-2-6",
+     "n": 6,
+     "text": "What do bones do?",
+     "options": [
+      "support the body and protect organs",
+      "digest food",
+      "pump blood"
+     ],
+     "answer": 0,
+     "why": "кости держат тело и защищают органы."
+    },
+    {
+     "id": "science-1-2-7",
+     "n": 7,
+     "text": "Which teeth are used for cutting food?",
+     "options": [
+      "molars",
+      "incisors",
+      "none of them"
+     ],
+     "answer": 1,
+     "why": "incisors — резцы, они откусывают. Molars перетирают."
+    },
+    {
+     "id": "science-1-2-8",
+     "n": 8,
+     "text": "Why does your heart beat faster when you run?",
+     "options": [
+      "muscles need more oxygen",
+      "you are sleepy",
+      "your blood is cold"
+     ],
+     "answer": 0,
+     "why": "при беге мышцам нужно больше кислорода, и сердце гонит кровь быстрее."
+    },
+    {
+     "id": "science-1-2-9",
+     "n": 9,
+     "text": "Blood vessels that carry blood away from the heart are called:",
+     "options": [
+      "veins",
+      "arteries",
+      "bones"
+     ],
+     "answer": 1,
+     "why": "arteries — сосуды от сердца, а veins возвращают кровь к сердцу."
+    },
+    {
+     "id": "science-1-2-10",
+     "n": 10,
+     "text": "Which organs are damaged by cigarette smoke most directly?",
+     "options": [
+      "the lungs",
+      "the hair",
+      "the bones"
+     ],
+     "answer": 0,
+     "why": "дым попадает в лёгкие при вдохе и вредит им."
+    }
+   ]
+  },
+  {
+   "id": "science-1-3",
+   "n": 3,
+   "title": "Материалы и вещества",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка (если что-то подзабыл, не страшно, начнём с самого начала):",
+   "explanation": [
+    "Три состояния вещества: тёрдое (solid, лёд), жидкое (liquid, вода), газ (gas, пар). При нагревании лёд тает (melting), при дальнейшем вода испаряется (evaporation), при охлаждении вода замерзает (freezing).",
+    "Чистая вода замерзает при 0°C и кипит при 100°C (на уровне моря).",
+    "Раствор (solution) — смесь, где одно вещество растворилось в другом. Растворитель (solvent) — то, в чём растворяют (вода), растворённое вещество (solute) — то, что растворили (соль).",
+    "Фильтруем, чтобы отделить нерастворившиеся частицы (песок) от воды. Растворённую соль фильтром не убрать, её можно получить, испарив воду.",
+    "Проводник (conductor) пропускает электричество (металлы, медь), изолятор не пропускает (резина, пластик). Магнит притягивает железо.",
+    "Обратимое изменение можно вернуть назад (шоколад растаял и снова затвердел), необратимое — нельзя (сгоревшее дерево)."
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "science-1-3-1",
+     "n": 1,
+     "text": "Ice is a:",
+     "options": [
+      "solid",
+      "liquid",
+      "gas"
+     ],
+     "answer": 0,
+     "why": "лёд твёрдый, у него своя форма."
+    },
+    {
+     "id": "science-1-3-2",
+     "n": 2,
+     "text": "When liquid water changes into water vapour, this is called:",
+     "options": [
+      "melting",
+      "freezing",
+      "evaporation"
+     ],
+     "answer": 2,
+     "why": "evaporation — испарение, вода становится паром."
+    },
+    {
+     "id": "science-1-3-3",
+     "n": 3,
+     "text": "At what temperature does pure water freeze (at normal pressure)?",
+     "options": [
+      "100°C",
+      "0°C",
+      "10°C"
+     ],
+     "answer": 1,
+     "why": "чистая вода замерзает при 0°C."
+    },
+    {
+     "id": "science-1-3-4",
+     "n": 4,
+     "text": "At what temperature does pure water boil (at sea level)?",
+     "options": [
+      "100°C",
+      "50°C",
+      "0°C"
+     ],
+     "answer": 0,
+     "why": "вода кипит при 100°C."
+    },
+    {
+     "id": "science-1-3-5",
+     "n": 5,
+     "text": "When you dissolve salt in water, which one is the solvent?",
+     "options": [
+      "the salt",
+      "the water",
+      "the air"
+     ],
+     "answer": 1,
+     "why": "solvent — растворитель, то в чём растворяют. Соль — растворённое вещество."
+    },
+    {
+     "id": "science-1-3-6",
+     "n": 6,
+     "text": "How can you get salt back from salty water?",
+     "options": [
+      "let the water evaporate",
+      "filter it",
+      "freeze it"
+     ],
+     "answer": 0,
+     "why": "вода испаряется, а соль остаётся. Фильтр растворённую соль не задержит."
+    },
+    {
+     "id": "science-1-3-7",
+     "n": 7,
+     "text": "How can you separate sand from water?",
+     "options": [
+      "by adding more water",
+      "by filtering",
+      "with a magnet"
+     ],
+     "answer": 1,
+     "why": "песок не растворяется, и фильтр задержит его. Магнит песок не притягивает."
+    },
+    {
+     "id": "science-1-3-8",
+     "n": 8,
+     "text": "Which material is attracted by a magnet?",
+     "options": [
+      "wood",
+      "plastic",
+      "iron"
+     ],
+     "answer": 2,
+     "why": "магнит притягивает железо."
+    },
+    {
+     "id": "science-1-3-9",
+     "n": 9,
+     "text": "Which material is a good electrical conductor?",
+     "options": [
+      "copper",
+      "rubber",
+      "plastic"
+     ],
+     "answer": 0,
+     "why": "медь — металл, пропускает ток. Резина и пластик — изоляторы."
+    },
+    {
+     "id": "science-1-3-10",
+     "n": 10,
+     "text": "Which change is reversible?",
+     "options": [
+      "burning wood",
+      "melting chocolate",
+      "baking a cake"
+     ],
+     "answer": 1,
+     "why": "растаявший шоколад можно охладить, он снова затвердеет. Древо после горения древом уже не станет."
+    }
+   ]
+  },
+  {
+   "id": "science-1-4",
+   "n": 4,
+   "title": "Силы, свет, электричество и космос",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка (если что-то подзабыл, не страшно, начнём с самого начала):",
+   "explanation": [
+    "Сила — толчок или тяга. Силу меряют в ньютонах (newton, N). Тяжесть (gravity) тянет предметы к Земле. Трение (friction) — сила, которая тормозит предметы, если поверхности тёртся друг о друга.",
+    "Свет идёт прямыми линиями. Если предмет перекрывает свет, появляется тень. Источник света сам светит: Солнце, лампа. Луна сама не светит, она отражает свет Солнца.",
+    "Электрическая цепь (circuit) работает, если она замкнута — нет разрывов: батарейка (cell), провода, лампочка и включённый выключатель.",
+    "Солнечная система: в центре Солнце, вокруг него вращаются планеты. Ближе всех к Солнцу Меркурий. Земля оборачивается вокруг Солнца примерно за один год. Луна обращается вокруг Земли."
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "science-1-4-1",
+     "n": 1,
+     "text": "Which force pulls objects towards the Earth?",
+     "options": [
+      "friction",
+      "gravity",
+      "magnetism"
+     ],
+     "answer": 1,
+     "why": "gravity — тяжесть, именно она тянет всё к Земле."
+    },
+    {
+     "id": "science-1-4-2",
+     "n": 2,
+     "text": "In which unit is force measured?",
+     "options": [
+      "newtons",
+      "kilograms",
+      "metres"
+     ],
+     "answer": 0,
+     "why": "силу меряют в ньютонах. Килограммы — для массы, метры — для длины."
+    },
+    {
+     "id": "science-1-4-3",
+     "n": 3,
+     "text": "A box slides across the floor and slows down. Which force slows it?",
+     "options": [
+      "gravity",
+      "friction",
+      "light"
+     ],
+     "answer": 1,
+     "why": "коробка тёртся о пол, это трение."
+    },
+    {
+     "id": "science-1-4-4",
+     "n": 4,
+     "text": "Light travels in:",
+     "options": [
+      "circles",
+      "zigzags",
+      "straight lines"
+     ],
+     "answer": 2,
+     "why": "свет идёт по прямым линиям, поэтому тень имеет чёткий край."
+    },
+    {
+     "id": "science-1-4-5",
+     "n": 5,
+     "text": "A shadow is formed when an object ____ light.",
+     "options": [
+      "blocks",
+      "makes",
+      "bends"
+     ],
+     "answer": 0,
+     "why": "тень — это место, куда свет не попал, потому что предмет его перекрыл."
+    },
+    {
+     "id": "science-1-4-6",
+     "n": 6,
+     "text": "Which of these is a light source (it makes its own light)?",
+     "options": [
+      "the Moon",
+      "a mirror",
+      "the Sun"
+     ],
+     "answer": 2,
+     "why": "Солнце само светит. Луна и зеркало только отражают свет."
+    },
+    {
+     "id": "science-1-4-7",
+     "n": 7,
+     "text": "A bulb will light up in a circuit with a cell only if the circuit is:",
+     "options": [
+      "complete (no gaps)",
+      "broken",
+      "made of plastic wire"
+     ],
+     "answer": 0,
+     "why": "ток идёт только по замкнутой цепи."
+    },
+    {
+     "id": "science-1-4-8",
+     "n": 8,
+     "text": "Which planet is closest to the Sun?",
+     "options": [
+      "Earth",
+      "Mercury",
+      "Mars"
+     ],
+     "answer": 1,
+     "why": "Меркурий — первая планета от Солнца."
+    },
+    {
+     "id": "science-1-4-9",
+     "n": 9,
+     "text": "The Earth takes about how long to go once around the Sun?",
+     "options": [
+      "one day",
+      "one month",
+      "one year"
+     ],
+     "answer": 2,
+     "why": "год — это время, за которое Земля обходит Солнце."
+    },
+    {
+     "id": "science-1-4-10",
+     "n": 10,
+     "text": "The Moon:",
+     "options": [
+      "is a star",
+      "orbits the Earth",
+      "makes its own light"
+     ],
+     "answer": 1,
+     "why": "Луна кружится вокруг Земли и отражает свет Солнца."
+    }
+   ]
+  }
+ ]
+}

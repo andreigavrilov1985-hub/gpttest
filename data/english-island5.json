@@ -1,0 +1,743 @@
+{
+ "subject": "english",
+ "subjectName": "Английский",
+ "island": 5,
+ "source": {
+  "notionPageId": "40ecfa33-bed4-812f-9f75-f3d6502f32ef",
+  "title": "📖 Kids Game – вопросы: остров 5, Year 10, английский",
+  "lastEdited": "2026-11-04T18:59:42.424Z"
+ },
+ "topics": [
+  {
+   "id": "english-5-1",
+   "n": 1,
+   "title": "Словарный запас: сложные слова",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка:",
+   "explanation": [
+    "Незнакомое слово можно разгадать по контексту и корню. Проверяй, приятное слово или неприятное.",
+    "Irony (ирония) — когда случается противоположное тому, чего ждут.",
+    "Коннотация — эмоциональный оттенок слова: house — здание, home — тёплое место, где тебя ждут."
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "english-5-1-1",
+     "n": 1,
+     "text": "\"Mobile phones are now ubiquitous.\" What does \"ubiquitous\" mean?",
+     "options": [
+      "rare",
+      "found everywhere",
+      "ancient"
+     ],
+     "answer": 1,
+     "why": "ubiquitous — повсеместный, встречается везде."
+    },
+    {
+     "id": "english-5-1-2",
+     "n": 2,
+     "text": "A \"pragmatic\" person is:",
+     "options": [
+      "practical and sensible",
+      "dreamy",
+      "angry"
+     ],
+     "answer": 0,
+     "why": "pragmatic — практичный, думающий о реальной пользе."
+    },
+    {
+     "id": "english-5-1-3",
+     "n": 3,
+     "text": "To \"scrutinise\" something means to:",
+     "options": [
+      "ignore it",
+      "examine it closely",
+      "celebrate it"
+     ],
+     "answer": 1,
+     "why": "scrutinise — тщательно изучать."
+    },
+    {
+     "id": "english-5-1-4",
+     "n": 4,
+     "text": "If a result is \"inevitable\", it is:",
+     "options": [
+      "certain to happen",
+      "unlikely",
+      "impossible"
+     ],
+     "answer": 0,
+     "why": "inevitable — неизбежный."
+    },
+    {
+     "id": "english-5-1-5",
+     "n": 5,
+     "text": "To \"mitigate\" a problem means to:",
+     "options": [
+      "make it worse",
+      "ignore it",
+      "make it less serious"
+     ],
+     "answer": 2,
+     "why": "mitigate — смягчать, уменьшать тяжесть."
+    },
+    {
+     "id": "english-5-1-6",
+     "n": 6,
+     "text": "An \"ephemeral\" joy is one that:",
+     "options": [
+      "lasts forever",
+      "lasts for a very short time",
+      "is enormous"
+     ],
+     "answer": 1,
+     "why": "ephemeral — мимолётный, кратковременный."
+    },
+    {
+     "id": "english-5-1-7",
+     "n": 7,
+     "text": "What is the opposite of \"scarce\"?",
+     "options": [
+      "rare",
+      "plentiful",
+      "tiny"
+     ],
+     "answer": 1,
+     "why": "scarce — редкий, дефицитный; plentiful — много."
+    },
+    {
+     "id": "english-5-1-8",
+     "n": 8,
+     "text": "A \"benign\" illness is:",
+     "options": [
+      "dangerous",
+      "painful",
+      "harmless"
+     ],
+     "answer": 2,
+     "why": "benign — доброкачественный, неопасный."
+    },
+    {
+     "id": "english-5-1-9",
+     "n": 9,
+     "text": "\"A fire station burned down.\" Why is this ironic?",
+     "options": [
+      "It is the opposite of what we would expect.",
+      "It is funny.",
+      "It is sad."
+     ],
+     "answer": 0,
+     "why": "ожидаем, что пожарные тушат пожары, а горит их же здание."
+    },
+    {
+     "id": "english-5-1-10",
+     "n": 10,
+     "text": "The word \"home\" has a connotation of:",
+     "options": [
+      "a cold, empty building",
+      "warmth and belonging",
+      "only bricks"
+     ],
+     "answer": 1,
+     "why": "home звучит тёпло и по-своёму, у house этого нет."
+    }
+   ]
+  },
+  {
+   "id": "english-5-2",
+   "n": 2,
+   "title": "Грамматика: точность и стиль",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка:",
+   "explanation": [
+    "Для возможного или нереального желания ставим were и had: If I were you; I wish I had more time.",
+    "Дополнительная информация в придаточном обсобляется запятыми: My brother, who lives in Dubai, is a nurse.",
+    "Past perfect passive: had been + третья форма — действие произошло до другого момента в прошлом: had been completed.",
+    "Dangling modifier — оборот, который неверно привязан к слову: Walking down the street, the rain started (получается, что дождь шёл по улице).",
+    "Its (его, её, без апострофа) и it's (= it is).",
+    "Not only ... but also: Not only did she win, but she also broke the record."
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "english-5-2-1",
+     "n": 1,
+     "text": "If I ____ you, I would apologise.",
+     "options": [
+      "was",
+      "were",
+      "am"
+     ],
+     "answer": 1,
+     "why": "в этом условном предложении ставят were."
+    },
+    {
+     "id": "english-5-2-2",
+     "n": 2,
+     "text": "In \"My brother, who lives in Dubai, is a nurse\", the commas show that the clause is:",
+     "options": [
+      "extra information",
+      "essential information",
+      "a question"
+     ],
+     "answer": 0,
+     "why": "без этой части фраза всё равно понятна, значит это дополнительная информация."
+    },
+    {
+     "id": "english-5-2-3",
+     "n": 3,
+     "text": "The experiment ____ by the students before the teacher arrived.",
+     "options": [
+      "has completed",
+      "had been completed",
+      "was completing"
+     ],
+     "answer": 1,
+     "why": "действие было до другого действия в прошлом, и опыт не сам закончился: had been completed."
+    },
+    {
+     "id": "english-5-2-4",
+     "n": 4,
+     "text": "What is wrong with: \"Walking down the street, the rain started.\"?",
+     "options": [
+      "nothing is wrong",
+      "it sounds as if the rain was walking down the street",
+      "a comma is missing"
+     ],
+     "answer": 1,
+     "why": "оборот Walking down the street относится к слову rain."
+    },
+    {
+     "id": "english-5-2-5",
+     "n": 5,
+     "text": "Choose the correct sentence.",
+     "options": [
+      "The dog wagged it's tail.",
+      "The dog wagged its tail.",
+      "The dog wagged its' tail."
+     ],
+     "answer": 1,
+     "why": "its без апострофа показывает принадлежность, it's значит it is."
+    },
+    {
+     "id": "english-5-2-6",
+     "n": 6,
+     "text": "Neither the teacher nor the students ____ ready.",
+     "options": [
+      "was",
+      "were",
+      "is"
+     ],
+     "answer": 1,
+     "why": "после neither ... nor глагол согласуется с ближайшим словом: students — множественное число."
+    },
+    {
+     "id": "english-5-2-7",
+     "n": 7,
+     "text": "Not only did she win, ____ she also broke the record.",
+     "options": [
+      "and",
+      "but",
+      "so"
+     ],
+     "answer": 1,
+     "why": "конструкция not only ... but also."
+    },
+    {
+     "id": "english-5-2-8",
+     "n": 8,
+     "text": "Which sentence is correct?",
+     "options": [
+      "He enjoys hiking, swimming and reading.",
+      "He enjoys hiking, to swim and reading.",
+      "He enjoys to hike, swimming and read."
+     ],
+     "answer": 0,
+     "why": "в списке все части в одной форме."
+    },
+    {
+     "id": "english-5-2-9",
+     "n": 9,
+     "text": "I wish I ____ more time.",
+     "options": [
+      "have",
+      "had",
+      "would have"
+     ],
+     "answer": 1,
+     "why": "после I wish о настоящем ставим had."
+    },
+    {
+     "id": "english-5-2-10",
+     "n": 10,
+     "text": "You ____ have told me earlier! (Choose the word that criticises a past action.)",
+     "options": [
+      "must",
+      "should",
+      "can"
+     ],
+     "answer": 1,
+     "why": "should have + третья форма — упрёк за прошлое («ты должен был сказать»)."
+    }
+   ]
+  },
+  {
+   "id": "english-5-3",
+   "n": 3,
+   "title": "Чтение с пониманием и анализом",
+   "type": "reading",
+   "explanationLabel": "Объяснение для ребёнка:",
+   "explanation": [
+    "Образы создают настроение (mood): заброшенность, тревога, радость. Simile — сравнение через like или as; metaphor — прямое называние одного другим; personification — предмету приписаны свойства живого существа.",
+    "В текстах с цифрами внимательно читай, что именно спрашивают: количество людей или проценты.",
+    "Слова perhaps, maybe показывают, что автор не уверен на сто процентов."
+   ],
+   "passages": [
+    {
+     "id": "r1",
+     "kind": "reading",
+     "text": "The house stood at the end of the lane like a forgotten promise. Its windows were dark, its garden a tangle of weeds, and yet a single light flickered upstairs, as though the house itself were breathing."
+    },
+    {
+     "id": "r2",
+     "kind": "reading",
+     "text": "A 2020 survey of 1,000 teenagers found that 62% sleep fewer than eight hours on school nights. Researchers link poor sleep to lower concentration and worse mood. They recommend that schools start later."
+    },
+    {
+     "id": "r3",
+     "kind": "reading",
+     "text": "Social media is often blamed for teenagers' anxiety. But it also lets shy teens make friends and find communities that share their interests. The real problem, perhaps, is not the technology but how we use it."
+    }
+   ],
+   "questions": [
+    {
+     "id": "english-5-3-1",
+     "n": 1,
+     "text": "\"like a forgotten promise\" is:",
+     "passage": "r1",
+     "options": [
+      "a simile",
+      "a metaphor",
+      "hyperbole"
+     ],
+     "answer": 0,
+     "why": "есть like, значит сравнение."
+    },
+    {
+     "id": "english-5-3-2",
+     "n": 2,
+     "text": "What mood does the description create?",
+     "passage": "r1",
+     "options": [
+      "cheerful",
+      "eerie and lonely",
+      "funny"
+     ],
+     "answer": 1,
+     "why": "тёмные окна, заросший сад, одинокий свет — жутковато и одиноко."
+    },
+    {
+     "id": "english-5-3-3",
+     "n": 3,
+     "text": "\"as though the house itself were breathing\" is an example of:",
+     "passage": "r1",
+     "options": [
+      "alliteration",
+      "personification",
+      "onomatopoeia"
+     ],
+     "answer": 1,
+     "why": "дом «дышит» как живое существо."
+    },
+    {
+     "id": "english-5-3-4",
+     "n": 4,
+     "text": "The word \"yet\" introduces:",
+     "passage": "r1",
+     "options": [
+      "a contrast",
+      "a cause",
+      "a list"
+     ],
+     "answer": 0,
+     "why": "окна тёмные, но наверху светится огонёк: контраст."
+    },
+    {
+     "id": "english-5-3-5",
+     "n": 5,
+     "text": "How many teenagers took part in the survey?",
+     "passage": "r2",
+     "options": [
+      "62",
+      "1,000",
+      "800"
+     ],
+     "answer": 1,
+     "why": "в тексте survey of 1,000 teenagers; 62 — это процент."
+    },
+    {
+     "id": "english-5-3-6",
+     "n": 6,
+     "text": "What percentage sleep fewer than eight hours on school nights?",
+     "passage": "r2",
+     "options": [
+      "26%",
+      "62%",
+      "38%"
+     ],
+     "answer": 1,
+     "why": "в тексте 62%."
+    },
+    {
+     "id": "english-5-3-7",
+     "n": 7,
+     "text": "What do researchers link poor sleep to?",
+     "passage": "r2",
+     "options": [
+      "lower concentration and worse mood",
+      "hunger",
+      "better grades"
+     ],
+     "answer": 0,
+     "why": "в тексте lower concentration and worse mood."
+    },
+    {
+     "id": "english-5-3-8",
+     "n": 8,
+     "text": "What is the writer's view?",
+     "passage": "r3",
+     "options": [
+      "Social media is always harmful.",
+      "Social media is always good.",
+      "The problem may be how we use social media, not the technology itself."
+     ],
+     "answer": 2,
+     "why": "автор показывает и плюсы, и минусы, и думает, что важно, как мы его используем."
+    },
+    {
+     "id": "english-5-3-9",
+     "n": 9,
+     "text": "The word \"perhaps\" shows that the writer:",
+     "passage": "r3",
+     "options": [
+      "is certain",
+      "is not completely sure",
+      "is angry"
+     ],
+     "answer": 1,
+     "why": "perhaps значит «может быть»."
+    },
+    {
+     "id": "english-5-3-10",
+     "n": 10,
+     "text": "Which benefit of social media is mentioned?",
+     "passage": "r3",
+     "options": [
+      "better sleep",
+      "less anxiety",
+      "finding communities with shared interests"
+     ],
+     "answer": 2,
+     "why": "в тексте find communities that share their interests."
+    }
+   ]
+  },
+  {
+   "id": "english-5-4",
+   "n": 4,
+   "title": "Правописание и письмо",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка:",
+   "explanation": [
+    "Topic sentence — первое предложение абзаца с главной мыслью. Дальше идут доказательства и примеры.",
+    "Rhetorical question — вопрос, на который не ждут ответа: Isn't it time we acted?",
+    "Rule of three — три слова или фразы подряд для усиления: fast, fun and free.",
+    "Деловое письмо: Dear Sir or Madam → Yours faithfully; Dear Mr Khan → Yours sincerely.",
+    "Активный залог (active voice): подлежащее само выполняет действие — The boy kicked the ball. Он звучит прямее и сильнее пассива."
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "english-5-4-1",
+     "n": 1,
+     "text": "Which sentence is a topic sentence?",
+     "options": [
+      "For example, glass can be reused.",
+      "Recycling plays a vital role in protecting the environment.",
+      "Finally, we should all try harder."
+     ],
+     "answer": 1,
+     "why": "оно выражает главную мысль абзаца."
+    },
+    {
+     "id": "english-5-4-2",
+     "n": 2,
+     "text": "What is the best way to support a point in an essay?",
+     "options": [
+      "with evidence and an example",
+      "by repeating it",
+      "by writing a longer sentence"
+     ],
+     "answer": 0,
+     "why": "доказательства и примеры делают аргумент убедительным."
+    },
+    {
+     "id": "english-5-4-3",
+     "n": 3,
+     "text": "Which sentence is a rhetorical question?",
+     "options": [
+      "Close the door.",
+      "Isn't it time we acted?",
+      "I like cats."
+     ],
+     "answer": 1,
+     "why": "это вопрос, на который не нужен ответ, а только убеждение."
+    },
+    {
+     "id": "english-5-4-4",
+     "n": 4,
+     "text": "\"Fast, fun and free\" is an example of:",
+     "options": [
+      "the rule of three",
+      "a metaphor",
+      "a euphemism"
+     ],
+     "answer": 0,
+     "why": "три слова подряд."
+    },
+    {
+     "id": "english-5-4-5",
+     "n": 5,
+     "text": "Choose the correct spelling.",
+     "options": [
+      "privelege",
+      "privilage",
+      "privilege"
+     ],
+     "answer": 2,
+     "why": "правильно privilege."
+    },
+    {
+     "id": "english-5-4-6",
+     "n": 6,
+     "text": "Choose the correct spelling.",
+     "options": [
+      "concience",
+      "conscience",
+      "consience"
+     ],
+     "answer": 1,
+     "why": "правильно conscience."
+    },
+    {
+     "id": "english-5-4-7",
+     "n": 7,
+     "text": "Choose the correct spelling.",
+     "options": [
+      "environment",
+      "enviroment",
+      "environement"
+     ],
+     "answer": 0,
+     "why": "правильно environment, с n перед m."
+    },
+    {
+     "id": "english-5-4-8",
+     "n": 8,
+     "text": "A letter begins \"Dear Sir or Madam\". How should it end?",
+     "options": [
+      "Love,",
+      "Yours faithfully,",
+      "Cheers,"
+     ],
+     "answer": 1,
+     "why": "к Dear Sir or Madam (имя неизвестно) подходит Yours faithfully."
+    },
+    {
+     "id": "english-5-4-9",
+     "n": 9,
+     "text": "A letter begins \"Dear Mr Khan\". How should it end?",
+     "options": [
+      "Yours sincerely,",
+      "Yours faithfully,",
+      "Best of luck,"
+     ],
+     "answer": 0,
+     "why": "когда имя известно, пишем Yours sincerely."
+    },
+    {
+     "id": "english-5-4-10",
+     "n": 10,
+     "text": "Which sentence uses the active voice?",
+     "options": [
+      "The ball was kicked by the boy.",
+      "The boy kicked the ball.",
+      "The ball has been kicked."
+     ],
+     "answer": 1,
+     "why": "во втором предложении подлежащее boy само делает действие."
+    }
+   ]
+  },
+  {
+   "id": "english-5-5",
+   "n": 5,
+   "title": "Аудирование (слушаем и отвечаем)",
+   "type": "listening",
+   "explanationLabel": "Объяснение для ребёнка:",
+   "explanation": [
+    "Слушай числа и время суток. Будь внимателен, когда говорят о прошлом и о теперешнем: I used to think ... Now ...",
+    "828 звучит eight hundred and twenty-eight, 880 — eight hundred and eighty."
+   ],
+   "passages": [
+    {
+     "id": "l1",
+     "kind": "listening",
+     "text": "A new library will open in the city centre next month. It will have over fifty thousand books, a study area for teenagers and free internet access. Opening hours will be from eight in the morning until nine at night, seven days a week."
+    },
+    {
+     "id": "l2",
+     "kind": "listening",
+     "text": "I used to think maths was boring. Then my teacher showed us how maths is used in video games, and that changed everything. Now it's my favourite subject, although I still find geometry difficult."
+    },
+    {
+     "id": "l3",
+     "kind": "listening",
+     "text": "The Burj Khalifa is eight hundred and twenty-eight metres tall. It took six years to build and opened in twenty ten."
+    }
+   ],
+   "questions": [
+    {
+     "id": "english-5-5-1",
+     "n": 1,
+     "text": "When will the library open?",
+     "passage": "l1",
+     "options": [
+      "next week",
+      "next month",
+      "next year"
+     ],
+     "answer": 1,
+     "why": "в аудио will open ... next month."
+    },
+    {
+     "id": "english-5-5-2",
+     "n": 2,
+     "text": "How many books will it have?",
+     "passage": "l1",
+     "options": [
+      "fifteen thousand",
+      "over fifty thousand",
+      "five hundred"
+     ],
+     "answer": 1,
+     "why": "в аудио over fifty thousand books."
+    },
+    {
+     "id": "english-5-5-3",
+     "n": 3,
+     "text": "When will it close?",
+     "passage": "l1",
+     "options": [
+      "at eight in the evening",
+      "at nine at night",
+      "at midnight"
+     ],
+     "answer": 1,
+     "why": "в аудио until nine at night."
+    },
+    {
+     "id": "english-5-5-4",
+     "n": 4,
+     "text": "What did the speaker think about maths before?",
+     "passage": "l2",
+     "options": [
+      "that it was boring",
+      "that it was easy",
+      "that it was scary"
+     ],
+     "answer": 0,
+     "why": "в аудио I used to think maths was boring."
+    },
+    {
+     "id": "english-5-5-5",
+     "n": 5,
+     "text": "What changed her mind?",
+     "passage": "l2",
+     "options": [
+      "a school trip",
+      "seeing maths used in video games",
+      "winning a prize"
+     ],
+     "answer": 1,
+     "why": "в аудио teacher showed us how maths is used in video games."
+    },
+    {
+     "id": "english-5-5-6",
+     "n": 6,
+     "text": "What does she still find difficult?",
+     "passage": "l2",
+     "options": [
+      "algebra",
+      "geometry",
+      "statistics"
+     ],
+     "answer": 1,
+     "why": "в аудио I still find geometry difficult."
+    },
+    {
+     "id": "english-5-5-7",
+     "n": 7,
+     "text": "How does she feel about maths now?",
+     "passage": "l2",
+     "options": [
+      "she dislikes it",
+      "she does not care",
+      "it is her favourite subject"
+     ],
+     "answer": 2,
+     "why": "в аудио Now it's my favourite subject."
+    },
+    {
+     "id": "english-5-5-8",
+     "n": 8,
+     "text": "How tall is the Burj Khalifa?",
+     "passage": "l3",
+     "options": [
+      "628 metres",
+      "828 metres",
+      "880 metres"
+     ],
+     "answer": 1,
+     "why": "в аудио eight hundred and twenty-eight."
+    },
+    {
+     "id": "english-5-5-9",
+     "n": 9,
+     "text": "How many years did it take to build?",
+     "passage": "l3",
+     "options": [
+      "six",
+      "ten",
+      "two"
+     ],
+     "answer": 0,
+     "why": "в аудио It took six years to build."
+    },
+    {
+     "id": "english-5-5-10",
+     "n": 10,
+     "text": "When did it open?",
+     "passage": "l3",
+     "options": [
+      "in 2008",
+      "in 2012",
+      "in 2010"
+     ],
+     "answer": 2,
+     "why": "в аудио opened in twenty ten, то есть в 2010."
+    }
+   ]
+  }
+ ]
+}

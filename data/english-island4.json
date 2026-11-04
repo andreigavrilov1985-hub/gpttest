@@ -1,0 +1,747 @@
+{
+ "subject": "english",
+ "subjectName": "Английский",
+ "island": 4,
+ "source": {
+  "notionPageId": "40ecfa33-bed4-81df-9962-e4a5f9c28974",
+  "title": "📖 Kids Game – вопросы: остров 4, Year 9, английский",
+  "lastEdited": "2026-11-04T18:59:41.821Z"
+ },
+ "topics": [
+  {
+   "id": "english-4-1",
+   "n": 1,
+   "title": "Словарный запас: образный язык",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка:",
+   "explanation": [
+    "Simile (сравнение) сравнивает через as или like: as brave as a lion. Metaphor (метафора) называет одно другим без as/like: time is a thief.",
+    "Personification (олицетворение) — предмет делает что-то как человек: the wind whispered.",
+    "Hyperbole (гипербола) — сильное преувеличение: I've told you a million times.",
+    "Alliteration (аллитерация) — повтор начальных звуков: slippery snake slid silently. Onomatopoeia — слово, подражающее звуку: buzz.",
+    "Euphemism (эвфемизм) — мягкое слово для неприятного: passed away вместо died. Sarcasm — когда говорят противоположное мысли, чтобы посмеяться."
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "english-4-1-1",
+     "n": 1,
+     "text": "\"She is as brave as a lion.\" This is:",
+     "options": [
+      "a metaphor",
+      "a simile",
+      "personification"
+     ],
+     "answer": 1,
+     "why": "есть as ... as, значит сравнение (simile)."
+    },
+    {
+     "id": "english-4-1-2",
+     "n": 2,
+     "text": "\"Time is a thief.\" This is:",
+     "options": [
+      "a metaphor",
+      "a simile",
+      "hyperbole"
+     ],
+     "answer": 0,
+     "why": "время названо вором без as/like, это метафора."
+    },
+    {
+     "id": "english-4-1-3",
+     "n": 3,
+     "text": "\"The wind whispered through the trees.\" This is:",
+     "options": [
+      "a simile",
+      "hyperbole",
+      "personification"
+     ],
+     "answer": 2,
+     "why": "ветер «шепчет» как человек."
+    },
+    {
+     "id": "english-4-1-4",
+     "n": 4,
+     "text": "\"I've told you a million times!\" This is:",
+     "options": [
+      "a metaphor",
+      "hyperbole",
+      "alliteration"
+     ],
+     "answer": 1,
+     "why": "миллион раз — преувеличение."
+    },
+    {
+     "id": "english-4-1-5",
+     "n": 5,
+     "text": "\"The slippery snake slid silently.\" This is an example of:",
+     "options": [
+      "onomatopoeia",
+      "a simile",
+      "alliteration"
+     ],
+     "answer": 2,
+     "why": "много слов начинаются на s."
+    },
+    {
+     "id": "english-4-1-6",
+     "n": 6,
+     "text": "Which word is an example of onomatopoeia?",
+     "options": [
+      "happy",
+      "buzz",
+      "table"
+     ],
+     "answer": 1,
+     "why": "buzz звучит как звук, который оно обозначает."
+    },
+    {
+     "id": "english-4-1-7",
+     "n": 7,
+     "text": "\"The dark clouds had an ominous look.\" \"Ominous\" means:",
+     "options": [
+      "cheerful",
+      "suggesting that something bad will happen",
+      "very old"
+     ],
+     "answer": 1,
+     "why": "ominous — зловещий, предвещающий неприятность."
+    },
+    {
+     "id": "english-4-1-8",
+     "n": 8,
+     "text": "An \"ambiguous\" sentence is one that:",
+     "options": [
+      "can be understood in more than one way",
+      "is very clear",
+      "is very long"
+     ],
+     "answer": 0,
+     "why": "ambiguous значит неоднозначный."
+    },
+    {
+     "id": "english-4-1-9",
+     "n": 9,
+     "text": "A writer is being sarcastic when they:",
+     "options": [
+      "praise someone sincerely",
+      "are very angry",
+      "say the opposite of what they mean, to mock"
+     ],
+     "answer": 2,
+     "why": "sarcasm — ирония с насмешкой."
+    },
+    {
+     "id": "english-4-1-10",
+     "n": 10,
+     "text": "\"He passed away\" instead of \"he died\" is an example of:",
+     "options": [
+      "a simile",
+      "a euphemism",
+      "hyperbole"
+     ],
+     "answer": 1,
+     "why": "passed away — мягкое выражение вместо died."
+    }
+   ]
+  },
+  {
+   "id": "english-4-2",
+   "n": 2,
+   "title": "Грамматика: сложные времена и условные предложения",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка:",
+   "explanation": [
+    "Present perfect continuous: have/has been + -ing — действие длится до сейчас: She has been studying for two hours.",
+    "Третье условное — о прошлом, которое уже не изменить: If I had known, I would have come.",
+    "Модальные глаголы для выводов: must be (точно), can't be (невозможно или очень невероятно), might be (возможно).",
+    "Косвенная речь: передаём чужие слова, время часто сдвигается назад: will → would.",
+    "Whom — формальная форма «кого, кому» после предлога: to whom.",
+    "Fewer — с тем, что можно посчитать (fewer people), less — с тем, что нельзя (less water)."
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "english-4-2-1",
+     "n": 1,
+     "text": "\"She has been studying for two hours.\" Which tense is this?",
+     "options": [
+      "past continuous",
+      "past simple",
+      "present perfect continuous"
+     ],
+     "answer": 2,
+     "why": "формула has been + studying — это present perfect continuous."
+    },
+    {
+     "id": "english-4-2-2",
+     "n": 2,
+     "text": "If I had known, I ____.",
+     "options": [
+      "would come",
+      "would have come",
+      "will have come"
+     ],
+     "answer": 1,
+     "why": "третье условное: had known + would have come."
+    },
+    {
+     "id": "english-4-2-3",
+     "n": 3,
+     "text": "His car is outside, so he ____ be at home.",
+     "options": [
+      "must",
+      "can't",
+      "needn't"
+     ],
+     "answer": 0,
+     "why": "машина у дома, поэтому почти наверняка он дома: must be."
+    },
+    {
+     "id": "english-4-2-4",
+     "n": 4,
+     "text": "\"They can't be at home; the lights are off.\" What does this mean?",
+     "options": [
+      "They are definitely at home.",
+      "It is very unlikely that they are at home.",
+      "They have to go home."
+     ],
+     "answer": 1,
+     "why": "can't be в выводе значит «не могут быть»."
+    },
+    {
+     "id": "english-4-2-5",
+     "n": 5,
+     "text": "\"I will call you tomorrow,\" she said. She said she ____ call me the next day.",
+     "options": [
+      "will",
+      "would",
+      "had"
+     ],
+     "answer": 1,
+     "why": "в косвенной речи will превращается в would."
+    },
+    {
+     "id": "english-4-2-6",
+     "n": 6,
+     "text": "To ____ did you give the book?",
+     "options": [
+      "who",
+      "whom",
+      "whose"
+     ],
+     "answer": 1,
+     "why": "после предлога to формально ставим whom."
+    },
+    {
+     "id": "english-4-2-7",
+     "n": 7,
+     "text": "There are ____ people today than yesterday.",
+     "options": [
+      "less",
+      "fewer",
+      "lesser"
+     ],
+     "answer": 1,
+     "why": "людей можно посчитать, поэтому fewer."
+    },
+    {
+     "id": "english-4-2-8",
+     "n": 8,
+     "text": "She likes swimming, running and ____.",
+     "options": [
+      "to cycle",
+      "cycling",
+      "cycled"
+     ],
+     "answer": 1,
+     "why": "в списке все части должны быть в одной форме: swimming, running, cycling."
+    },
+    {
+     "id": "english-4-2-9",
+     "n": 9,
+     "text": "Each of the students ____ a book.",
+     "options": [
+      "have",
+      "has",
+      "are"
+     ],
+     "answer": 1,
+     "why": "each значит «каждый», поэтому has."
+    },
+    {
+     "id": "english-4-2-10",
+     "n": 10,
+     "text": "The report ____ by the team by Friday.",
+     "options": [
+      "will finish",
+      "will be finished",
+      "is finishing"
+     ],
+     "answer": 1,
+     "why": "отчёт не делает действие сам, его заканчивает команда, поэтому пассив will be finished."
+    }
+   ]
+  },
+  {
+   "id": "english-4-3",
+   "n": 3,
+   "title": "Чтение с пониманием",
+   "type": "reading",
+   "explanationLabel": "Объяснение для ребёнка:",
+   "explanation": [
+    "Иногда ответ не написан прямо, его нужно вывести из подсказок. Это называется inference (вывод).",
+    "Цель автора (purpose): inform (сообщить), entertain (развлечь), persuade (убедить).",
+    "Приёмы убеждения: риторические фразы вроде «Surely nobody can disagree» давят на читателя, чтобы он согласился.",
+    "Факт можно проверить, мнение — чей-то взгляд."
+   ],
+   "passages": [
+    {
+     "id": "r1",
+     "kind": "reading",
+     "text": "Coral reefs cover less than one per cent of the ocean floor, yet they support about a quarter of all marine species. Rising sea temperatures cause corals to expel the algae living in their tissues, turning them white. This is called coral bleaching."
+    },
+    {
+     "id": "r2",
+     "kind": "reading",
+     "text": "Priya checked her phone for the fifth time. No message. She tidied her desk, then untidied it. When the email finally arrived, she held her breath before opening it."
+    },
+    {
+     "id": "r3",
+     "kind": "reading",
+     "text": "Every school should have a school garden. Growing vegetables teaches children where food comes from, encourages healthy eating and gives them a calm place to work together. Surely nobody can argue against that."
+    }
+   ],
+   "questions": [
+    {
+     "id": "english-4-3-1",
+     "n": 1,
+     "text": "According to the text, what causes coral bleaching?",
+     "passage": "r1",
+     "options": [
+      "rising sea temperatures",
+      "too much fishing",
+      "cold water"
+     ],
+     "answer": 0,
+     "why": "в тексте Rising sea temperatures cause corals to expel the algae."
+    },
+    {
+     "id": "english-4-3-2",
+     "n": 2,
+     "text": "What proportion of marine species do reefs support?",
+     "passage": "r1",
+     "options": [
+      "less than one per cent",
+      "about a quarter",
+      "all of them"
+     ],
+     "answer": 1,
+     "why": "в тексте about a quarter of all marine species. Less than one per cent — это площадь дна."
+    },
+    {
+     "id": "english-4-3-3",
+     "n": 3,
+     "text": "What colour do bleached corals turn?",
+     "passage": "r1",
+     "options": [
+      "black",
+      "white",
+      "green"
+     ],
+     "answer": 1,
+     "why": "в тексте turning them white."
+    },
+    {
+     "id": "english-4-3-4",
+     "n": 4,
+     "text": "The word \"yet\" in the first sentence shows:",
+     "passage": "r1",
+     "options": [
+      "agreement",
+      "a surprising contrast",
+      "time"
+     ],
+     "answer": 1,
+     "why": "рифы занимают мало места, но дать дом четверти видов, yet показывает этот контраст."
+    },
+    {
+     "id": "english-4-3-5",
+     "n": 5,
+     "text": "How does Priya feel?",
+     "passage": "r2",
+     "options": [
+      "anxious",
+      "relaxed",
+      "bored"
+     ],
+     "answer": 0,
+     "why": "она снова и снова проверяет телефон, задерживает дыхание: волнуется."
+    },
+    {
+     "id": "english-4-3-6",
+     "n": 6,
+     "text": "Which detail best shows how she feels?",
+     "passage": "r2",
+     "options": [
+      "The email arrived.",
+      "She checked her phone five times.",
+      "She has a desk."
+     ],
+     "answer": 1,
+     "why": "повторяющееся проверяет телефон показывает беспокойство."
+    },
+    {
+     "id": "english-4-3-7",
+     "n": 7,
+     "text": "\"She held her breath\" suggests:",
+     "passage": "r2",
+     "options": [
+      "tiredness",
+      "anger",
+      "tension and anticipation"
+     ],
+     "answer": 2,
+     "why": "люди задерживают дыхание, когда ждут важного."
+    },
+    {
+     "id": "english-4-3-8",
+     "n": 8,
+     "text": "What is the main purpose of the text?",
+     "passage": "r3",
+     "options": [
+      "to entertain",
+      "to explain history",
+      "to persuade"
+     ],
+     "answer": 2,
+     "why": "автор убеждает, что у каждой школы должен быть сад."
+    },
+    {
+     "id": "english-4-3-9",
+     "n": 9,
+     "text": "\"Surely nobody can argue against that\" is:",
+     "passage": "r3",
+     "options": [
+      "a fact",
+      "a persuasive technique that pushes the reader to agree",
+      "a question"
+     ],
+     "answer": 1,
+     "why": "это не факт, а приём убеждения."
+    },
+    {
+     "id": "english-4-3-10",
+     "n": 10,
+     "text": "Which benefit of a school garden is mentioned?",
+     "passage": "r3",
+     "options": [
+      "better exam results",
+      "cheaper lunches",
+      "it encourages healthy eating"
+     ],
+     "answer": 2,
+     "why": "в тексте encourages healthy eating."
+    }
+   ]
+  },
+  {
+   "id": "english-4-4",
+   "n": 4,
+   "title": "Правописание и письмо",
+   "type": "plain",
+   "explanationLabel": "Объяснение для ребёнка:",
+   "explanation": [
+    "Standard English — правильный нормативный английский для школы: We were late (не We was late), could have (не could of).",
+    "Comma splice — ошибка, когда две полные фразы соединяют одной запятой. Исправляем союзом, точкой с запятой или точкой.",
+    "Sentence fragment — неполное предложение, без законченной мысли: Because it was raining.",
+    "Affect (глагол, влиять) и effect (существительное, результат): The weather will affect our plans; the effect was big.",
+    "Children's — апостроф перед s, потому что children уже множественное число.",
+    "Linking words: however (однако), therefore (поэтому), moreover (кроме того)."
+   ],
+   "passages": [],
+   "questions": [
+    {
+     "id": "english-4-4-1",
+     "n": 1,
+     "text": "Which sentence is in Standard English?",
+     "options": [
+      "We was late.",
+      "We were late.",
+      "We be late."
+     ],
+     "answer": 1,
+     "why": "с we ставим were."
+    },
+    {
+     "id": "english-4-4-2",
+     "n": 2,
+     "text": "Choose the correct form: \"I could ____ gone.\"",
+     "options": [
+      "of",
+      "have",
+      "a"
+     ],
+     "answer": 1,
+     "why": "правильно could have, а could of — частая ошибка, потому что could've звучит как of."
+    },
+    {
+     "id": "english-4-4-3",
+     "n": 3,
+     "text": "Which sentence has a comma splice (an error)?",
+     "options": [
+      "It was late, we went home.",
+      "It was late, so we went home.",
+      "It was late; we went home."
+     ],
+     "answer": 0,
+     "why": "в первом две полные фразы соединены одной запятой."
+    },
+    {
+     "id": "english-4-4-4",
+     "n": 4,
+     "text": "Which linking word shows contrast?",
+     "options": [
+      "therefore",
+      "moreover",
+      "however"
+     ],
+     "answer": 2,
+     "why": "however значит однако."
+    },
+    {
+     "id": "english-4-4-5",
+     "n": 5,
+     "text": "Which phrase is best to begin the last paragraph of an essay?",
+     "options": [
+      "Firstly",
+      "In conclusion",
+      "For example"
+     ],
+     "answer": 1,
+     "why": "In conclusion значит «в заключение»."
+    },
+    {
+     "id": "english-4-4-6",
+     "n": 6,
+     "text": "Which is a sentence fragment?",
+     "options": [
+      "Because it was raining.",
+      "It was raining.",
+      "It rained."
+     ],
+     "answer": 0,
+     "why": "первая фраза не докончена: что было потом?"
+    },
+    {
+     "id": "english-4-4-7",
+     "n": 7,
+     "text": "Choose the correct spelling.",
+     "options": [
+      "accomodation",
+      "accommodation",
+      "acommodation"
+     ],
+     "answer": 1,
+     "why": "в accommodation две c и две m."
+    },
+    {
+     "id": "english-4-4-8",
+     "n": 8,
+     "text": "The weather will ____ our plans.",
+     "options": [
+      "effect",
+      "affect",
+      "afect"
+     ],
+     "answer": 1,
+     "why": "нужен глагол «влиять», это affect."
+    },
+    {
+     "id": "english-4-4-9",
+     "n": 9,
+     "text": "Which phrase uses the apostrophe correctly?",
+     "options": [
+      "the childrens' toys",
+      "the children's toys",
+      "the childrens toys"
+     ],
+     "answer": 1,
+     "why": "children уже множественное, поэтому апостроф перед s."
+    },
+    {
+     "id": "english-4-4-10",
+     "n": 10,
+     "text": "Which sentence is the most formal?",
+     "options": [
+      "It's rubbish.",
+      "I find this argument unconvincing.",
+      "That's well bad."
+     ],
+     "answer": 1,
+     "why": "вторая фраза звучит вежливо и по-деловому."
+    }
+   ]
+  },
+  {
+   "id": "english-4-5",
+   "n": 5,
+   "title": "Аудирование (слушаем и отвечаем)",
+   "type": "listening",
+   "explanationLabel": "Объяснение для ребёнка:",
+   "explanation": [
+    "Слушай числа, места, причины и советы. В интервью ответы часто идут после слов at first, but now, the hardest part.",
+    "Слово delayed значит «задержан», depart — отправляться."
+   ],
+   "passages": [
+    {
+     "id": "l1",
+     "kind": "listening",
+     "text": "Passengers for the ten forty to Abu Dhabi, please note that this train has been delayed by twenty minutes. It will now depart from platform six instead of platform four. We apologise for any inconvenience."
+    },
+    {
+     "id": "l2",
+     "kind": "listening",
+     "text": "Interviewer: Why did you start running? Mina: I began running three years ago to improve my health. At first I could only run for five minutes, but now I can run ten kilometres. The hardest part was staying motivated in winter. Interviewer: And your advice? Mina: Start slowly and set small goals."
+    },
+    {
+     "id": "l3",
+     "kind": "listening",
+     "text": "The Great Barrier Reef is the largest coral reef system in the world. It stretches for over two thousand kilometres along the coast of Australia and can be seen from space."
+    }
+   ],
+   "questions": [
+    {
+     "id": "english-4-5-1",
+     "n": 1,
+     "text": "Which platform will the train leave from now?",
+     "passage": "l1",
+     "options": [
+      "platform four",
+      "platform six",
+      "platform ten"
+     ],
+     "answer": 1,
+     "why": "в аудио now depart from platform six instead of platform four."
+    },
+    {
+     "id": "english-4-5-2",
+     "n": 2,
+     "text": "How late is the train?",
+     "passage": "l1",
+     "options": [
+      "twenty minutes",
+      "forty minutes",
+      "two hours"
+     ],
+     "answer": 0,
+     "why": "в аудио delayed by twenty minutes."
+    },
+    {
+     "id": "english-4-5-3",
+     "n": 3,
+     "text": "Which statement is true?",
+     "passage": "l1",
+     "options": [
+      "The train is cancelled.",
+      "The train will leave early.",
+      "The train is late."
+     ],
+     "answer": 2,
+     "why": "delayed значит задержан."
+    },
+    {
+     "id": "english-4-5-4",
+     "n": 4,
+     "text": "Why did Mina start running?",
+     "passage": "l2",
+     "options": [
+      "to win races",
+      "to improve her health",
+      "because of a friend"
+     ],
+     "answer": 1,
+     "why": "в аудио to improve my health."
+    },
+    {
+     "id": "english-4-5-5",
+     "n": 5,
+     "text": "How far can she run now?",
+     "passage": "l2",
+     "options": [
+      "five kilometres",
+      "ten kilometres",
+      "fifteen kilometres"
+     ],
+     "answer": 1,
+     "why": "в аудио now I can run ten kilometres. Five minutes — это было время в начале."
+    },
+    {
+     "id": "english-4-5-6",
+     "n": 6,
+     "text": "What was the hardest part?",
+     "passage": "l2",
+     "options": [
+      "staying motivated in winter",
+      "buying shoes",
+      "finding time"
+     ],
+     "answer": 0,
+     "why": "в аудио The hardest part was staying motivated in winter."
+    },
+    {
+     "id": "english-4-5-7",
+     "n": 7,
+     "text": "What is Mina's advice?",
+     "passage": "l2",
+     "options": [
+      "run as fast as possible",
+      "start slowly and set small goals",
+      "always run alone"
+     ],
+     "answer": 1,
+     "why": "в аудио Start slowly and set small goals."
+    },
+    {
+     "id": "english-4-5-8",
+     "n": 8,
+     "text": "Where is the Great Barrier Reef?",
+     "passage": "l3",
+     "options": [
+      "along the coast of Australia",
+      "off the coast of Africa",
+      "in India"
+     ],
+     "answer": 0,
+     "why": "в аудио along the coast of Australia."
+    },
+    {
+     "id": "english-4-5-9",
+     "n": 9,
+     "text": "How long is it?",
+     "passage": "l3",
+     "options": [
+      "two hundred kilometres",
+      "over two thousand kilometres",
+      "twenty kilometres"
+     ],
+     "answer": 1,
+     "why": "в аудио over two thousand kilometres."
+    },
+    {
+     "id": "english-4-5-10",
+     "n": 10,
+     "text": "Which statement is true?",
+     "passage": "l3",
+     "options": [
+      "It is the smallest reef.",
+      "It can be seen from space.",
+      "It is in Dubai."
+     ],
+     "answer": 1,
+     "why": "в аудио can be seen from space."
+    }
+   ]
+  }
+ ]
+}
