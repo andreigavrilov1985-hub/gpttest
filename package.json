@@ -1,0 +1,1 @@
+{"type":"module","private":true,"scripts":{"build":"python3 tools/parse_banks.py && python3 tools/build_sw.py","test":"node tests/island1.test.mjs"}}
