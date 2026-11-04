@@ -61,4 +61,7 @@ node tests/island1.test.mjs    # автотест (сервер должен р�
 
 ## Хостинг
 
-Готово для Netlify (`netlify.toml`, публикуется корень репозитория). Публикация только после согласия Андрея.
+Опубликовано на Netlify (2026-11-04, загрузка через Netlify Drop): https://stirring-druid-0c888f.netlify.app
+
+Для обновления: собрать zip из `index.html manifest.webmanifest sw.js netlify.toml css js data fonts icons`
+и загрузить его в Netlify (Deploys → перетащить zip), предварительно запустив `python3 tools/build_sw.py`.
