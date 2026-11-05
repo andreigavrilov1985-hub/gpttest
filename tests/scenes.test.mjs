@@ -82,7 +82,7 @@ async function checkCartoon(page, id, full) {
       await page.click('[data-testid=scene-replay]');
       assert.ok(await stageT(page) < 400, 'повтор начинает серию сначала');
     }
-    if (eps[i].interact && full) await page.waitForSelector('[data-testid=scene-stage][data-ended="1"]', { timeout: (eps[i].duration || 15000) + 8000 });
+    if (eps[i].interact) await page.waitForSelector('[data-testid=scene-stage][data-ended="1"]', { timeout: (eps[i].duration || 15000) + 8000 });
     if (eps[i].interact) {
       const it = eps[i].interact;
       const first = it.type === 'tapEat' ? it.targets[0] : Object.keys(it.items)[0];
@@ -115,7 +115,9 @@ await step('Данные сценок: шагов 3–6, есть интерак
   for (const id of IDS) {
     const sc = scenes[id];
     if (isCartoon(id)) {
-      assert.ok(sc.episodes.length >= 3 && sc.episodes.length <= 6, `${id}: серий ${sc.episodes.length}`);
+      const isl = Number(id.split('-')[1]);
+      const [lo, hi] = isl <= 2 ? [3, 6] : [2, 3]; // ТЗ 3.2: острова 1–2 — 3–6 шагов, 3–5 — 2–3
+      assert.ok(sc.episodes.length >= lo && sc.episodes.length <= hi, `${id}: серий ${sc.episodes.length}`);
       assert.ok(sc.episodes.some((e) => e.interact), `${id}: нет интерактива`);
       for (const e of sc.episodes) {
         assert.ok(e.terms && e.terms.length, `${id}: термины серии`);
@@ -200,21 +202,26 @@ await step('Из вопроса: «Подсказка от котёнка» от
 });
 
 await step('Тема без сценки: прежний текст шагами с котёнком, пропуск → памятка из текста', async () => {
+  // first topic that has no cartoon yet (none left → the fallback is not reachable, nothing to check)
+  const all = ['math', 'english', 'science', 'geography', 'logic'].flatMap((s) => [1, 2, 3, 4, 5].flatMap((i) => JSON.parse(readFileSync(`data/${s}-island${i}.json`, 'utf8')).topics.map((t) => t.id)));
+  const free = all.find((id) => !IDS.includes(id));
+  if (!free) { console.log('    у всех тем есть мультики — запасной вариант не используется'); return; }
   const page = await newPage(browser, { width: 360, height: 800 });
-  await page.evaluate(() => window.__game.go('topic:math-2-1'));
+  await page.evaluate((t) => window.__game.go(`topic:${t}`), free);
   await page.waitForSelector('[data-testid=explain-card]');
   assert.equal(await page.$('[data-testid=scene]'), null);
   await page.click('[data-testid=skip-explain]');
   await page.waitForSelector('[data-testid=memo]');
-  const bank = JSON.parse(readFileSync('data/math-island2.json', 'utf8'));
-  assert.equal(await page.$$eval('[data-testid=memo] li', (l) => l.length), bank.topics[0].explanation.length);
+  const [fs, fi] = free.split('-');
+  const bank = JSON.parse(readFileSync(`data/${fs}-island${fi}.json`, 'utf8'));
+  assert.equal(await page.$$eval('[data-testid=memo] li', (l) => l.length), bank.topics.find((t) => t.id === free).explanation.length);
   await page.context().close();
 });
 
 await step('Таблица «термин — шаг сценки» записана в reports/explainers-terms.md', async () => {
-  const out = ['# Термины мультиков острова 1', '', 'Каждый термин из вопросов темы определён в указанной серии мультика и/или в памятке (памятка: своя у мультика или объяснение темы из банка вопросов).', ''];
+  const out = ['# Термины мультиков', '', 'Каждый термин из вопросов темы определён в указанной серии мультика и/или в памятке (памятка: своя у мультика или объяснение темы из банка вопросов).', ''];
   for (const id of IDS) {
-    const bank = JSON.parse(readFileSync(`data/${id.split('-')[0]}-island1.json`, 'utf8'));
+    const bank = JSON.parse(readFileSync(`data/${id.split('-')[0]}-island${id.split('-')[1]}.json`, 'utf8'));
     const t = bank.topics.find((x) => x.id === id);
     out.push(`## ${id} — ${t.title}`, '', '| Термин | Шаг / серия | Подпись или субтитры |', '|---|---|---|');
     if (isCartoon(id)) {

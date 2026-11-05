@@ -38,8 +38,8 @@ const ep2 = episode({
 const ep3 = episode({
   title: 'Перетягивание',
   terms: ['resultant force (равнодействующая)', 'balanced forces (уравновешены)'],
-  svg: `<rect x="80" y="100" width="200" height="8" rx="4" fill="#d2a861"/><g data-a="box"><rect x="-22" y="-22" width="44" height="44" rx="6" fill="#ff9a3c"/></g>
-    ${arrow('R', 202, 104, 320, 104, '#e4553b')}${arrow('L', 158, 104, 108, 104, '#1784a6')}${text('rt', '12 N', { size: 16, color: '#e4553b' })}${text('lt', '5 N', { size: 16, color: '#1784a6' })}
+  svg: `<rect x="80" y="100" width="200" height="8" rx="4" fill="#d2a861"/>
+    ${arrow('R', 202, 104, 320, 104, '#e4553b')}${arrow('L', 158, 104, 108, 104, '#1784a6')}<g data-a="box"><rect x="-22" y="-22" width="44" height="44" rx="6" fill="#ff9a3c"/></g>${text('rt', '12 N', { size: 16, color: '#e4553b' })}${text('lt', '5 N', { size: 16, color: '#1784a6' })}
     ${card('res', '12 − 5 = 7 N вправо', { w: 200, size: 16, fill: '#e2f8ea', stroke: '#9fdcb9' })}${text('bal', 'равные силы → движение не меняется', { size: 13, color: '#5b6b83' })}${kittenActor('cat', 'thinking', 30)}`,
   init: { box: at(180, 104), R: { o: 0 }, L: { o: 0 }, rt: hid(280, 88), lt: hid(130, 88), res: hid(180, 160), bal: hid(180, 214), cat: at(4, 4) },
   caption0: 'Коробку тянут в разные стороны.',
