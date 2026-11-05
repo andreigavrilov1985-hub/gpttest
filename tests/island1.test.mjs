@@ -300,7 +300,10 @@ await step('Аудирование: текст звучит (en-GB), кнопк�
   await page.waitForFunction(() => window.__spoken.length >= 1);
   let spoken = await page.evaluate(() => window.__spoken);
   const t5 = banks.english.topics[4];
-  assert.equal(spoken[0].text, t5.passages[0].text, 'first audio text spoken automatically');
+  // questions are shuffled per attempt (texts stay whole): the text of the current question plays
+  const curQ = await page.evaluate(() => { const s = window.__game.progress.session; return s.order[s.idx]; });
+  const curText = t5.passages.find((x) => x.id === t5.questions.find((q) => q.id === curQ).passage).text;
+  assert.equal(spoken[0].text, curText, 'first audio text spoken automatically');
   assert.equal(spoken[0].lang, 'en-GB');
   const html = await page.content();
   for (const p of t5.passages) assert.ok(!html.includes(p.text.slice(0, 40)), 'listening text is not in the page');
@@ -309,8 +312,8 @@ await step('Аудирование: текст звучит (en-GB), кнопк�
   await page.click('[data-testid=listen-play]');
   await page.waitForFunction(() => window.__spoken.length >= 3);
   spoken = await page.evaluate(() => window.__spoken);
-  assert.equal(spoken[1].text, t5.passages[0].text, 'repeat #1');
-  assert.equal(spoken[2].text, t5.passages[0].text, 'repeat #2');
+  assert.equal(spoken[1].text, curText, 'repeat #1');
+  assert.equal(spoken[2].text, curText, 'repeat #2');
   assert.match(await page.textContent('[data-testid=listen-play]'), /Повторить|Звучит/);
   console.log(`    spoken ${spoken.length}× «${spoken[0].text.slice(0, 50)}…»`);
   await page.context().close();
