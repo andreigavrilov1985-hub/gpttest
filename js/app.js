@@ -1,7 +1,7 @@
 import { CONFIG, SUBJECT_INFO, ISLAND_INFO } from './config.js';
 import * as P from './progress.js';
 import { kittenSVG, KITTEN_COLORS, PATTERNS } from './kitten.js';
-import { getEnglishVoice, speak, stopSpeaking, getRussianVoice, kittenSpeak } from './speech.js';
+import { getEnglishVoice, speak, stopSpeaking, getRussianVoice, kittenSpeak, setKittenTone, kittenTone, listRussianVoices } from './speech.js';
 import { AUTHOR_MARK, verifyAuthorMark } from './author.js';
 import { phrase, typeInto, devCheckPhrases } from './cat.js';
 import * as FX from './reactions.js';
@@ -675,6 +675,29 @@ function renderPracticeResult(c) {
 
 // ---------- settings ----------
 
+function voiceControls() {
+  const t = kittenTone();
+  const names = listRussianVoices();
+  return `<div class="voice-set" data-testid="voice-set">
+      ${names.length > 1 ? `<label class="voice-set__row">Голос
+        <select data-testid="voice-name" data-voice="name">${names.map((n) => `<option value="${esc(n)}"${n === t.voice ? ' selected' : ''}>${esc(n)}</option>`).join('')}</select></label>` : ''}
+      <label class="voice-set__row">Ниже <input type="range" min="1" max="2" step="0.05" value="${t.pitch}" data-voice="pitch" data-testid="voice-pitch" aria-label="Высота голоса"> Тоньше</label>
+      <label class="voice-set__row">Медленнее <input type="range" min="0.8" max="1.4" step="0.05" value="${t.rate}" data-voice="rate" data-testid="voice-rate" aria-label="Скорость речи"> Быстрее</label>
+      <button class="btn btn--ghost" data-go="voice-test" data-testid="voice-test">▶ Послушать котёнка</button>
+    </div>`;
+}
+
+function bindVoiceControls() {
+  app.querySelectorAll('[data-voice]').forEach((el) => el.addEventListener('change', () => {
+    const k = el.dataset.voice;
+    const key = { name: 'voiceName', pitch: 'voicePitch', rate: 'voiceRate' }[k];
+    progress.settings = { ...(progress.settings || {}), [key]: k === 'name' ? el.value : Number(el.value) };
+    save();
+    setKittenTone({ [k]: k === 'name' ? el.value : Number(el.value) });
+    kittenSpeak(`Мяу! Меня зовут ${progress.profile?.kittenName || 'котёнок'}. Так хорошо?`);
+  }));
+}
+
 function renderSettings() {
   document.body.dataset.screen = 'settings';
   h(`${topBar({ back: progress.profile ? 'map' : 'start', title: 'Настройки' })}
@@ -688,6 +711,7 @@ function renderSettings() {
       <button class="btn btn--ghost" data-go="toggle-sound" data-testid="sound-toggle" aria-pressed="${soundOn()}">${soundOn() ? '🔊 Звук включён' : '🔈 Звук выключен'}</button>
       <button class="btn btn--ghost" data-go="toggle-voice" data-testid="voice-toggle" aria-pressed="${voiceOn()}">${voiceOn() ? '🗣️ Котёнок говорит вслух' : '🤐 Котёнок молчит'}</button>
       ${voiceOn() && !hasVoice ? '<p class="muted" data-testid="voice-missing">На этом устройстве нет русского голоса — котёнок пишет фразы текстом.</p>' : ''}
+      ${voiceOn() && hasVoice ? voiceControls() : ''}
     </section>
     <section class="card">
       <h3>Прогресс</h3>
@@ -719,6 +743,7 @@ function renderSettings() {
       msg.textContent = 'Этот файл не подходит.';
     }
   });
+  bindVoiceControls();
 }
 
 function exportProgress() {
@@ -810,6 +835,9 @@ async function go(target) {
         save();
         if (soundOn()) FX.playSound('correct', true);
         return renderSettings();
+      case 'voice-test':
+        kittenSpeak(`Мяу! Привет! Я твой котёнок. Давай учиться вместе!`);
+        return undefined;
       case 'toggle-voice':
         progress.settings = { ...(progress.settings || {}), voice: !voiceOn() };
         save();
@@ -872,6 +900,7 @@ function boot() {
   save();
   setInterval(() => { progress.lastSeen = Date.now(); save(); }, 60000);
   if (['localhost', '127.0.0.1'].includes(location.hostname) || /[?&]debug\b/.test(location.search)) devCheckPhrases();
+  setKittenTone({ pitch: progress.settings?.voicePitch, rate: progress.settings?.voiceRate, name: progress.settings?.voiceName || '' });
   getRussianVoice().then((v) => { hasVoice = !!v; });
   renderStart();
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {

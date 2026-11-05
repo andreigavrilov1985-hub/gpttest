@@ -56,19 +56,39 @@ export function stopSpeaking() {
 // The kitten reads its own lines and the cartoon subtitles aloud with a Russian voice.
 // No Russian voice on the device → silent, everything still works as text.
 let ruVoice;
-function pickRu(voices) {
-  const ru = voices.filter((v) => /^ru([-_]|$)/i.test(v.lang));
-  return ru.find((v) => /female|milena|alena|irina|svetlana|google/i.test(v.name)) || ru[0] || null;
+const MALE = /yuri|юрий|pavel|павел|dmitr|дмитр|maxim|максим|male(?!.*female)|мужск/i;
+const FEMALE = /milena|милена|alena|алёна|алена|irina|ирина|svetlana|светлана|katya|катя|daria|дарья|ekaterina|екатерина|female|женск/i;
+const ruVoices = (voices) => voices.filter((v) => /^ru([-_]|$)/i.test(v.lang));
+// a child-like voice is best made from a female voice raised in pitch
+function pickRu(voices, wanted) {
+  const ru = ruVoices(voices);
+  return (wanted && ru.find((v) => v.name === wanted))
+    || ru.find((v) => FEMALE.test(v.name))
+    || ru.find((v) => !MALE.test(v.name) && /google/i.test(v.name))
+    || ru.find((v) => !MALE.test(v.name))
+    || ru[0] || null;
 }
+// tone of the kitten: higher pitch and a bit faster = younger; adjustable in the settings
+const tone = { pitch: 1.7, rate: 1.1, name: '' };
+export function setKittenTone({ pitch, rate, name } = {}) {
+  if (pitch) tone.pitch = Math.min(2, Math.max(0.5, Number(pitch)));
+  if (rate) tone.rate = Math.min(1.6, Math.max(0.6, Number(rate)));
+  if (name !== undefined) {
+    tone.name = name;
+    if ('speechSynthesis' in window) { const v = pickRu(speechSynthesis.getVoices(), name); if (v) ruVoice = v; }
+  }
+}
+export const kittenTone = () => ({ ...tone, voice: ruVoice ? ruVoice.name : '' });
+export const listRussianVoices = () => ('speechSynthesis' in window ? ruVoices(speechSynthesis.getVoices()).map((v) => v.name) : []);
 export function getRussianVoice(timeoutMs = 2000) {
   if (ruVoice !== undefined) return Promise.resolve(ruVoice);
   if (!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined') { ruVoice = null; return Promise.resolve(null); }
   return new Promise((resolve) => {
     const done = (v) => { ruVoice = v; resolve(v); };
     const now = speechSynthesis.getVoices();
-    if (now.length) return done(pickRu(now));
-    const t = setTimeout(() => done(pickRu(speechSynthesis.getVoices())), timeoutMs);
-    speechSynthesis.addEventListener('voiceschanged', () => { clearTimeout(t); done(pickRu(speechSynthesis.getVoices())); }, { once: true });
+    if (now.length) return done(pickRu(now, tone.name));
+    const t = setTimeout(() => done(pickRu(speechSynthesis.getVoices(), tone.name)), timeoutMs);
+    speechSynthesis.addEventListener('voiceschanged', () => { clearTimeout(t); done(pickRu(speechSynthesis.getVoices(), tone.name)); }, { once: true });
   });
 }
 
@@ -82,8 +102,8 @@ export function kittenSpeak(text) {
     const u = new SpeechSynthesisUtterance(clean(text));
     u.voice = ruVoice;
     u.lang = ruVoice.lang || 'ru-RU';
-    u.rate = 1.05;
-    u.pitch = 1.35; // a kitten sounds a bit higher
+    u.rate = tone.rate;
+    u.pitch = tone.pitch; // a kitten sounds higher than a grown-up
     let doneOnce = false;
     const fin = () => { if (!doneOnce) { doneOnce = true; clearTimeout(guard); resolve(true); } };
     const guard = setTimeout(fin, 1500 + clean(text).length * 110); // never wait forever

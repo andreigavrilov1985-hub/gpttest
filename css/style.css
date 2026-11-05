@@ -490,3 +490,9 @@ body[data-screen='start'] .mark { position: fixed; left: 0; right: 0; bottom: 0;
 .cartoon .fx-cross { text-decoration: line-through; }
 /* labels never block taps on the cartoon's interactive objects */
 .cartoon text:not(.cartoon-tap), .cartoon text:not(.cartoon-tap) * { pointer-events: none; }
+
+/* kitten voice settings */
+.voice-set { display: flex; flex-direction: column; gap: 10px; }
+.voice-set__row { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; flex-wrap: wrap; }
+.voice-set__row input[type=range] { flex: 1; min-width: 120px; accent-color: var(--accent, #ff7a59); }
+.voice-set__row select { flex: 1; min-width: 0; max-width: 100%; padding: 6px; border-radius: 10px; font: inherit; }
