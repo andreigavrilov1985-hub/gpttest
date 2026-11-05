@@ -16,7 +16,16 @@ const EASE = {
 
 const DEFAULT = { x: 0, y: 0, s: 1, r: 0, o: 1, dash: 0 };
 
-export function createCartoon(stage, captionEl, scene, { kitten, reduced = false, onEnd } = {}) {
+export function createCartoon(stage, captionEl, scene, { kitten, reduced = false, onEnd, speak = null } = {}) {
+  // speak(text) → Promise that resolves when the line has been read aloud (optional)
+  let hold = false;
+  let spoken = 0;
+  const narrate = (text) => {
+    if (!speak || !text) return;
+    const my = ++spoken;
+    hold = true;
+    Promise.resolve(speak(text)).then(() => { if (my === spoken) hold = false; });
+  };
   stage.innerHTML = `<svg class="cartoon" viewBox="0 0 ${scene.w || 360} ${scene.h || 240}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Мультик">${scene.svg}</svg>`;
   const svg = stage.firstElementChild;
   const actors = {};
@@ -68,11 +77,13 @@ export function createCartoon(stage, captionEl, scene, { kitten, reduced = false
     stage.dataset.t = '0';
     delete stage.dataset.touched;
     if (captionEl) captionEl.textContent = scene.caption0 || '';
+    hold = false;
+    narrate(scene.caption0);
   }
 
   function fire(b) {
     const [, kind, name, a, dur = 500, ease = 'inOut'] = b;
-    if (kind === 'cap') { if (captionEl) captionEl.textContent = name; return; }
+    if (kind === 'cap') { if (captionEl) captionEl.textContent = name; narrate(name); return; }
     if (kind === 'text') { if (actors[name]) actors[name].textContent = a; return; }
     if (kind === 'cls') { if (actors[name]) actors[name].classList.add(a); return; }
     if (kind === 'mood') { setMood(name, a); return; }
@@ -94,7 +105,14 @@ export function createCartoon(stage, captionEl, scene, { kitten, reduced = false
   function step(now) {
     const dt = last ? Math.min(64, now - last) : 16;
     last = now;
-    t += dt * (window.__cartoonSpeed || 1); // speed-up is used only by autotests
+    // while the kitten reads a subtitle aloud, the cartoon waits at the next subtitle
+    let nt = t + dt * (window.__cartoonSpeed || 1); // speed-up is used only by autotests
+    if (hold) {
+      let j = next;
+      while (j < beats.length && beats[j][1] !== 'cap') j += 1;
+      if (j < beats.length && beats[j][0] <= nt) nt = Math.max(t, beats[j][0] - 1);
+    }
+    t = nt;
     advance();
     if (playing && !ended) raf = requestAnimationFrame(step);
   }

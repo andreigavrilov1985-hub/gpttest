@@ -1,7 +1,7 @@
 import { CONFIG, SUBJECT_INFO, ISLAND_INFO } from './config.js';
 import * as P from './progress.js';
 import { kittenSVG, KITTEN_COLORS, PATTERNS } from './kitten.js';
-import { getEnglishVoice, speak, stopSpeaking } from './speech.js';
+import { getEnglishVoice, speak, stopSpeaking, getRussianVoice, kittenSpeak } from './speech.js';
 import { AUTHOR_MARK, verifyAuthorMark } from './author.js';
 import { phrase, typeInto, devCheckPhrases } from './cat.js';
 import * as FX from './reactions.js';
@@ -38,6 +38,9 @@ function h(html) {
   window.scrollTo(0, 0);
   const reduced = FX.reducedMotion();
   app.querySelectorAll('[data-say]').forEach((el) => typeInto(el, el.dataset.say, { reduced }));
+  // the kitten reads its line aloud (in a cartoon the subtitles are read instead)
+  const line = app.querySelector('[data-say]');
+  if (line && voiceOn() && !app.querySelector('.scene--cartoon')) kittenSpeak(line.dataset.say);
   const focus = app.querySelector('[data-autofocus]');
   if (focus) focus.focus({ preventScroll: true });
 }
@@ -408,6 +411,7 @@ function renderCartoon(topic, scene, page, { fromQuestion = false } = {}) {
   cartoonPlayer = createCartoon(stage, sub, ep, {
     kitten: (mood, size) => kittenSVG(look(), mood, size),
     reduced: FX.reducedMotion(),
+    speak: voiceOn() ? kittenSpeak : null,
     onEnd: () => {
       sync();
       app.querySelector('[data-testid=scene-next]')?.classList.add('pulse');
@@ -488,12 +492,16 @@ function armIdle() {
     const g = app.querySelector('.guide--mini');
     if (!g) return;
     setCat(g, 'sleepy');
-    typeInto(g.querySelector('.guide__say'), say('idle'), { reduced: FX.reducedMotion() });
+    const idleLine = say('idle');
+    typeInto(g.querySelector('.guide__say'), idleLine, { reduced: FX.reducedMotion() });
+    if (voiceOn()) kittenSpeak(idleLine);
     g.dataset.idle = '1';
   }, CONFIG.IDLE_MS);
 }
 
 const soundOn = () => progress.settings?.sound !== false;
+const voiceOn = () => progress.settings?.voice !== false;
+let hasVoice = false;
 
 // A correct answer is "fast" when it comes within CONFIG.FAST_ANSWER_MS of showing the question.
 // Measured from showing the question to the tap, so the reaction animation never affects it.
@@ -563,6 +571,7 @@ function onAnswer(k) {
   if (correct) group = streakMark ? `streak${streakMark}` : fast ? 'correctFast' : 'correct';
   else group = wrongRun >= 2 ? 'wrongAgain' : 'wrong';
   const line = say(group, { streak });
+  if (voiceOn()) kittenSpeak(line);
   const reaction = FX.pickReaction(correct ? 'correct' : 'wrong');
   const mood = correct
     ? (streak >= 10 ? 'celebrate' : fast || streakMark ? 'excited' : 'happy')
@@ -677,6 +686,8 @@ function renderSettings() {
     <section class="card">
       <h3>Звук</h3>
       <button class="btn btn--ghost" data-go="toggle-sound" data-testid="sound-toggle" aria-pressed="${soundOn()}">${soundOn() ? '🔊 Звук включён' : '🔈 Звук выключен'}</button>
+      <button class="btn btn--ghost" data-go="toggle-voice" data-testid="voice-toggle" aria-pressed="${voiceOn()}">${voiceOn() ? '🗣️ Котёнок говорит вслух' : '🤐 Котёнок молчит'}</button>
+      ${voiceOn() && !hasVoice ? '<p class="muted" data-testid="voice-missing">На этом устройстве нет русского голоса — котёнок пишет фразы текстом.</p>' : ''}
     </section>
     <section class="card">
       <h3>Прогресс</h3>
@@ -766,7 +777,7 @@ async function go(target) {
       case 'cartoon-toggle':
         if (cartoonPlayer) {
           if (cartoonPlayer.ended) cartoonPlayer.replay();
-          else if (cartoonPlayer.playing) cartoonPlayer.pause();
+          else if (cartoonPlayer.playing) { cartoonPlayer.pause(); stopSpeaking(); }
           else cartoonPlayer.play();
           cartoonView?.sync();
         }
@@ -798,6 +809,11 @@ async function go(target) {
         progress.settings = { ...(progress.settings || {}), sound: !soundOn() };
         save();
         if (soundOn()) FX.playSound('correct', true);
+        return renderSettings();
+      case 'toggle-voice':
+        progress.settings = { ...(progress.settings || {}), voice: !voiceOn() };
+        save();
+        if (voiceOn()) kittenSpeak('Мяу! Теперь я говорю вслух.'); else stopSpeaking();
         return renderSettings();
       case 'export': return exportProgress();
       case 'reset':
@@ -856,6 +872,7 @@ function boot() {
   save();
   setInterval(() => { progress.lastSeen = Date.now(); save(); }, 60000);
   if (['localhost', '127.0.0.1'].includes(location.hostname) || /[?&]debug\b/.test(location.search)) devCheckPhrases();
+  getRussianVoice().then((v) => { hasVoice = !!v; });
   renderStart();
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
     navigator.serviceWorker.register('sw.js').catch(() => {});

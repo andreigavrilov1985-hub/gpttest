@@ -19,7 +19,7 @@ export function emptyProgress() {
   return {
     version: 1, profile: null, coins: 0, topics: {}, cities: {}, session: null,
     // added in round 2 (old saves get these defaults when loaded)
-    settings: { sound: true }, streak: 0, seenIslands: {}, lastSeen: null,
+    settings: { sound: true, voice: true }, streak: 0, seenIslands: {}, lastSeen: null,
   };
 }
 
@@ -160,14 +160,37 @@ export function practiceOrder(ids, previous) {
   return order;
 }
 
+// Order of a topic's questions: shuffled for every attempt, so two children side by side
+// do not see the same question at the same time, and a retry differs from the last one.
+// Questions of one text/recording (passage) stay together and in their own order.
+export function topicOrder(topic, previous) {
+  const blocks = [];
+  const byPassage = new Map();
+  for (const q of topic.questions) {
+    if (!q.passage) { blocks.push([q.id]); continue; }
+    if (!byPassage.has(q.passage)) { byPassage.set(q.passage, []); blocks.push(byPassage.get(q.passage)); }
+    byPassage.get(q.passage).push(q.id);
+  }
+  if (blocks.length < 2) return blocks.flat();
+  let order;
+  let guard = 0;
+  do {
+    order = shuffle(blocks).flat();
+    guard += 1;
+  } while (previous && previous.join('|') === order.join('|') && guard < 20);
+  return order;
+}
+
 export function startTopicSession(p, topic) {
   const st = p.topics[topic.id] || { answers: {}, attempts: 0, done: false, skipped: false };
   p.topics[topic.id] = st;
+  const order = topicOrder(topic, st.lastOrder);
+  st.lastOrder = order;
   p.session = {
     kind: 'topic',
     topicId: topic.id,
     stage: 'explain',
-    order: topic.questions.map((q) => q.id), // passages need the source order
+    order,
     idx: 0,
     results: {},
   };
