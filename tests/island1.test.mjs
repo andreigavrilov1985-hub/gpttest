@@ -212,7 +212,8 @@ await step('После перезагрузки прогресс сохранё�
   const page = mainPage;
   await page.reload();
   await page.waitForSelector('[data-testid=start]');
-  assert.match(await page.textContent('.start__hello'), /Маша/);
+  assert.equal(await page.evaluate(() => window.__game.progress.profile.childName), 'Маша');
+  assert.ok((await page.getAttribute('.start__hello', 'data-say')).length > 3, 'kitten greets');
   await page.click('[data-testid=start]');
   await page.waitForSelector('[data-testid=island-2][data-state=open]');
   assert.equal(await page.getAttribute('[data-testid=island-1]', 'data-state'), 'passed');

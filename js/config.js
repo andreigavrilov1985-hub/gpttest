@@ -4,6 +4,11 @@ export const CONFIG = {
   TOPIC_WEAK_THRESHOLD: 0.7,    // topics below this get extra tasks
   // Stage 2: "too easy" detection. Kept here so it is changed in one place.
   FAST_ANSWER_FRACTION: 1 / 3,
+  // "Usual" time for a question: base + per character of question and options.
+  USUAL_TIME_BASE_MS: 4000,
+  USUAL_TIME_PER_CHAR_MS: 60,
+  IDLE_MS: 20000,                  // kitten dozes off after 20 s without an answer
+  COMEBACK_AFTER_MS: 3 * 60 * 60 * 1000, // "welcome back" phrases after a 3-hour break
   STORAGE_KEY: 'kidsgame.progress.v1',
   ISLANDS: [1, 2, 3, 4, 5],
   SUBJECTS: ['math', 'english', 'science', 'geography', 'logic'],

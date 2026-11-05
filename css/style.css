@@ -20,8 +20,8 @@
   --card: #ffffff;
   --ok: #26a865;
   --ok-bg: #e2f8ea;
-  --no: #e8574a;
-  --no-bg: #ffe9e4;
+  --no: #d9822b;
+  --no-bg: #fff4e5;
   --city: var(--sea);
   --radius: 22px;
   --shadow: 0 4px 0 rgba(35, 50, 74, .12), 0 10px 24px rgba(35, 50, 74, .10);
@@ -98,11 +98,7 @@ h2 { font-size: 1.45rem; }
 .guide__bubble::before { content: ''; position: absolute; left: -10px; bottom: 10px; border: 10px solid transparent; border-right-color: #fff; border-left: 0; }
 .guide__name { display: block; font-size: .8rem; font-weight: 800; color: var(--sea-deep); text-transform: uppercase; letter-spacing: .04em; }
 .kitten { display: block; overflow: visible; }
-.kitten--happy, .kitten--cheer { animation: hop .9s ease-in-out infinite alternate; transform-origin: 50% 100%; }
-.kitten__tail { transform-origin: 100px 135px; animation: wag 1.6s ease-in-out infinite alternate; }
-@keyframes hop { from { transform: translateY(0) } to { transform: translateY(-5px) } }
-@keyframes wag { from { transform: rotate(-6deg) } to { transform: rotate(8deg) } }
-@media (prefers-reduced-motion: reduce) { .kitten, .kitten__tail { animation: none !important; } }
+
 
 /* ---------- start ---------- */
 .start { align-items: center; text-align: center; min-height: 100vh; justify-content: center; position: relative; overflow: hidden; }
@@ -265,4 +261,114 @@ body[data-screen='start'] .mark { position: fixed; left: 0; right: 0; bottom: 0;
   .cities { display: grid; grid-template-columns: 1fr 1fr; }
   .options { display: grid; grid-template-columns: 1fr; }
   .btn--big { max-width: 420px; align-self: center; }
+}
+
+/* ================= round 2: kitten emotions ================= */
+.kitten g { transform-box: view-box; }
+.kitten__all { transform-origin: 65px 158px; }
+.kitten__head { transform-origin: 65px 100px; }
+.kitten__ear--l { transform-origin: 40px 42px; }
+.kitten__ear--r { transform-origin: 90px 42px; }
+.kitten__tail { transform-origin: 100px 135px; animation: wag 1.6s ease-in-out infinite alternate; }
+.kitten__paw { transform-origin: 92px 116px; }
+.kitten--idle .kitten__all { animation: breathe 3.2s ease-in-out infinite; }
+.kitten--happy .kitten__all { animation: hop .9s ease-in-out infinite alternate; }
+.kitten--excited .kitten__all { animation: hop .45s ease-in-out infinite alternate; }
+.kitten--excited .kitten__ear--l { animation: earL .5s ease-in-out infinite alternate; }
+.kitten--excited .kitten__ear--r { animation: earR .5s ease-in-out infinite alternate; }
+.kitten--excited .kitten__tail { animation-duration: .5s; }
+.kitten--thinking .kitten__head { animation: ponder 2.4s ease-in-out infinite alternate; }
+.kitten--thinking .kitten__tail { animation-duration: 3s; }
+.kitten--sad_soft .kitten__head { transform: rotate(-9deg) translateY(2px); }
+.kitten--sad_soft .kitten__ear--l { transform: rotate(-14deg); }
+.kitten--sad_soft .kitten__ear--r { transform: rotate(14deg); }
+.kitten--sad_soft .kitten__tail { animation-duration: 3.4s; }
+.kitten--surprised .kitten__all { animation: pop .5s ease-out 1; }
+.kitten--surprised .kitten__ear--l, .kitten--surprised .kitten__ear--r { transform: translateY(-4px); }
+.kitten--sleepy .kitten__all { animation: breathe 4.2s ease-in-out infinite; }
+.kitten--sleepy .kitten__head { transform: rotate(6deg) translateY(4px); }
+.kitten--sleepy .kitten__tail { animation: none; }
+.kitten__zzz { animation: zzz 2s ease-in-out infinite; }
+.kitten--celebrate .kitten__all { animation: party 1s ease-in-out infinite; }
+.kitten--celebrate .kitten__tail { animation-duration: .35s; }
+.kitten__acc { animation: shine 1.6s ease-in-out infinite alternate; }
+@keyframes wag { from { transform: rotate(-6deg) } to { transform: rotate(10deg) } }
+@keyframes breathe { 50% { transform: scale(1.02, .98) } }
+@keyframes hop { from { transform: translateY(0) } to { transform: translateY(-7px) } }
+@keyframes earL { to { transform: rotate(-10deg) } }
+@keyframes earR { to { transform: rotate(10deg) } }
+@keyframes ponder { from { transform: rotate(-5deg) } to { transform: rotate(7deg) } }
+@keyframes pop { 40% { transform: translateY(-10px) scale(1.06) } }
+@keyframes zzz { 50% { transform: translate(3px, -4px); opacity: .5 } }
+@keyframes party { 0%, 100% { transform: translateY(0) rotate(0) } 25% { transform: translateY(-10px) rotate(-6deg) } 75% { transform: translateY(-10px) rotate(6deg) } }
+@keyframes shine { to { filter: brightness(1.15) } }
+
+/* one-shot poses triggered by reactions (class on the kitten's holder) */
+.do-jumpSpin .kitten__all { animation: jumpSpin 1.2s ease-in-out 1 !important; }
+.do-jumpSpin .kitten__tail { animation: tailSpin .3s linear 4 !important; }
+.do-dance .kitten__all { animation: dance 1.4s ease-in-out 1 !important; }
+.do-tilt .kitten__head { animation: tilt 1.6s ease-in-out 1 forwards !important; }
+.do-nod .kitten__head { animation: nod 1.4s ease-in-out 1 !important; }
+.do-point .kitten__paw { animation: point 1.6s ease-in-out 1 forwards !important; }
+@keyframes jumpSpin { 30% { transform: translateY(-22px) rotate(-12deg) } 60% { transform: translateY(-14px) rotate(14deg) } 100% { transform: none } }
+@keyframes tailSpin { to { transform: rotate(360deg) } }
+@keyframes dance { 0%, 100% { transform: none } 20% { transform: translateX(-6px) rotate(-8deg) } 40% { transform: translateX(6px) rotate(8deg) translateY(-6px) } 60% { transform: translateX(-6px) rotate(-8deg) } 80% { transform: translateX(6px) rotate(8deg) translateY(-6px) } }
+@keyframes tilt { 40%, 100% { transform: rotate(-12deg) } }
+@keyframes nod { 25%, 75% { transform: rotate(4deg) translateY(4px) } 50% { transform: rotate(-3deg) } }
+@keyframes point { 30%, 100% { transform: translate(14px, -26px) rotate(-30deg) scale(1.15) } }
+
+/* ================= round 2: bubbles ================= */
+.guide__say { display: block; min-height: 1.45em; cursor: pointer; }
+.guide__say.typing::after { content: '▍'; color: var(--sea-deep); animation: blink .7s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0 } }
+.guide__info { display: block; margin-top: 4px; font-size: .9rem; color: var(--ink-soft); }
+.start__hello { min-height: 1.5em; }
+.guide--mini { align-items: center; gap: 8px; }
+.guide--mini .guide__bubble { margin-bottom: 0; padding: 8px 12px; font-size: .95rem; border-radius: 16px; }
+.guide--mini .guide__bubble::before { bottom: 50%; transform: translateY(50%); }
+.guide--mini .guide__name { display: none; }
+.guide--mini.is-quiet { opacity: .55; }
+@media (max-width: 520px) {
+  /* narrow screens: the bubble above the question shrinks to one line (tap shows it all) */
+  .guide--mini .guide__say { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .guide--mini .guide__say:active, .guide--mini .guide__say:focus { white-space: normal; }
+}
+
+/* ================= round 2: reactions ================= */
+.fx-layer { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 40; }
+.bump { animation: bump .45s cubic-bezier(.3, 1.6, .5, 1) 1; }
+@keyframes bump { 40% { transform: scale(1.35) } }
+.streak-chip { font-weight: 800; background: #fff3d6; color: #c25e00; padding: 6px 10px; border-radius: 999px; box-shadow: 0 3px 0 #f2d39b; white-space: nowrap; }
+.streak-chip.is-hidden { display: none; }
+.streak-burst {
+  position: fixed; left: 50%; top: 38%; z-index: 41; pointer-events: none;
+  transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center;
+  font-size: 1.7rem; font-weight: 800; color: #fff; text-shadow: 0 3px 0 rgba(0,0,0,.18); white-space: nowrap; text-align: center; max-width: calc(100vw - 32px);
+  background: linear-gradient(135deg, #ff9a3c, #ff5c8a); padding: 14px 26px; border-radius: 28px;
+  box-shadow: 0 12px 30px rgba(255, 92, 138, .35); animation: burstIn 1.8s ease-out 1 forwards;
+}
+.streak-burst--5 { background: linear-gradient(135deg, #9b5cf6, #2bb3c9); }
+.streak-burst--10, .streak-burst--island { background: linear-gradient(135deg, #ffcf3f, #ff7a59); font-size: 2rem; }
+.streak-burst__fire { font-size: 3rem; line-height: 1; animation: flame .4s ease-in-out infinite alternate; }
+@keyframes burstIn { 0% { transform: translate(-50%, -50%) scale(.3); opacity: 0 } 15% { transform: translate(-50%, -50%) scale(1.1); opacity: 1 } 25% { transform: translate(-50%, -50%) scale(1) } 80% { opacity: 1 } 100% { transform: translate(-50%, -60%) scale(.95); opacity: 0 } }
+@keyframes flame { to { transform: scale(1.18) rotate(4deg) } }
+.option.sway { animation: sway .9s ease-in-out 1; }
+@keyframes sway { 20% { transform: translateX(-5px) } 40% { transform: translateX(4px) } 60% { transform: translateX(-3px) } 80% { transform: translateX(2px) } }
+.option.glow-right { animation: glow 1.6s ease-in-out 2; }
+@keyframes glow { 50% { box-shadow: 0 0 0 6px rgba(38, 168, 101, .25), 0 0 22px rgba(38, 168, 101, .45); } }
+.fb__line { display: block; }
+.fb__plus { color: #b07a00; white-space: nowrap; }
+.fb__right { font-weight: 800; color: var(--ok); }
+.fb__cat { width: 64px; }
+
+/* fact card on the topic result */
+.fact { text-align: left; border-left: 8px solid var(--sun); }
+.fact__label { font-weight: 800; color: #b07a00; font-size: .85rem; text-transform: uppercase; letter-spacing: .04em; }
+.fact p { margin: 4px 0 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .kitten *, .kitten, .bump, .streak-burst__fire, .option.sway, .guide__say.typing::after { animation: none !important; }
+  .streak-burst { animation: fadeOnly 1.6s linear 1 forwards; }
+  .option.glow-right { animation: none; box-shadow: 0 0 0 4px rgba(38, 168, 101, .3); }
+  @keyframes fadeOnly { 0%, 80% { opacity: 1 } 100% { opacity: 0 } }
 }

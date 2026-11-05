@@ -16,7 +16,11 @@ export const getBank = (subject, island) => banks.get(`${subject}-${island}`);
 export const loadIsland = (island) => Promise.all(CONFIG.SUBJECTS.map((s) => loadBank(s, island)));
 
 export function emptyProgress() {
-  return { version: 1, profile: null, coins: 0, topics: {}, cities: {}, session: null };
+  return {
+    version: 1, profile: null, coins: 0, topics: {}, cities: {}, session: null,
+    // added in round 2 (old saves get these defaults when loaded)
+    settings: { sound: true }, streak: 0, seenIslands: {}, lastSeen: null,
+  };
 }
 
 export function loadProgress() {
@@ -25,10 +29,16 @@ export function loadProgress() {
     if (!raw) return emptyProgress();
     const p = JSON.parse(raw);
     if (!p || p.version !== 1) return emptyProgress();
-    return { ...emptyProgress(), ...p };
+    return migrate(p);
   } catch {
     return emptyProgress();
   }
+}
+
+/** Fills fields added after the first release; old saves keep all their data. */
+export function migrate(p) {
+  const base = emptyProgress();
+  return { ...base, ...p, settings: { ...base.settings, ...(p.settings || {}) } };
 }
 
 export function saveProgress(p) {

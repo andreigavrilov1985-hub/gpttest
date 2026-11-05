@@ -3,10 +3,15 @@ import * as P from './progress.js';
 import { kittenSVG, KITTEN_COLORS, PATTERNS } from './kitten.js';
 import { getEnglishVoice, speak, stopSpeaking } from './speech.js';
 import { AUTHOR_MARK, verifyAuthorMark } from './author.js';
+import { phrase, typeInto, devCheckPhrases } from './cat.js';
+import * as FX from './reactions.js';
 
 const app = document.getElementById('app');
 let progress = P.loadProgress();
 let view = { name: 'start' };
+let idleTimer = 0;
+let wrongRun = 0; // wrong answers in a row (for the "second mistake" phrases)
+const startInfo = { comeback: false };
 
 // ---------- helpers ----------
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -17,13 +22,19 @@ const save = () => P.saveProgress(progress);
 const look = () => progress.profile?.kitten || { main: 'ginger', pattern: 'plain' };
 const kid = () => progress.profile?.childName || 'друг';
 const kitty = () => progress.profile?.kittenName || 'Котёнок';
-const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+const vars = (extra = {}) => ({ name: progress.profile?.childName || '', ...extra });
+const say = (group, extra) => phrase(group, vars(extra));
 
 function h(html) {
   stopSpeaking();
+  clearTimeout(idleTimer);
+  FX.clearEffects();
   app.innerHTML = html;
   app.scrollTop = 0;
   window.scrollTo(0, 0);
+  const reduced = FX.reducedMotion();
+  app.querySelectorAll('[data-say]').forEach((el) => typeInto(el, el.dataset.say, { reduced }));
   const focus = app.querySelector('[data-autofocus]');
   if (focus) focus.focus({ preventScroll: true });
 }
@@ -37,11 +48,19 @@ function topBar({ back = null, title = '' } = {}) {
   </header>`;
 }
 
-function bubble(text, mood = 'neutral', size = 92) {
-  return `<div class="guide">
-    <div class="guide__cat">${kittenSVG(look(), mood, size)}</div>
-    <div class="guide__bubble"><span class="guide__name">${esc(kitty())}</span>${text}</div>
+/** Kitten with a speech bubble. `line` is typed letter by letter; `info` is shown at once below it. */
+function bubble(line, mood = 'idle', size = 92, { info = '', cls = '', acc } = {}) {
+  return `<div class="guide ${cls}">
+    <div class="guide__cat" data-testid="cat">${kittenSVG(look(), mood, size, { accessory: acc })}</div>
+    <div class="guide__bubble"><span class="guide__name">${esc(kitty())}</span>
+      <span class="guide__say" data-say="${esc(line)}" data-testid="cat-line" title="Нажми, чтобы показать сразу"></span>
+      ${info ? `<span class="guide__info">${info}</span>` : ''}</div>
   </div>`;
+}
+
+function setCat(container, mood, acc) {
+  const holder = container && container.querySelector('.guide__cat');
+  if (holder) holder.innerHTML = kittenSVG(look(), mood, holder.firstElementChild?.getAttribute('width') || 64, { accessory: acc });
 }
 
 function stars(n, max = 3) {
@@ -55,12 +74,13 @@ function stars(n, max = 3) {
 function renderStart() {
   document.body.dataset.screen = 'start';
   const hasProfile = !!progress.profile;
+  const isComeback = !!startInfo.comeback;
   h(`<main class="screen start">
     <div class="start__sea" aria-hidden="true"></div>
     <h1 class="start__title">Острова<br><span>Знаний</span></h1>
     <p class="start__sub">Пять островов, двадцать пять городов и котёнок-проводник</p>
-    <div class="start__cat">${kittenSVG(look(), 'cheer', 170)}</div>
-    ${hasProfile ? `<p class="start__hello">С возвращением, ${esc(kid())}! ${esc(kitty())} ждёт тебя.</p>` : ''}
+    <div class="start__cat">${kittenSVG(look(), 'excited', 170)}</div>
+    ${hasProfile ? `<p class="start__hello" data-say="${esc(say(isComeback ? 'comeback' : 'greeting'))}" data-testid="cat-line"></p>` : ''}
     <button class="btn btn--big" data-go="${hasProfile ? 'map' : 'setup'}" data-testid="start" data-autofocus>${hasProfile ? 'Продолжить' : 'Начать игру'}</button>
   </main>`);
 }
@@ -135,7 +155,7 @@ async function renderMap() {
   const path = '<svg class="map__path" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M24 80 C 45 82, 60 76, 70 68 S 40 52, 32 48 S 64 34, 74 30 S 45 18, 36 15" /></svg>';
   h(`${topBar({ title: 'Карта мира' })}
   <main class="screen map">
-    ${bubble(`${esc(kid())}, мы на острове <b>${cur}</b>: ${ISLAND_INFO[cur].name}. Пройдено городов: <b>${doneCities} из 5</b>.`, 'cheer')}
+    ${bubble(say(`island${cur}`, { island: cur }), 'excited', 92, { info: `Остров ${cur}: ${ISLAND_INFO[cur].name}. Пройдено городов: <b>${doneCities} из 5</b>.` })}
     <div class="map__sea">${path}${islands}</div>
     <button class="btn btn--big" data-go="island:${cur}" data-testid="go-island">Плыть на остров ${cur}</button>
   </main>`);
@@ -146,10 +166,15 @@ async function renderIsland(i) {
   if (!P.isIslandUnlocked(progress, i)) return go('map');
   await P.loadIsland(i);
   const isl = P.islandStatus(progress, i);
+  let justPassed = false;
   if (isl.passed && !progress.islandsPassed?.[i]) {
     P.markIslandPassed(progress, i);
+    justPassed = true;
     save();
   }
+  const firstVisit = !progress.seenIslands?.[i];
+  progress.seenIslands = { ...(progress.seenIslands || {}), [i]: true };
+  if (firstVisit) save();
   const cities = isl.cities.map((c, n) => {
     const subject = CONFIG.SUBJECTS[n];
     const info = SUBJECT_INFO[subject];
@@ -164,16 +189,22 @@ async function renderIsland(i) {
     </button></li>`;
   }).join('');
   const next = isl.current;
-  const msg = isl.passed
-    ? (i < 5 ? `Ура, ${esc(kid())}! Остров пройден. Открыт остров ${i + 1}!` : `${esc(kid())}, ты прошёл все острова!`)
-    : `${esc(kid())}, нас ждёт ${SUBJECT_INFO[next.id.split('-')[0]].city}. Нужно набрать 70% в каждом городе.`;
+  const line = isl.passed ? say('islandDone', { island: i })
+    : firstVisit ? say(`island${i}`, { island: i })
+      : say(`city_${next.id.split('-')[0]}`, { city: SUBJECT_INFO[next.id.split('-')[0]].city, subject: SUBJECT_INFO[next.id.split('-')[0]].name });
+  const info = isl.passed ? (i < 5 ? `Открыт остров ${i + 1}!` : 'Все острова пройдены!')
+    : `Дальше: ${SUBJECT_INFO[next.id.split('-')[0]].city}. В каждом городе нужно 70%.`;
   h(`${topBar({ back: 'map', title: `Остров ${i} · ${ISLAND_INFO[i].year}` })}
   <main class="screen island-view">
-    ${bubble(msg, isl.passed ? 'happy' : 'neutral')}
+    ${bubble(line, isl.passed ? 'celebrate' : 'idle', 92, { info, acc: isl.passed ? 'crown' : undefined })}
     <ol class="cities">${cities}</ol>
     ${isl.passed && i < 5 ? `<button class="btn btn--big" data-go="island:${i + 1}" data-testid="next-island">На остров ${i + 1}</button>`
     : !isl.passed ? `<button class="btn btn--big" data-go="city:${next.id}" data-testid="continue">Продолжить</button>` : ''}
   </main>`);
+  if (justPassed) {
+    FX.playStreak(0, { reduced: FX.reducedMotion(), label: `Остров ${i} пройден!` });
+    FX.playSound('streak', soundOn());
+  }
 }
 
 function renderCity(cityId) {
@@ -196,23 +227,31 @@ function renderCity(cityId) {
       <span class="topic__n">${t.n}</span><span class="topic__title">${esc(t.title)}${t.type === 'listening' ? ' 🎧' : ''}</span>${right}</button></li>`;
   }).join('');
   let action = '';
-  let msg;
+  let line;
+  let infoText;
+  let mood = 'idle';
+  const v = { city: info.city, subject: info.name, island };
   if (c.passed) {
-    msg = `Город пройден на ${pct(c.pct)}! Молодец, ${esc(kid())}!`;
+    line = say('topicGood', v);
+    mood = 'happy';
+    infoText = `Город пройден на ${pct(c.pct)}!`;
     action = `<button class="btn btn--big" data-go="island:${island}" data-testid="back-to-island">К острову</button>`;
   } else if (c.allDone) {
-    msg = `${esc(kid())}, в городе ${pct(c.pct)}, а нужно 70%. Давай потренируемся! Слабые темы: ${c.practice.map((t) => `«${esc(t.title)}»`).join(', ')}.`;
+    line = say('topicRetry', v);
+    mood = 'excited';
+    infoText = `В городе ${pct(c.pct)}, нужно 70%. Слабые темы: ${c.practice.map((t) => `«${esc(t.title)}»`).join(', ')}.`;
     action = `<button class="btn btn--big" data-go="practice:${c.id}" data-testid="start-practice">Дополнительные задания</button>`;
   } else {
-    msg = c.finished ? `Пройдено тем: ${c.finished} из ${c.bank.topics.length}. Вперёд!` : `Добро пожаловать в ${info.city}! Здесь ${c.bank.topics.length} темы по 10 вопросов.`;
-    if (c.bank.topics.length === 5 && !c.finished) msg = `Добро пожаловать в ${info.city}! Здесь 5 тем по 10 вопросов, последняя — аудирование.`;
+    line = say(`city_${subject}`, v);
+    infoText = c.finished ? `Пройдено тем: ${c.finished} из ${c.bank.topics.length}.`
+      : c.bank.topics.length === 5 ? 'Здесь 5 тем по 10 вопросов, последняя — аудирование.' : `Здесь ${c.bank.topics.length} темы по 10 вопросов.`;
     action = `<button class="btn btn--big" data-go="topic:${c.nextTopic.id}" data-testid="next-topic">Тема ${c.nextTopic.n}</button>`;
   }
   h(`${topBar({ back: `island:${island}`, title: `${info.icon} ${info.city}` })}
   <main class="screen city-view" style="--city:${info.color}">
     <div class="city-head"><div class="ring" style="--p:${c.total ? c.correct / c.total : 0}"><span>${pct(c.total ? c.correct / c.total : 0)}</span></div>
       <div><h2>${info.name}</h2><p>Остров ${island} · порог 70%</p></div></div>
-    ${bubble(msg, c.passed ? 'happy' : 'neutral', 80)}
+    ${bubble(line, mood, 80, { info: infoText })}
     <ol class="topics">${topics}</ol>
     ${action}
   </main>`);
@@ -239,10 +278,6 @@ function explanationScreens(topic) {
   return screens;
 }
 
-function introLine(topic) {
-  const m = /\(([^)]+)\)/.exec(topic.explanationLabel || '');
-  return m ? `${esc(kid())}, ${esc(m[1])}.` : `${esc(kid())}, сначала коротко о теме.`;
-}
 
 function renderExplain(topic, page = 0, { fromQuestion = false } = {}) {
   document.body.dataset.screen = 'explain';
@@ -253,7 +288,7 @@ function renderExplain(topic, page = 0, { fromQuestion = false } = {}) {
   h(`${topBar({ back: `city:${P.parseId(topic.id).subject}-${P.parseId(topic.id).island}`, title: `Тема ${topic.n}` })}
   <main class="screen explain">
     <h2 class="explain__title">${esc(topic.title)}</h2>
-    ${page === 0 ? bubble(introLine(topic), 'cheer', 80) : ''}
+    ${page === 0 ? bubble(say(fromQuestion ? 'hint' : 'beforeExplain'), fromQuestion ? 'thinking' : 'excited', 80) : ''}
     <div class="explain__card card" data-testid="explain-card">
       <ul>${screens[page].map((x) => `<li>${rich(x)}</li>`).join('')}</ul>
     </div>
@@ -303,8 +338,10 @@ async function renderQuestion() {
     <div class="qhead">
       <div class="progressbar" aria-label="Вопрос ${s.idx + 1} из ${s.order.length}"><span style="width:${(s.idx / s.order.length) * 100}%"></span></div>
       <span class="qhead__n" data-testid="q-counter">${s.idx + 1}/${s.order.length}</span>
-      <button class="btn btn--small btn--ghost" data-go="explain:0:q" data-testid="reopen-explain">📘 Объяснение</button>
+      <span class="streak-chip ${progress.streak >= 2 ? '' : 'is-hidden'}" data-testid="streak">🔥 <b>${progress.streak || 0}</b></span>
+      <button class="btn btn--small btn--ghost" data-go="explain:0:q" data-testid="reopen-explain" aria-label="Подсказка от котёнка">💡 Подсказка</button>
     </div>
+    ${bubble(say('beforeQuestion'), 'idle', 46, { cls: 'guide--mini' })}
     ${passageHtml}
     <h2 class="qtext" data-testid="q-text" ${subject === 'english' || /^[\x00-\x7F]+$/.test(question.text) ? 'lang="en"' : ''}>${esc(question.text)}</h2>
     <div class="options" role="group" aria-label="Варианты ответа">
@@ -314,6 +351,31 @@ async function renderQuestion() {
     <div class="feedback" id="feedback" aria-live="polite"></div>
   </main>`);
   if (passage && passage.kind === 'listening') setupListening(passage, topic);
+  armIdle();
+}
+
+// After CONFIG.IDLE_MS without an answer the kitten dozes off and says something gentle.
+function armIdle() {
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(() => {
+    if (!answering || answering.answered) return;
+    const g = app.querySelector('.guide--mini');
+    if (!g) return;
+    setCat(g, 'sleepy');
+    typeInto(g.querySelector('.guide__say'), say('idle'), { reduced: FX.reducedMotion() });
+    g.dataset.idle = '1';
+  }, CONFIG.IDLE_MS);
+}
+
+const soundOn = () => progress.settings?.sound !== false;
+
+// "Usual" time for a question grows with the amount of text to read; a fast answer is
+// quicker than CONFIG.FAST_ANSWER_FRACTION of it. Measured from showing the question to the
+// tap, so the reaction animation never affects it.
+function isFast(question, ms) {
+  const chars = question.text.length + question.options.join('').length;
+  const usual = CONFIG.USUAL_TIME_BASE_MS + chars * CONFIG.USUAL_TIME_PER_CHAR_MS;
+  return ms < usual * CONFIG.FAST_ANSWER_FRACTION;
 }
 
 async function setupListening(passage, topic) {
@@ -355,38 +417,80 @@ async function setupListening(passage, topic) {
   if (!prev || prev.question.passage !== passage.id || prev.topic.id !== topic.id) play();
 }
 
-const PRAISE = ['Отлично', 'Супер', 'Верно', 'Здорово', 'Так держать', 'Умница'];
-const CHEER = ['Ничего страшного', 'Не беда', 'Почти', 'Бывает'];
+const STREAK_MARKS = [3, 5, 10];
 
 function onAnswer(k) {
   if (!answering || answering.answered) return;
+  const elapsed = performance.now() - answering.shownAt; // before any animation starts
   answering.answered = true;
+  clearTimeout(idleTimer);
   const { topic, question, order } = answering;
   const chosen = order[k];
   const correct = chosen === question.answer;
+  const fast = correct && isFast(question, elapsed);
   P.recordAnswer(progress, topic.id, question.id, correct);
   progress.session.idx += 1;
+  progress.streak = correct ? (progress.streak || 0) + 1 : 0;
+  wrongRun = correct ? 0 : wrongRun + 1;
   save();
+
+  const streak = progress.streak;
+  const streakMark = correct && STREAK_MARKS.includes(streak) ? streak : 0;
+  let group;
+  if (correct) group = streakMark ? `streak${streakMark}` : fast ? 'correctFast' : 'correct';
+  else group = wrongRun >= 2 ? 'wrongAgain' : 'wrong';
+  const line = say(group, { streak });
+  const reaction = FX.pickReaction(correct ? 'correct' : 'wrong');
+  const mood = correct
+    ? (streak >= 10 ? 'celebrate' : fast || streakMark ? 'excited' : 'happy')
+    : { tiltSoft: 'sad_soft', pawPoint: 'idle', softBubbles: 'sad_soft', thinkNod: 'thinking' }[reaction];
+  const acc = correct ? (streak >= 10 ? 'crown' : streak >= 5 ? 'glasses' : undefined) : undefined;
+
   const buttons = app.querySelectorAll('.option');
+  let rightEl = null;
   buttons.forEach((b, i) => {
     b.disabled = true;
-    if (order[i] === question.answer) b.classList.add('option--right');
-    else if (i === k) b.classList.add('option--wrong');
+    if (order[i] === question.answer) {
+      b.classList.add('option--right');
+      rightEl = b;
+    } else if (i === k) b.classList.add('option--wrong');
   });
   const fb = document.getElementById('feedback');
   const right = question.options[question.answer];
-  fb.innerHTML = `<div class="fb fb--${correct ? 'ok' : 'no'}" data-testid="feedback" data-correct="${correct}">
-    <div class="fb__cat">${kittenSVG(look(), correct ? 'happy' : 'think', 64)}</div>
+  fb.innerHTML = `<div class="fb fb--${correct ? 'ok' : 'no'}" data-testid="feedback" data-correct="${correct}"
+      data-reaction="${reaction}" data-fast="${fast}" data-group="${group}">
+    <div class="fb__cat guide__cat">${kittenSVG(look(), mood, 64, { accessory: acc })}</div>
     <div class="fb__body">
-      <b>${correct ? `${pick(PRAISE)}, ${esc(kid())}! +1 🪙` : `${pick(CHEER)}, ${esc(kid())}! Правильный ответ: «${esc(right)}».`}</b>
-      <p><span class="fb__why">Почему:</span> ${esc(question.why)}</p>
+      <b class="fb__line" data-testid="fb-line">${esc(line)}${correct ? ' <span class="fb__plus">+1 🪙</span>' : ''}</b>
+      ${correct ? '' : `<p class="fb__right">Правильный ответ: «${esc(right)}»</p>`}
+      ${question.why ? `<p><span class="fb__why">Почему:</span> ${esc(question.why)}</p>` : ''}
     </div>
     <button class="btn" data-go="next" data-testid="next-question">Дальше</button>
   </div>`;
   const coins = app.querySelector('[data-testid="coins"]');
-  if (coins) coins.textContent = progress.coins;
-  fb.querySelector('button').focus({ preventScroll: true });
-  fb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  if (coins) {
+    coins.textContent = progress.coins;
+    if (correct) FX.bump(coins.parentElement);
+  }
+  const chip = app.querySelector('[data-testid="streak"]');
+  if (chip) {
+    chip.querySelector('b').textContent = streak;
+    chip.classList.toggle('is-hidden', streak < 2);
+    if (correct) FX.bump(chip);
+  }
+  // The question's own kitten reacts too (paw points at the right answer, head tilts...)
+  const mini = app.querySelector('.guide--mini');
+  if (mini) mini.classList.add('is-quiet');
+  const reduced = FX.reducedMotion();
+  FX.playReaction(reaction, {
+    kind: correct ? 'correct' : 'wrong', fast, reduced,
+    optionEl: buttons[k], rightEl, scoreEl: coins, catEl: fb.querySelector('.fb__cat'),
+  });
+  if (streakMark) FX.playStreak(streakMark, { reduced });
+  FX.playSound(streakMark ? 'streak' : correct ? (fast ? 'fast' : 'correct') : 'wrong', soundOn());
+  const next = fb.querySelector('button');
+  next.focus({ preventScroll: true });
+  fb.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'nearest' });
 }
 
 function finishSession() {
@@ -413,14 +517,14 @@ function renderTopicResult(topic, score) {
   const st = progress.topics[topic.id];
   const c = P.cityStatus(progress, subject, island);
   const good = score.pct >= CONFIG.PASS_THRESHOLD;
-  const msg = good ? `${esc(kid())}, ${score.correct} из ${score.answered}! Я тобой горжусь!`
-    : `${esc(kid())}, ${score.correct} из ${score.answered}. Ничего, потренируемся и всё получится!`;
+  const line = say(good ? 'topicGood' : 'topicRetry', { subject: SUBJECT_INFO[subject].name });
   h(`${topBar({ title: 'Итог темы' })}
   <main class="screen result">
     <h2>${esc(topic.title)}</h2>
     <div class="result__stars">${stars(st.stars || 0)}</div>
     <div class="result__pct" data-testid="topic-pct">${pct(score.pct)}</div>
-    ${bubble(msg, good ? 'happy' : 'cheer', 90)}
+    ${bubble(line, good ? 'celebrate' : 'excited', 90, { info: `Правильно ${score.correct} из ${score.answered}.` })}
+    <div class="fact card" data-testid="cat-fact"><span class="fact__label">Факт от котёнка</span><p>${esc(say(`fact_${subject}`))}</p></div>
     <p class="muted">Город: ${pct(c.total ? c.correct / c.total : 0)} · нужно 70%</p>
     <button class="btn btn--big" data-go="city:${subject}-${island}" data-testid="result-continue" data-autofocus>Дальше</button>
   </main>`);
@@ -432,7 +536,7 @@ function renderPracticeResult(c) {
   h(`${topBar({ title: 'Итог тренировки' })}
   <main class="screen result">
     <div class="result__pct" data-testid="city-pct">${pct(c.pct)}</div>
-    ${bubble(c.passed ? `Ура, ${esc(kid())}! Город пройден!` : `${esc(kid())}, уже ${pct(c.pct)}. Ещё немного тренировки!`, c.passed ? 'happy' : 'cheer', 90)}
+    ${bubble(say(c.passed ? 'topicGood' : 'topicRetry'), c.passed ? 'celebrate' : 'excited', 90, { info: c.passed ? 'Город пройден!' : `Уже ${pct(c.pct)}, нужно 70%.` })}
     <button class="btn btn--big" data-go="${c.passed ? `island:${island}` : `city:${c.id}`}" data-testid="result-continue" data-autofocus>Дальше</button>
   </main>`);
 }
@@ -446,6 +550,10 @@ function renderSettings() {
     <section class="card">
       <h3>Котёнок</h3>
       <button class="btn btn--ghost" data-go="setup">Изменить имя и цвет</button>
+    </section>
+    <section class="card">
+      <h3>Звук</h3>
+      <button class="btn btn--ghost" data-go="toggle-sound" data-testid="sound-toggle" aria-pressed="${soundOn()}">${soundOn() ? '🔊 Звук включён' : '🔈 Звук выключен'}</button>
     </section>
     <section class="card">
       <h3>Прогресс</h3>
@@ -470,7 +578,7 @@ function renderSettings() {
     try {
       const data = JSON.parse(await file.text());
       if (!P.validateImported(data)) throw new Error('bad');
-      progress = { ...P.emptyProgress(), ...data };
+      progress = P.migrate(data);
       save();
       msg.textContent = 'Прогресс загружен.';
     } catch {
@@ -547,6 +655,11 @@ async function go(target) {
         return renderCity(`${subject}-${island}`);
       }
       case 'settings': return renderSettings();
+      case 'toggle-sound':
+        progress.settings = { ...(progress.settings || {}), sound: !soundOn() };
+        save();
+        if (soundOn()) FX.playSound('correct', true);
+        return renderSettings();
       case 'export': return exportProgress();
       case 'reset':
         // eslint-disable-next-line no-alert
@@ -597,6 +710,13 @@ function boot() {
     return;
   }
   document.body.classList.add('ready');
+  // A "comeback" is a visit after a break of CONFIG.COMEBACK_AFTER_MS or more.
+  const now = Date.now();
+  startInfo.comeback = !!(progress.profile && progress.lastSeen && now - progress.lastSeen >= CONFIG.COMEBACK_AFTER_MS);
+  progress.lastSeen = now;
+  save();
+  setInterval(() => { progress.lastSeen = Date.now(); save(); }, 60000);
+  if (['localhost', '127.0.0.1'].includes(location.hostname) || /[?&]debug\b/.test(location.search)) devCheckPhrases();
   renderStart();
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
     navigator.serviceWorker.register('sw.js').catch(() => {});
