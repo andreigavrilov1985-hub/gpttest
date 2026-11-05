@@ -99,8 +99,8 @@ async function answer(page, mode) {
 
 async function playTopic(page, mode, { onQuestion } = {}) {
   // explanation screens
-  await page.waitForSelector('[data-testid=explain-next]');
-  while (await page.$('[data-testid=explain-next]')) await page.click('[data-testid=explain-next]');
+  await page.waitForSelector('[data-testid=explain-next], [data-testid=scene-next]');
+  await skipExplain(page);
   for (let i = 0; i < 10; i += 1) {
     const m = typeof mode === 'function' ? mode(i) : mode;
     const qid = await answer(page, m);
@@ -118,6 +118,16 @@ async function playCity(page, subject, mode = 'right', hooks = {}) {
   for (let t = 0; t < n; t += 1) {
     await page.click('[data-testid=next-topic]');
     await playTopic(page, mode, hooks);
+  }
+}
+
+// Goes through the explanation (text steps or an animated scene) to the questions.
+async function skipExplain(page) {
+  for (let guard = 0; guard < 30; guard += 1) {
+    if (await page.$('[data-testid=option]')) return;
+    const btn = (await page.$('[data-testid=scene-next]')) || (await page.$('[data-testid=explain-next]'));
+    if (!btn) { await page.waitForTimeout(100); continue; }
+    await btn.click();
   }
 }
 
@@ -230,7 +240,7 @@ await step('Перезагрузка посреди темы → продолж�
   await page.click('[data-testid=go-island]');
   await page.click('[data-testid=continue]');
   await page.click('[data-testid=next-topic]');
-  while (await page.$('[data-testid=explain-next]')) await page.click('[data-testid=explain-next]');
+  await skipExplain(page);
   for (let i = 0; i < 4; i += 1) {
     await answer(page, 'right');
     await page.click('[data-testid=next-question]');
@@ -251,7 +261,7 @@ await step('Варианты A/B/C перемешиваются при кажд�
   await page.click('[data-testid=go-island]');
   await page.click('[data-testid=continue]');
   await page.click('[data-testid=next-topic]');
-  while (await page.$('[data-testid=explain-next]')) await page.click('[data-testid=explain-next]');
+  await skipExplain(page);
   const orders = new Set();
   for (let i = 0; i < 12; i += 1) {
     await page.evaluate(() => window.__game.go('resume'));
@@ -262,7 +272,7 @@ await step('Варианты A/B/C перемешиваются при кажд�
   // explanation can be reopened from a question and returns to the same question
   await page.click('[data-testid=reopen-explain]');
   await page.waitForSelector('[data-testid=explain-card]');
-  while (await page.$('[data-testid=explain-next]')) await page.click('[data-testid=explain-next]');
+  await skipExplain(page);
   await page.waitForSelector('[data-testid=q-counter]');
   assert.equal((await page.textContent('[data-testid=q-counter]')).trim(), '1/10');
   await page.context().close();
@@ -285,7 +295,7 @@ await step('Аудирование: текст звучит (en-GB), кнопк�
   await page.click('[data-testid=go-island]');
   await page.click('[data-testid=city-english]');
   await page.click('[data-testid=next-topic]');
-  while (await page.$('[data-testid=explain-next]')) await page.click('[data-testid=explain-next]');
+  await skipExplain(page);
   await page.waitForSelector('[data-testid=listen-play]:not([disabled])');
   await page.waitForFunction(() => window.__spoken.length >= 1);
   let spoken = await page.evaluate(() => window.__spoken);
@@ -322,7 +332,7 @@ await step('Нет английского голоса → понятное со
   await page.click('[data-testid=go-island]');
   await page.click('[data-testid=city-english]');
   await page.click('[data-testid=next-topic]');
-  while (await page.$('[data-testid=explain-next]')) await page.click('[data-testid=explain-next]');
+  await skipExplain(page);
   await page.waitForSelector('[data-testid=skip-listening]', { timeout: 5000 });
   assert.match(await page.textContent('#listen-status'), /нет английского голоса/);
   const html = await page.content();
@@ -390,7 +400,7 @@ await step('Скриншоты 360×800 и десктоп', async () => {
     await page.click('[data-testid=next-topic]');
     await page.waitForSelector('[data-testid=explain-card]');
     await page.screenshot({ path: `${SHOTS}/${prefix}-05-explanation.png` });
-    while (await page.$('[data-testid=explain-next]')) await page.click('[data-testid=explain-next]');
+    await skipExplain(page);
     await page.waitForSelector('[data-testid=option]');
     await page.screenshot({ path: `${SHOTS}/${prefix}-08-question.png` });
     await answer(page, 'wrong');

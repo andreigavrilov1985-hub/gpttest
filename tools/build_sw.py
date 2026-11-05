@@ -9,7 +9,7 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 files = (['index.html', 'manifest.webmanifest', 'css/style.css']
-         + sorted(glob.glob('js/*.js')) + sorted(glob.glob('data/*.json'))
+         + sorted(glob.glob('js/*.js')) + sorted(glob.glob('explainers/*.js')) + sorted(glob.glob('data/*.json'))
          + sorted(glob.glob('fonts/*.woff2')) + sorted(glob.glob('icons/*.png')) + ['icons/icon.svg'])
 h = hashlib.sha1()
 for f in files:

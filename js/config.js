@@ -3,10 +3,8 @@ export const CONFIG = {
   PASS_THRESHOLD: 0.7,          // 70% per city (sum of the city's questions)
   TOPIC_WEAK_THRESHOLD: 0.7,    // topics below this get extra tasks
   // Stage 2: "too easy" detection. Kept here so it is changed in one place.
-  FAST_ANSWER_FRACTION: 1 / 3,
-  // "Usual" time for a question: base + per character of question and options.
-  USUAL_TIME_BASE_MS: 4000,
-  USUAL_TIME_PER_CHAR_MS: 60,
+  // A correct answer faster than this counts as "fast" (решение Андрея 2026-11-05: 10 секунд).
+  FAST_ANSWER_MS: 10000,
   IDLE_MS: 20000,                  // kitten dozes off after 20 s without an answer
   COMEBACK_AFTER_MS: 3 * 60 * 60 * 1000, // "welcome back" phrases after a 3-hour break
   STORAGE_KEY: 'kidsgame.progress.v1',

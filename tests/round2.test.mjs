@@ -63,7 +63,7 @@ async function toFirstQuestion(page) {
   await page.click('[data-testid=go-island]');
   await page.click('[data-testid=continue]');
   await page.click('[data-testid=next-topic]');
-  while (await page.$('[data-testid=explain-next]')) await page.click('[data-testid=explain-next]');
+  await skipExplain(page);
   await page.waitForSelector('[data-testid=option]');
 }
 
@@ -98,6 +98,16 @@ async function nextVisible(page) {
   // the effects layer never blocks taps
   const pe = await page.evaluate(() => { const c = document.querySelector('.fx-layer'); return c ? getComputedStyle(c).pointerEvents : 'none'; });
   assert.equal(pe, 'none');
+}
+
+// Goes through the explanation (text steps or an animated scene) to the questions.
+async function skipExplain(page) {
+  for (let guard = 0; guard < 30; guard += 1) {
+    if (await page.$('[data-testid=option]')) return;
+    const btn = (await page.$('[data-testid=scene-next]')) || (await page.$('[data-testid=explain-next]'));
+    if (!btn) { await page.waitForTimeout(100); continue; }
+    await btn.click();
+  }
 }
 
 const browser = await chromium.launch();
@@ -161,7 +171,7 @@ await step('20 правильных и 10 неправильных: ≥5 раз�
     if (await page.$('[data-testid=result-continue]')) {
       await page.click('[data-testid=result-continue]');
       await page.click('[data-testid=next-topic]');
-      while (await page.$('[data-testid=explain-next]')) await page.click('[data-testid=explain-next]');
+      await skipExplain(page);
     }
   }
   const noRepeat = (l) => l.every((x, i) => i === 0 || x !== l[i - 1]);

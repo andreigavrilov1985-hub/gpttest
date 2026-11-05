@@ -5,6 +5,7 @@ import { getEnglishVoice, speak, stopSpeaking } from './speech.js';
 import { AUTHOR_MARK, verifyAuthorMark } from './author.js';
 import { phrase, typeInto, devCheckPhrases } from './cat.js';
 import * as FX from './reactions.js';
+import { loadScene, mountStep } from './explainer.js';
 
 const app = document.getElementById('app');
 let progress = P.loadProgress();
@@ -293,6 +294,7 @@ function renderExplain(topic, page = 0, { fromQuestion = false } = {}) {
       <ul>${screens[page].map((x) => `<li>${rich(x)}</li>`).join('')}</ul>
     </div>
     <div class="dots" aria-label="Экран ${page + 1} из ${screens.length}">${screens.map((_, i) => `<span class="${i === page ? 'on' : ''}"></span>`).join('')}</div>
+    <button class="linkish" data-go="memo${fromQuestion ? ':q' : ''}" data-testid="skip-explain">Пропустить объяснение →</button>
     <div class="row">
       ${page > 0 ? `<button class="btn btn--ghost" data-go="explain:${page - 1}${fromQuestion ? ':q' : ''}">Назад</button>` : ''}
       ${fromQuestion && !last ? `<button class="btn btn--ghost" data-go="resume">К вопросу</button>` : ''}
@@ -300,6 +302,72 @@ function renderExplain(topic, page = 0, { fromQuestion = false } = {}) {
         ${fromQuestion ? (last ? 'К вопросу' : 'Дальше') : last ? (s && s.idx > 0 ? 'Продолжить вопросы' : 'К вопросам!') : 'Дальше'}</button>
     </div>
   </main>`);
+}
+
+// ---------- topic: animated scene (explainers/<topic>.js) ----------
+
+function sceneTopicBack(topic) {
+  const { subject, island } = P.parseId(topic.id);
+  return `city:${subject}-${island}`;
+}
+
+function renderScene(topic, scene, page, { fromQuestion = false } = {}) {
+  document.body.dataset.screen = 'scene';
+  const n = scene.steps.length;
+  const i = Math.max(0, Math.min(page, n - 1));
+  const step = scene.steps[i];
+  const last = i === n - 1;
+  const q = fromQuestion ? ':q' : '';
+  const s = progress.session;
+  const finish = fromQuestion ? 'resume' : 'begin';
+  const nextLabel = last ? (fromQuestion ? 'К вопросу' : s && s.idx > 0 ? 'Продолжить вопросы' : 'К вопросам!') : 'Дальше';
+  const line = step.cat || (i === 0 ? say(fromQuestion ? 'hint' : 'beforeExplain') : '');
+  h(`${topBar({ back: sceneTopicBack(topic), title: `Тема ${topic.n}` })}
+  <main class="screen scene" data-testid="scene" data-step="${i}" data-steps="${n}">
+    <h2 class="explain__title">${esc(topic.title)}</h2>
+    ${bubble(line, i === 0 ? 'excited' : 'idle', 64, { cls: 'guide--scene' })}
+    <div class="scene__stage card" data-testid="scene-stage"></div>
+    <p class="scene__caption" data-testid="scene-caption">${esc(step.caption)}</p>
+    <div class="dots" aria-label="Шаг ${i + 1} из ${n}">${scene.steps.map((_, k) => `<span class="${k === i ? 'on' : ''}"></span>`).join('')}</div>
+    <div class="row scene__nav">
+      <button class="btn btn--ghost" data-go="explain:${i - 1}${q}" ${i === 0 ? 'disabled' : ''} data-testid="scene-back" aria-label="Назад">←</button>
+      <button class="btn btn--ghost" data-go="replay" data-testid="scene-replay" aria-label="Повторить шаг">↻</button>
+      <button class="btn" data-go="${last ? finish : `explain:${i + 1}${q}`}" data-testid="scene-next" data-autofocus>${nextLabel}</button>
+    </div>
+    <div class="scene__extra">
+      <button class="linkish" data-go="memo${q}" data-testid="skip-explain">Пропустить объяснение →</button>
+      ${fromQuestion && !last ? '<button class="linkish" data-go="resume" data-testid="scene-to-question">К вопросу</button>' : ''}
+    </div>
+  </main>`);
+  const stage = app.querySelector('[data-testid=scene-stage]');
+  const mount = () => mountStep(stage, step, { kitten: (mood, size) => kittenSVG(look(), mood, size) });
+  mount();
+  sceneView = { topic, scene, page: i, fromQuestion, mount };
+}
+let sceneView = null;
+
+function renderMemo(topic, scene, { fromQuestion = false } = {}) {
+  document.body.dataset.screen = 'memo';
+  const items = scene ? scene.memo : topic.explanation;
+  const s = progress.session;
+  h(`${topBar({ back: sceneTopicBack(topic), title: `Тема ${topic.n}` })}
+  <main class="screen memo">
+    <h2 class="explain__title">Памятка: ${esc(topic.title)}</h2>
+    ${bubble(say('hint'), 'thinking', 64)}
+    <div class="card memo__card" data-testid="memo">
+      <ul>${items.map((x) => `<li>${rich(x)}</li>`).join('')}</ul>
+    </div>
+    <div class="row">
+      <button class="btn btn--ghost" data-go="explain:0${fromQuestion ? ':q' : ''}" data-testid="memo-to-scene">Смотреть объяснение</button>
+      <button class="btn" data-go="${fromQuestion ? 'resume' : 'begin'}" data-testid="explain-next" data-autofocus>${fromQuestion ? 'К вопросу' : s && s.idx > 0 ? 'Продолжить вопросы' : 'К вопросам!'}</button>
+    </div>
+  </main>`);
+}
+
+async function showExplanation(topic, page, opts) {
+  const scene = await loadScene(topic.id);
+  if (scene) return renderScene(topic, scene, page, opts);
+  return renderExplain(topic, page, opts);
 }
 
 // ---------- questions ----------
@@ -369,13 +437,10 @@ function armIdle() {
 
 const soundOn = () => progress.settings?.sound !== false;
 
-// "Usual" time for a question grows with the amount of text to read; a fast answer is
-// quicker than CONFIG.FAST_ANSWER_FRACTION of it. Measured from showing the question to the
-// tap, so the reaction animation never affects it.
+// A correct answer is "fast" when it comes within CONFIG.FAST_ANSWER_MS of showing the question.
+// Measured from showing the question to the tap, so the reaction animation never affects it.
 function isFast(question, ms) {
-  const chars = question.text.length + question.options.join('').length;
-  const usual = CONFIG.USUAL_TIME_BASE_MS + chars * CONFIG.USUAL_TIME_PER_CHAR_MS;
-  return ms < usual * CONFIG.FAST_ANSWER_FRACTION;
+  return ms < CONFIG.FAST_ANSWER_MS;
 }
 
 async function setupListening(passage, topic) {
@@ -624,14 +689,22 @@ async function go(target) {
         const topic = P.getBank(subject, island).topics.find((t) => t.id === arg);
         P.startTopicSession(progress, topic);
         save();
-        return renderExplain(topic, 0);
+        return await showExplanation(topic, 0);
       }
       case 'explain': {
         const [page, q] = arg.split(':');
         const s = progress.session;
         const topic = s.kind === 'topic' ? topicOfSession() : currentSessionQuestion().topic;
-        return renderExplain(topic, Number(page), { fromQuestion: q === 'q' });
+        return await showExplanation(topic, Number(page), { fromQuestion: q === 'q' });
       }
+      case 'memo': {
+        const s = progress.session;
+        const topic = s.kind === 'topic' ? topicOfSession() : currentSessionQuestion().topic;
+        return renderMemo(topic, await loadScene(topic.id), { fromQuestion: arg === 'q' });
+      }
+      case 'replay':
+        if (sceneView) sceneView.mount();
+        return undefined;
       case 'begin':
         progress.session.stage = 'questions';
         save();
@@ -686,7 +759,7 @@ async function resumeSession() {
   const id = s.kind === 'topic' ? s.topicId : s.cityId;
   const { subject, island } = P.parseId(s.kind === 'topic' ? id : `${id}-0-0`);
   await P.loadIsland(island);
-  if (s.kind === 'topic' && s.stage === 'explain') return renderExplain(topicOfSession(), 0);
+  if (s.kind === 'topic' && s.stage === 'explain') return showExplanation(topicOfSession(), 0);
   if (s.kind === 'topic' && !P.getBank(subject, island)) return renderMap();
   return renderQuestion();
 }
