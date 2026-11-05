@@ -44,7 +44,7 @@ export const table = (y = 196) => `<rect x="0" y="${y}" width="360" height="${24
 /** Line drawn progressively by the engine (dash 0 → 1). */
 export const cutLine = (name, x1, y1, x2, y2, color = '#23324a') => `<line data-a="${name}" data-draw x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="3.5" stroke-linecap="round"/>`;
 
-export const label = (name, text, { size = 18, color = '#23324a', anchor = 'middle', weight = 800 } = {}) => `<text data-a="${name}" font-family="Nunito, sans-serif" font-weight="${weight}" font-size="${size}" fill="${color}" text-anchor="${anchor}" paint-order="stroke" stroke="#fff" stroke-width="4">${text}</text>`;
+export const label = (name, text, { size = 18, color = '#23324a', anchor = 'middle', weight = 800, stroke = '#fff' } = {}) => `<text data-a="${name}" font-family="Nunito, sans-serif" font-weight="${weight}" font-size="${size}" fill="${color}" text-anchor="${anchor}" paint-order="stroke" stroke="${stroke}" stroke-width="4">${text}</text>`;
 
 /** Big fraction n/d built from two text actors and a bar: `${name}N`, `${name}D`, `${name}Bar`. */
 export const fraction = (name, n = '', d = '') => `${label(`${name}N`, n, { size: 30, color: '#ff7a59' })}

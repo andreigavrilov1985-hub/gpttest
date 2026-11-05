@@ -80,7 +80,13 @@ export function createCartoon(stage, captionEl, scene, { kitten, reduced = false
       const from = { ...state[name] };
       const to = { ...from, ...a };
       if (reduced || dur <= 0) { state[name] = to; apply(name); return; }
-      tweens = tweens.filter((tw) => tw.name !== name || !Object.keys(a).some((k) => k in tw.to));
+      // a new tween takes over only the properties it animates; the old one keeps the rest
+      const newKeys = Object.keys(a);
+      tweens = tweens.filter((tw) => {
+        if (tw.name !== name) return true;
+        tw.keys = tw.keys.filter((k) => !newKeys.includes(k));
+        return tw.keys.length > 0;
+      });
       tweens.push({ name, from, to, keys: Object.keys(a), start: b[0], dur, ease });
     }
   }
