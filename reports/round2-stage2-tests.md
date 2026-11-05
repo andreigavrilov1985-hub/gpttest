@@ -1,12 +1,9 @@
-# Автотесты: раунд 2, этап 2 (сценки)
+# Автотесты: мини-мультик «Дроби» (раунд 2, этап 2)
 
-Chromium (Playwright), 2026-11-05.
-
-## tests/scenes.test.mjs
 ```
 Round 2 / stage 2: scenes
   ✔ Список сценок explainers/index.js совпадает с файлами
-    math-1-2: 6 шагов, ~89 с
+    math-1-2: мультик, 6 серий, ~80 с
     english-1-2: 6 шагов, ~85 с
     science-1-3: 6 шагов, ~87 с
     geography-1-1: 6 шагов, ~86 с
@@ -21,8 +18,4 @@ Round 2 / stage 2: scenes
 7/7 проверок пройдено
 ```
 
-## Регрессия
-```
-tests/round2.test.mjs: 9/9 проверок пройдено
-tests/island1.test.mjs: 11/11 проверок пройдено
-```
+Регрессия: tests/round2.test.mjs 9/9, tests/island1.test.mjs 11/11.

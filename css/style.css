@@ -464,3 +464,23 @@ body[data-screen='start'] .mark { position: fixed; left: 0; right: 0; bottom: 0;
 
 .blk-part:focus { outline: none; }
 .blk-part:focus-visible { stroke: var(--sun); stroke-width: 5; }
+
+/* ================= round 2: mini-cartoons ================= */
+.cartoon-title { text-align: center; color: var(--ink-soft); font-weight: 700; margin-top: -8px; }
+.cartoon-stage { padding: 6px; overflow: hidden; background: linear-gradient(180deg, #fffaf0, #fff3dc); }
+.cartoon { display: block; width: 100%; height: auto; max-height: 52vh; }
+.cartoon text { user-select: none; }
+.cartoon-sub { margin: 0; min-height: 3.2em; font-size: 1.15rem; font-weight: 800; text-align: center; color: var(--ink); }
+.cartoon-tap { cursor: pointer; }
+.cartoon-tap:hover { filter: brightness(1.06); }
+.cartoon-tap:focus { outline: none; }
+.cartoon-tap:focus-visible path:first-child { stroke: var(--sea); }
+.pct-cell { fill: #cfe6ef; transition: fill .25s; }
+.pct-cell.fx-gold { fill: #ffcf3f; }
+.btn.pulse { animation: pulseBtn 1.2s ease-in-out 3; }
+@keyframes pulseBtn { 50% { transform: scale(1.06); box-shadow: 0 5px 0 #d65638, 0 0 0 8px rgba(255, 122, 89, .25); } }
+@media (min-width: 900px) { .cartoon { max-height: 58vh; } }
+@media (prefers-reduced-motion: reduce) { .btn.pulse { animation: none; } }
+
+.scene--cartoon .scene__nav .btn--ghost { min-width: 50px; padding: 10px 12px; }
+.scene--cartoon .scene__nav .btn:last-child { white-space: nowrap; padding: 10px 14px; }

@@ -6,6 +6,7 @@ import { AUTHOR_MARK, verifyAuthorMark } from './author.js';
 import { phrase, typeInto, devCheckPhrases } from './cat.js';
 import * as FX from './reactions.js';
 import { loadScene, mountStep } from './explainer.js';
+import { createCartoon } from './cartoon.js';
 
 const app = document.getElementById('app');
 let progress = P.loadProgress();
@@ -29,6 +30,7 @@ const say = (group, extra) => phrase(group, vars(extra));
 
 function h(html) {
   stopSpeaking();
+  if (typeof cartoonPlayer !== 'undefined' && cartoonPlayer) { cartoonPlayer.destroy(); cartoonPlayer = null; }
   clearTimeout(idleTimer);
   FX.clearEffects();
   app.innerHTML = html;
@@ -364,8 +366,63 @@ function renderMemo(topic, scene, { fromQuestion = false } = {}) {
   </main>`);
 }
 
+let cartoonPlayer = null;
+
+function renderCartoon(topic, scene, page, { fromQuestion = false } = {}) {
+  document.body.dataset.screen = 'scene';
+  const n = scene.episodes.length;
+  const i = Math.max(0, Math.min(page, n - 1));
+  const ep = scene.episodes[i];
+  const last = i === n - 1;
+  const q = fromQuestion ? ':q' : '';
+  const s = progress.session;
+  const finish = fromQuestion ? 'resume' : 'begin';
+  const nextLabel = last ? (fromQuestion ? 'К вопросу' : s && s.idx > 0 ? 'Продолжить вопросы' : 'К вопросам!') : 'Дальше';
+  h(`${topBar({ back: sceneTopicBack(topic), title: `Тема ${topic.n} · мультик` })}
+  <main class="screen scene scene--cartoon" data-testid="scene" data-step="${i}" data-steps="${n}">
+    <h2 class="explain__title">${esc(topic.title)}</h2>
+    <div class="cartoon-title">Серия ${i + 1} из ${n}: <b>${esc(ep.title)}</b></div>
+    <div class="cartoon-stage card" data-testid="scene-stage"></div>
+    <p class="cartoon-sub" data-testid="scene-caption" aria-live="polite"></p>
+    <div class="dots" aria-label="Серия ${i + 1} из ${n}">${scene.episodes.map((_, k) => `<span class="${k === i ? 'on' : ''}"></span>`).join('')}</div>
+    <div class="row scene__nav">
+      <button class="btn btn--ghost" data-go="explain:${i - 1}${q}" ${i === 0 ? 'disabled' : ''} data-testid="scene-back" aria-label="Предыдущая серия">←</button>
+      <button class="btn btn--ghost" data-go="cartoon-toggle" data-testid="scene-pause" aria-label="Пауза">❚❚</button>
+      <button class="btn btn--ghost" data-go="replay" data-testid="scene-replay" aria-label="Смотреть ещё раз">↻</button>
+      <button class="btn" data-go="${last ? finish : `explain:${i + 1}${q}`}" data-testid="scene-next">${nextLabel}</button>
+    </div>
+    <div class="scene__extra">
+      <button class="linkish" data-go="memo${q}" data-testid="skip-explain">Пропустить мультик → памятка</button>
+      ${fromQuestion && !last ? '<button class="linkish" data-go="resume" data-testid="scene-to-question">К вопросу</button>' : ''}
+    </div>
+  </main>`);
+  const stage = app.querySelector('[data-testid=scene-stage]');
+  const sub = app.querySelector('[data-testid=scene-caption]');
+  const pauseBtn = app.querySelector('[data-testid=scene-pause]');
+  const sync = () => {
+    pauseBtn.textContent = cartoonPlayer.playing && !cartoonPlayer.ended ? '❚❚' : '▶';
+    pauseBtn.setAttribute('aria-label', cartoonPlayer.playing && !cartoonPlayer.ended ? 'Пауза' : 'Смотреть');
+  };
+  if (cartoonPlayer) cartoonPlayer.destroy();
+  cartoonPlayer = createCartoon(stage, sub, ep, {
+    kitten: (mood, size) => kittenSVG(look(), mood, size),
+    reduced: FX.reducedMotion(),
+    onEnd: () => {
+      sync();
+      app.querySelector('[data-testid=scene-next]')?.classList.add('pulse');
+    },
+  });
+  cartoonPlayer.play();
+  sync();
+  sceneView = { mount: () => { cartoonPlayer.replay(); sync(); app.querySelector('[data-testid=scene-next]')?.classList.remove('pulse'); } };
+  cartoonView = { sync };
+}
+let cartoonView = null;
+
 async function showExplanation(topic, page, opts) {
+  if (cartoonPlayer) { cartoonPlayer.destroy(); cartoonPlayer = null; }
   const scene = await loadScene(topic.id);
+  if (scene && scene.kind === 'cartoon') return renderCartoon(topic, scene, page, opts);
   if (scene) return renderScene(topic, scene, page, opts);
   return renderExplain(topic, page, opts);
 }
@@ -704,6 +761,14 @@ async function go(target) {
       }
       case 'replay':
         if (sceneView) sceneView.mount();
+        return undefined;
+      case 'cartoon-toggle':
+        if (cartoonPlayer) {
+          if (cartoonPlayer.ended) cartoonPlayer.replay();
+          else if (cartoonPlayer.playing) cartoonPlayer.pause();
+          else cartoonPlayer.play();
+          cartoonView?.sync();
+        }
         return undefined;
       case 'begin':
         progress.session.stage = 'questions';
