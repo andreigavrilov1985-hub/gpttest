@@ -350,7 +350,8 @@ let sceneView = null;
 
 function renderMemo(topic, scene, { fromQuestion = false } = {}) {
   document.body.dataset.screen = 'memo';
-  const items = scene ? scene.memo : topic.explanation;
+  // Памятка: the scene's own memo, or the topic explanation from the question bank (defines every term).
+  const items = scene && scene.memo ? scene.memo : topic.explanation;
   const s = progress.session;
   h(`${topBar({ back: sceneTopicBack(topic), title: `Тема ${topic.n}` })}
   <main class="screen memo">

@@ -484,3 +484,7 @@ body[data-screen='start'] .mark { position: fixed; left: 0; right: 0; bottom: 0;
 
 .scene--cartoon .scene__nav .btn--ghost { min-width: 50px; padding: 10px 12px; }
 .scene--cartoon .scene__nav .btn:last-child { white-space: nowrap; padding: 10px 14px; }
+.cartoon text.fx-gold { fill: #ff7a59; }
+.cartoon .fx-gold rect, .cartoon rect.fx-gold:not(.pct-cell) { fill: #ffcf3f; }
+.cartoon .fx-dim { opacity: .35; }
+.cartoon .fx-cross { text-decoration: line-through; }

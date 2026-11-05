@@ -81,11 +81,13 @@ async function checkCartoon(page, id, full) {
       assert.ok(await stageT(page) < 400, 'повтор начинает серию сначала');
     }
     if (eps[i].interact) {
-      const [first] = eps[i].interact.targets;
+      const it = eps[i].interact;
+      const first = it.type === 'tapEat' ? it.targets[0] : Object.keys(it.items)[0];
       await page.waitForTimeout(800);
-      await page.click(`[data-testid=scene-stage] [data-a="${first}"]`);
+      await page.click(`[data-testid=scene-stage] [data-a="${first}"]`, { force: true });
       assert.equal(await page.getAttribute('[data-testid=scene-stage]', 'data-touched'), '1', 'нажатие работает');
-      assert.equal((await page.textContent(`[data-testid=scene-stage] [data-a="${eps[i].interact.counter}"]`)).trim(), '1');
+      if (it.type === 'tapEat') assert.equal((await page.textContent(`[data-testid=scene-stage] [data-a="${it.counter}"]`)).trim(), '1');
+      else if (it.items[first].say) assert.equal(await page.textContent('[data-testid=scene-caption]'), it.items[first].say);
     }
     if (full) {
       await page.waitForSelector('[data-testid=scene-stage][data-ended="1"]', { timeout: (eps[i].duration || 15000) + 8000 });

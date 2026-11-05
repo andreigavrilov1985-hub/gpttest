@@ -88,7 +88,7 @@ export function createCartoon(stage, captionEl, scene, { kitten, reduced = false
   function step(now) {
     const dt = last ? Math.min(64, now - last) : 16;
     last = now;
-    t += dt;
+    t += dt * (window.__cartoonSpeed || 1); // speed-up is used only by autotests
     advance();
     if (playing && !ended) raf = requestAnimationFrame(step);
   }
@@ -167,6 +167,36 @@ export function createCartoon(stage, captionEl, scene, { kitten, reduced = false
         if (it.say && captionEl) captionEl.textContent = it.say(eaten);
         if (it.cat) setMood(it.cat, eaten === it.total ? 'celebrate' : 'happy');
         if (!playing) { // keep the clock running for the flight even if paused or ended
+          const tick = (now) => { const dt = last ? Math.min(64, now - last) : 16; last = now; t += dt; advance(); if (tweens.length) requestAnimationFrame(tick); else last = 0; };
+          last = 0;
+          requestAnimationFrame(tick);
+        }
+      };
+      el.addEventListener('click', go);
+      el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+    });
+  }
+
+  // tapShow: tapping a target shows its actors and its subtitle (e.g. "tap the word to see what it means")
+  if (scene.interact && scene.interact.type === 'tapShow') {
+    const it = scene.interact;
+    Object.entries(it.items).forEach(([name, cfg]) => {
+      const el = actors[name];
+      if (!el) return;
+      el.classList.add('cartoon-tap');
+      el.setAttribute('role', 'button');
+      el.setAttribute('tabindex', '0');
+      el.setAttribute('aria-label', cfg.label || 'Нажми');
+      const go = () => {
+        stage.dataset.touched = '1';
+        (cfg.show || []).forEach((n) => {
+          if (!state[n]) return;
+          tweens.push({ name: n, from: { ...state[n] }, to: { ...state[n], o: 1, s: 1 }, keys: ['o', 's'], start: t, dur: 420, ease: 'back' });
+        });
+        if (cfg.say && captionEl) captionEl.textContent = cfg.say;
+        if (cfg.mood && it.cat) setMood(it.cat, cfg.mood);
+        tweens.push({ name, from: { ...state[name] }, to: { ...state[name], s: state[name].s }, keys: ['s'], start: t, dur: 1, ease: 'linear' });
+        if (!playing || ended) {
           const tick = (now) => { const dt = last ? Math.min(64, now - last) : 16; last = now; t += dt; advance(); if (tweens.length) requestAnimationFrame(tick); else last = 0; };
           last = 0;
           requestAnimationFrame(tick);
