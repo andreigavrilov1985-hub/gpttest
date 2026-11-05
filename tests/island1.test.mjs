@@ -271,7 +271,7 @@ await step('Варианты A/B/C перемешиваются при кажд�
   assert.ok(orders.size >= 3, `different orders seen: ${orders.size}`);
   // explanation can be reopened from a question and returns to the same question
   await page.click('[data-testid=reopen-explain]');
-  await page.waitForSelector('[data-testid=explain-card]');
+  await page.waitForSelector('[data-testid=explain-card], [data-testid=scene]');
   await skipExplain(page);
   await page.waitForSelector('[data-testid=q-counter]');
   assert.equal((await page.textContent('[data-testid=q-counter]')).trim(), '1/10');
@@ -398,7 +398,7 @@ await step('Скриншоты 360×800 и десктоп', async () => {
     await page.screenshot({ path: `${SHOTS}/${prefix}-04-island.png` });
     await page.click('[data-testid=continue]');
     await page.click('[data-testid=next-topic]');
-    await page.waitForSelector('[data-testid=explain-card]');
+    await page.waitForSelector('[data-testid=explain-card], [data-testid=scene]');
     await page.screenshot({ path: `${SHOTS}/${prefix}-05-explanation.png` });
     await skipExplain(page);
     await page.waitForSelector('[data-testid=option]');

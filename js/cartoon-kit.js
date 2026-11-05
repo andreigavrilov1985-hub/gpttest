@@ -47,7 +47,8 @@ export const setText = (t, name, s) => [[t, 'text', name, s]];
 export const draw = (t, name, dur = 600) => [[t, 'to', name, { dash: 1 }, dur, 'linear']];
 export const mark = (t, names, cls = 'fx-gold') => [].concat(names).map((n) => [t, 'cls', n, cls]);
 export const wiggle = (t, name) => [[t, 'to', name, { r: -10 }, 150], [t + 150, 'to', name, { r: 10 }, 150], [t + 300, 'to', name, { r: 0 }, 150]];
-export const beat = (...lists) => lists.flat();
+// Accepts single beats ([ms, kind, …]) and lists of beats in any mix.
+export const beat = (...lists) => lists.flatMap((l) => (typeof l[0] === 'number' ? [l] : l.flatMap((x) => (typeof x[0] === 'number' ? [x] : x))));
 
 /** Episode builder with sane defaults. */
 export const episode = (o) => ({ duration: Math.max(...o.beats.map((b) => b[0] + (b[4] || 0))) + 2200, ...o });

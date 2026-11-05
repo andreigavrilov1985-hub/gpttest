@@ -9,7 +9,7 @@ import { cartoonSeconds } from '../js/cartoon.js';
 const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
 const BASE = process.env.BASE_URL || 'http://127.0.0.1:8080/';
-const IDS = ['math-1-2', 'english-1-2', 'science-1-3', 'geography-1-1', 'logic-1-1'];
+const { SCENES: IDS } = await import('../explainers/index.js');
 const scenes = {};
 for (const id of IDS) scenes[id] = (await import(`../explainers/${id}.js`)).default;
 
@@ -31,6 +31,8 @@ async function newPage(browser, viewport) {
   await page.fill('[data-testid=kitten-name]', 'Пушок');
   await page.click('[data-testid=setup-done]');
   await page.waitForSelector('[data-testid=go-island]');
+  // cartoons play 4× faster in the test only (the engine reads this flag); pause/replay checks are unaffected
+  await page.evaluate(() => { window.__cartoonSpeed = 4; });
   return page;
 }
 const stepNo = async (page) => Number(await page.getAttribute('[data-testid=scene]', 'data-step'));
@@ -80,6 +82,7 @@ async function checkCartoon(page, id, full) {
       await page.click('[data-testid=scene-replay]');
       assert.ok(await stageT(page) < 400, 'повтор начинает серию сначала');
     }
+    if (eps[i].interact && full) await page.waitForSelector('[data-testid=scene-stage][data-ended="1"]', { timeout: (eps[i].duration || 15000) + 8000 });
     if (eps[i].interact) {
       const it = eps[i].interact;
       const first = it.type === 'tapEat' ? it.targets[0] : Object.keys(it.items)[0];
@@ -198,25 +201,25 @@ await step('Из вопроса: «Подсказка от котёнка» от
 
 await step('Тема без сценки: прежний текст шагами с котёнком, пропуск → памятка из текста', async () => {
   const page = await newPage(browser, { width: 360, height: 800 });
-  await page.evaluate(() => window.__game.go('topic:math-1-1'));
+  await page.evaluate(() => window.__game.go('topic:math-2-1'));
   await page.waitForSelector('[data-testid=explain-card]');
   assert.equal(await page.$('[data-testid=scene]'), null);
   await page.click('[data-testid=skip-explain]');
   await page.waitForSelector('[data-testid=memo]');
-  const bank = JSON.parse(readFileSync('data/math-island1.json', 'utf8'));
+  const bank = JSON.parse(readFileSync('data/math-island2.json', 'utf8'));
   assert.equal(await page.$$eval('[data-testid=memo] li', (l) => l.length), bank.topics[0].explanation.length);
   await page.context().close();
 });
 
 await step('Таблица «термин — шаг сценки» записана в reports/explainers-terms.md', async () => {
-  const out = ['# Термины сценок острова 1 (пробные 5 тем)', '', 'Каждый термин из вопросов темы определён в указанном шаге сценки и повторён в памятке.', ''];
+  const out = ['# Термины мультиков острова 1', '', 'Каждый термин из вопросов темы определён в указанной серии мультика и/или в памятке (памятка: своя у мультика или объяснение темы из банка вопросов).', ''];
   for (const id of IDS) {
     const bank = JSON.parse(readFileSync(`data/${id.split('-')[0]}-island1.json`, 'utf8'));
     const t = bank.topics.find((x) => x.id === id);
     out.push(`## ${id} — ${t.title}`, '', '| Термин | Шаг / серия | Подпись или субтитры |', '|---|---|---|');
     if (isCartoon(id)) {
       scenes[id].episodes.forEach((e, i) => e.terms.forEach((term) => out.push(`| ${term} | серия ${i + 1} «${e.title}» | ${e.beats.filter((b) => b[1] === 'cap').map((b) => b[2]).join(' ').replace(/\|/g, '/')} |`)));
-      out.push('', 'Только в памятке: умножение дробей, деление дроби на целое, дробь больше 1, 3/8 = 0,375.');
+      if (id === 'math-1-2') out.push('', 'Только в памятке: умножение дробей, деление дроби на целое, дробь больше 1, 3/8 = 0,375.');
     } else scenes[id].steps.forEach((s, i) => s.terms.forEach((term) => out.push(`| ${term} | ${i + 1} | ${s.caption.replace(/\|/g, '/')} |`)));
     out.push('');
   }

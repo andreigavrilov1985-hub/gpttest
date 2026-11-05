@@ -124,4 +124,11 @@ const ep5 = episode({
   ),
 });
 
+// интерактив: нажми — котёнок объяснит
+ep4.interact = { type: 'tapShow', cat: 'cat', items: {
+  m: { say: 'Сначала умножение: 3 × 4 = 12.', mood: 'happy' },
+  n5: { say: 'Сложение — потом: 5 + 12 = 17.' },
+  rule: { say: 'Скобки — первыми, потом × и ÷, потом + и −.' },
+} };
+
 export default { topic: 'math-1-1', kind: 'cartoon', episodes: [ep1, ep2, ep3, ep4, ep5] };

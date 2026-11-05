@@ -76,4 +76,10 @@ const ep4 = episode({
   ),
 });
 
+// интерактив: нажми — котёнок объяснит
+ep3.interact = { type: 'tapShow', cat: 'cat', items: {
+  inc: { say: 'Incisors — резцы: передние зубы, откусывают.' }, mol: { say: 'Molars — коренные зубы: перетирают еду.' },
+  stom: { show: ['st'], say: 'Stomach — желудок: переваривает еду.' },
+} };
+
 export default { topic: 'science-1-2', kind: 'cartoon', episodes: [ep1, ep2, ep3, ep4] };

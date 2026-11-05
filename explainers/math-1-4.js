@@ -107,4 +107,10 @@ const ep5 = episode({
   ),
 });
 
+// интерактив: нажми — котёнок объяснит
+ep2.interact = { type: 'tapShow', cat: 'cat', items: {
+  x: { show: ['ans'], say: 'В коробочке x спряталось 8: 8 + 7 = 15.', mood: 'celebrate' },
+  fifteen: { say: 'Справа 15 — столько же, сколько x + 7 слева.' },
+} };
+
 export default { topic: 'math-1-4', kind: 'cartoon', episodes: [ep1, ep2, ep3, ep4, ep5] };

@@ -488,3 +488,5 @@ body[data-screen='start'] .mark { position: fixed; left: 0; right: 0; bottom: 0;
 .cartoon .fx-gold rect, .cartoon rect.fx-gold:not(.pct-cell) { fill: #ffcf3f; }
 .cartoon .fx-dim { opacity: .35; }
 .cartoon .fx-cross { text-decoration: line-through; }
+/* labels never block taps on the cartoon's interactive objects */
+.cartoon text:not(.cartoon-tap), .cartoon text:not(.cartoon-tap) * { pointer-events: none; }

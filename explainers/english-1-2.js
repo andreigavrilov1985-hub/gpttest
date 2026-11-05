@@ -105,6 +105,12 @@ const ep5 = episode({
   ),
 });
 
+// интерактив: нажми — котёнок объяснит
+ep5.interact = { type: 'tapShow', cat: 'cat', items: {
+  q1: { say: 'Do — слово-помощник: с него начинается вопрос.' }, q2: { say: 'You — ты.' },
+  q3: { say: 'Like — нравиться, любить.' }, q4: { say: 'Pizza — пицца. А в конце — знак вопроса.' },
+} };
+
 export default {
   topic: 'english-1-2',
   kind: 'cartoon',

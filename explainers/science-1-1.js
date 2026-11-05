@@ -77,4 +77,12 @@ const ep4 = episode({
   ),
 });
 
+// интерактив: нажми — котёнок объяснит
+ep2.interact = { type: 'tapShow', cat: 'cat', items: {
+  fish: { show: ['spine', 'vt'], say: 'У рыбы есть позвоночник: vertebrate.' },
+  spine: { show: ['vt'], say: 'У рыбы есть позвоночник: vertebrate.' },
+  dol: { show: ['mm'], say: 'Дельфин — mammal: дышит воздухом, кормит детёнышей молоком.' },
+  ant: { show: ['legs'], say: 'Муравей — insect: 6 ног.' }, spi: { show: ['legs8'], say: 'Паук: 8 ног — не насекомое.' },
+} };
+
 export default { topic: 'science-1-1', kind: 'cartoon', episodes: [ep1, ep2, ep3, ep4] };

@@ -128,4 +128,9 @@ const ep5 = episode({
   ),
 });
 
+// интерактив: нажми — котёнок объяснит
+ep2.interact = { type: 'tapShow', cat: 'cat', items: {
+  w1: { say: 'Оранжевый угол — 50°.' }, w2: { say: 'Голубой угол — 60°.' }, w3: { say: 'Зелёный угол — 70°. Вместе 180°!' },
+} };
+
 export default { topic: 'math-1-3', kind: 'cartoon', episodes: [ep1, ep2, ep3, ep4, ep5] };

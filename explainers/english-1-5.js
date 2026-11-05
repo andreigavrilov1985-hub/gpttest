@@ -56,4 +56,10 @@ const ep3 = episode({
   ),
 });
 
+// интерактив: нажми — котёнок объяснит
+ep3.interact = { type: 'tapShow', cat: 'cat', items: {
+  not: { show: ['cross'], say: 'Do not — НЕ делай. Игрушки не брать!', mood: 'surprised' },
+  s: { say: 'Bring — принеси.' },
+} };
+
 export default { topic: 'english-1-5', kind: 'cartoon', episodes: [ep1, ep2, ep3] };
