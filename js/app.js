@@ -760,9 +760,13 @@ function exportProgress() {
 
 // ---------- routing ----------
 
+// A new version of the game was downloaded in the background: switch to it at a calm moment
+// (start screen or map), never in the middle of a question. Progress is kept in localStorage.
+let updateReady = false;
 async function go(target) {
   const [name, ...rest] = target.split(':');
   const arg = rest.join(':');
+  if (updateReady && ['map', 'start', 'island'].includes(name)) { save(); location.reload(); return undefined; }
   try {
     switch (name) {
       case 'start': return renderStart();
@@ -905,7 +909,13 @@ function boot() {
   getRussianVoice().then((v) => { hasVoice = !!v; });
   renderStart();
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
+    const hadController = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (!hadController) return; // first install: the page is already up to date
+      updateReady = true;
+      if (['start', 'map'].includes(document.body.dataset.screen)) { save(); location.reload(); }
+    });
+    navigator.serviceWorker.register('sw.js').then((r) => r.update()).catch(() => {});
   }
 }
 
