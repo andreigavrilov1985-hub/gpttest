@@ -276,3 +276,28 @@ export function topicResumeAt(p, topicId) {
   const pd = p.topics[topicId]?.pending;
   return pd && pd.idx > 0 && pd.idx < pd.order.length ? pd.idx : 0;
 }
+
+/** Admin: set the progress to "the child is at island I, city C (0-based), with D topics done there".
+ *  Everything before that point is marked as passed with all answers right. Banks of islands 1..I must be loaded. */
+export function setProgressTo(p, island, cityIdx, topicsDone) {
+  p.topics = {};
+  p.cities = {};
+  p.islandsPassed = {};
+  p.session = null;
+  p.seenIslands = {};
+  const full = (t) => ({ answers: Object.fromEntries(t.questions.map((q) => [q.id, true])), attempts: 1, done: true, skipped: false, best: 1, stars: 3 });
+  let correct = 0;
+  for (let i = 1; i <= island; i += 1) {
+    p.seenIslands[i] = true;
+    CONFIG.SUBJECTS.forEach((s, ci) => {
+      const bank = getBank(s, i);
+      if (!bank) return;
+      bank.topics.forEach((t, ti) => {
+        const before = i < island || ci < cityIdx || (ci === cityIdx && ti < topicsDone);
+        if (before) { p.topics[t.id] = full(t); correct += t.questions.length; }
+      });
+    });
+    if (i < island) markIslandPassed(p, i);
+  }
+  return correct * CONFIG.COINS_PER_CORRECT;
+}

@@ -7,6 +7,7 @@ import { phrase, typeInto, devCheckPhrases } from './cat.js';
 import * as FX from './reactions.js';
 import { loadScene, mountStep } from './explainer.js';
 import { createCartoon } from './cartoon.js';
+import { maybeBackup, listBackups, summary as backupSummary, askPersistent } from './backup.js';
 
 const app = document.getElementById('app');
 let progress = P.loadProgress();
@@ -20,7 +21,7 @@ const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&
 // Explanations may contain <b>…</b> from Notion; everything else is escaped.
 const rich = (s) => esc(s).replace(/&lt;(\/?)b&gt;/g, '<$1b>').replace(/\n/g, '<br>');
 const pct = (x) => `${Math.round(x * 100)}%`;
-const save = () => P.saveProgress(progress);
+const save = () => { const ok = P.saveProgress(progress); maybeBackup(progress); return ok; };
 const look = () => progress.profile?.kitten || { main: 'ginger', pattern: 'plain' };
 const kid = () => progress.profile?.childName || 'друг';
 const kitty = () => progress.profile?.kittenName || 'Котёнок';
@@ -88,6 +89,7 @@ function renderStart() {
     <div class="start__cat">${kittenSVG(look(), 'excited', 170)}</div>
     ${hasProfile ? `<p class="start__hello" data-say="${esc(say(isComeback ? 'comeback' : 'greeting'))}" data-testid="cat-line"></p>` : ''}
     <button class="btn btn--big" data-go="${hasProfile ? 'map' : 'setup'}" data-testid="start" data-autofocus>${hasProfile ? 'Продолжить' : 'Начать игру'}</button>
+    <button class="linkish start__admin" data-go="admin" data-testid="admin-open">Для взрослых</button>
   </main>`);
 }
 
@@ -720,9 +722,9 @@ function renderSettings() {
       <div class="row row--wrap">
         <button class="btn btn--ghost" data-go="export" data-testid="export">Сохранить в файл</button>
         <label class="btn btn--ghost">Загрузить из файла<input type="file" accept="application/json,.json" id="import-file" hidden></label>
-        <button class="btn btn--danger" data-go="reset" data-testid="reset">Сбросить прогресс</button>
       </div>
       <p class="muted" id="settings-msg" aria-live="polite"></p>
+      <button class="btn btn--ghost" data-go="admin" data-testid="admin-open">Для взрослых (код)</button>
     </section>
     <section class="card about">
       <h3>Об игре</h3>
@@ -756,6 +758,118 @@ function exportProgress() {
   a.click();
   a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
+// ---------- admin (for parents/teacher, code CONFIG.ADMIN_CODE) ----------
+// It is a lock against children, not real security: everything lives on this device.
+let adminUnlocked = false;
+const ruDate = (t) => new Date(t).toLocaleString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+const sumLine = (x) => `${esc(x.child)} · котёнок ${esc(x.kitten)} · тем пройдено: ${x.done} · островов: ${x.islands} · монет: ${x.coins}`;
+
+function renderAdminLock(error = '') {
+  document.body.dataset.screen = 'admin';
+  h(`${topBar({ back: progress.profile ? 'settings' : 'start', title: 'Для взрослых' })}
+  <main class="screen settings">
+    <form class="card" data-testid="admin-lock">
+      <h3>Введите код</h3>
+      <input name="code" type="password" inputmode="numeric" autocomplete="off" maxlength="8" data-testid="admin-code" data-autofocus>
+      ${error ? `<p class="admin__err" data-testid="admin-error">${error}</p>` : ''}
+      <button class="btn" type="submit" data-testid="admin-enter">Войти</button>
+    </form>
+  </main>`);
+  app.querySelector('[data-testid=admin-lock]').addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (String(new FormData(e.target).get('code')).trim() === CONFIG.ADMIN_CODE) { adminUnlocked = true; renderAdmin(); } else renderAdminLock('Неверный код');
+  });
+}
+
+async function renderAdmin(msg = '') {
+  if (!adminUnlocked) return renderAdminLock();
+  document.body.dataset.screen = 'admin';
+  const backups = await listBackups();
+  const cur = backupSummary(progress);
+  const isl = P.currentIsland(progress);
+  const opt = (n, from, sel, label) => Array.from({ length: n }, (_, i) => i + from).map((v) => `<option value="${v}"${v === sel ? ' selected' : ''}>${label(v)}</option>`).join('');
+  h(`${topBar({ back: progress.profile ? 'settings' : 'start', title: 'Админка' })}
+  <main class="screen settings admin" data-testid="admin">
+    ${msg ? `<p class="admin__msg card" data-testid="admin-msg">${msg}</p>` : ''}
+    <section class="card">
+      <h3>Сейчас на этом устройстве</h3>
+      <p data-testid="admin-current">${progress.profile ? sumLine(cur) : 'Прогресса нет (новый игрок).'}</p>
+    </section>
+    <section class="card">
+      <h3>Резервные копии</h3>
+      <p class="muted">Игра сама сохраняет копии прогресса на этом устройстве. Выберите, к какой вернуться.</p>
+      ${backups.length ? `<ul class="admin__list" data-testid="admin-backups">${backups.map((b) => `<li><span><b>${ruDate(b.at)}</b><br>${sumLine(b.summary)}</span>
+        <button class="btn btn--ghost" data-go="admin-restore:${b.at}" data-testid="admin-restore">Восстановить</button></li>`).join('')}</ul>`
+        : '<p data-testid="admin-no-backups">Копий пока нет.</p>'}
+    </section>
+    <section class="card">
+      <h3>Восстановить вручную</h3>
+      <p class="muted">Укажите, где ребёнок остановился. Всё, что раньше, будет отмечено как пройденное.</p>
+      <form class="admin__form" data-testid="admin-manual">
+        <label>Имя ребёнка <input name="childName" maxlength="20" value="${esc(progress.profile?.childName || '')}" required data-testid="admin-child"></label>
+        <label>Имя котёнка <input name="kittenName" maxlength="16" value="${esc(progress.profile?.kittenName || '')}" required data-testid="admin-kitten"></label>
+        <label>Остров <select name="island" data-testid="admin-island">${opt(5, 1, isl, (v) => `${v} — ${ISLAND_INFO[v].name}`)}</select></label>
+        <label>Город на острове <select name="city" data-testid="admin-city">${opt(5, 0, 0, (v) => `${v + 1} — ${SUBJECT_INFO[CONFIG.SUBJECTS[v]].city} (${SUBJECT_INFO[CONFIG.SUBJECTS[v]].name})`)}</select></label>
+        <label>Пройдено тем в этом городе <select name="topics" data-testid="admin-topics">${opt(6, 0, 0, (v) => String(v))}</select></label>
+        <label>Монеты (пусто — посчитать) <input name="coins" type="number" min="0" max="99999" data-testid="admin-coins"></label>
+        <button class="btn" type="submit" data-testid="admin-apply">Применить</button>
+      </form>
+    </section>
+    <section class="card">
+      <h3>Файл прогресса</h3>
+      <div class="row row--wrap">
+        <button class="btn btn--ghost" data-go="export" data-testid="admin-export">Сохранить в файл</button>
+        <label class="btn btn--ghost">Загрузить из файла<input type="file" accept="application/json,.json" hidden data-testid="admin-import"></label>
+      </div>
+    </section>
+    <section class="card">
+      <h3>Новый игрок</h3>
+      <button class="btn btn--danger" data-go="reset" data-testid="reset">Сбросить прогресс</button>
+    </section>
+  </main>`);
+  app.querySelector('[data-testid=admin-manual]').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const island = Number(fd.get('island'));
+    maybeBackup(progress, true); // the current state can be returned from the list
+    for (let i = 1; i <= island; i += 1) await P.loadIsland(i);
+    const coins = P.setProgressTo(progress, island, Number(fd.get('city')), Number(fd.get('topics')));
+    const look0 = progress.profile?.kitten || { main: 'ginger', second: 'white', pattern: 'plain' };
+    progress.profile = { childName: String(fd.get('childName')).trim(), kittenName: String(fd.get('kittenName')).trim(), kitten: look0 };
+    progress.coins = fd.get('coins') === '' ? coins : Number(fd.get('coins'));
+    save();
+    maybeBackup(progress, true);
+    renderAdmin('Прогресс установлен.');
+  });
+  app.querySelector('[data-testid=admin-import]').addEventListener('change', async (e) => {
+    const f = e.target.files[0];
+    if (!f) return;
+    try {
+      const data = JSON.parse(await f.text());
+      if (!P.validateImported(data)) throw new Error('bad');
+      maybeBackup(progress, true);
+      progress = P.migrate(data);
+      save();
+      renderAdmin('Прогресс загружен из файла.');
+    } catch { renderAdmin('Этот файл не подходит.'); }
+  });
+}
+
+async function adminRestore(at) {
+  if (!adminUnlocked) return renderAdminLock();
+  const b = (await listBackups()).find((x) => String(x.at) === String(at));
+  if (!b) return renderAdmin('Копия не найдена.');
+  try {
+    const data = JSON.parse(b.data);
+    if (!P.validateImported(data)) throw new Error('bad');
+    maybeBackup(progress, true);
+    progress = P.migrate(data);
+    progress.session = null;
+    save();
+    return renderAdmin(`Восстановлено: ${ruDate(b.at)}.`);
+  } catch { return renderAdmin('Копия повреждена.'); }
 }
 
 // ---------- routing ----------
@@ -835,6 +949,8 @@ async function go(target) {
         return renderCity(`${subject}-${island}`);
       }
       case 'settings': return renderSettings();
+      case 'admin': return adminUnlocked ? renderAdmin() : renderAdminLock();
+      case 'admin-restore': return adminRestore(arg);
       case 'toggle-sound':
         progress.settings = { ...(progress.settings || {}), sound: !soundOn() };
         save();
@@ -850,8 +966,10 @@ async function go(target) {
         return renderSettings();
       case 'export': return exportProgress();
       case 'reset':
+        if (!adminUnlocked) return renderAdminLock();
         // eslint-disable-next-line no-alert
-        if (window.confirm('Точно сбросить весь прогресс? Это нельзя отменить.')) {
+        if (window.confirm('Сбросить весь прогресс? Копия останется в списке резервных копий.')) {
+          maybeBackup(progress, true);
           progress = P.emptyProgress();
           save();
           return renderStart();
@@ -906,6 +1024,8 @@ function boot() {
   setInterval(() => { progress.lastSeen = Date.now(); save(); }, 60000);
   if (['localhost', '127.0.0.1'].includes(location.hostname) || /[?&]debug\b/.test(location.search)) devCheckPhrases();
   setKittenTone({ pitch: progress.settings?.voicePitch, rate: progress.settings?.voiceRate, name: progress.settings?.voiceName || '' });
+  askPersistent();
+  maybeBackup(progress, true);
   getRussianVoice().then((v) => { hasVoice = !!v; });
   renderStart();
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {

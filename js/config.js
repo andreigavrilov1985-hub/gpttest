@@ -13,6 +13,7 @@ export const CONFIG = {
   SPEECH_LANG: 'en-GB',
   SPEECH_RATE: 0.9,
   COINS_PER_CORRECT: 1,
+  ADMIN_CODE: '6725', // entry to the grown-ups' screen (restore progress)
 };
 
 export const SUBJECT_INFO = {
