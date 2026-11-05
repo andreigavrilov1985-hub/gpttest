@@ -251,7 +251,8 @@ function renderCity(cityId) {
     line = say(`city_${subject}`, v);
     infoText = c.finished ? `Пройдено тем: ${c.finished} из ${c.bank.topics.length}.`
       : c.bank.topics.length === 5 ? 'Здесь 5 тем по 10 вопросов, последняя — аудирование.' : `Здесь ${c.bank.topics.length} темы по 10 вопросов.`;
-    action = `<button class="btn btn--big" data-go="topic:${c.nextTopic.id}" data-testid="next-topic">Тема ${c.nextTopic.n}</button>`;
+    const at = P.topicResumeAt(progress, c.nextTopic.id);
+    action = `<button class="btn btn--big" data-go="topic:${c.nextTopic.id}" data-testid="next-topic">${at ? `Продолжить тему ${c.nextTopic.n} (${at + 1}/${c.bank.topics.find((t) => t.id === c.nextTopic.id).questions.length})` : `Тема ${c.nextTopic.n}`}</button>`;
   }
   h(`${topBar({ back: `island:${island}`, title: `${info.icon} ${info.city}` })}
   <main class="screen city-view" style="--city:${info.color}">

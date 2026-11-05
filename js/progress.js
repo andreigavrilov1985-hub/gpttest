@@ -181,9 +181,22 @@ export function topicOrder(topic, previous) {
   return order;
 }
 
+export const unfinished = (s) => s && s.kind === 'topic' && s.idx > 0 && s.idx < s.order.length;
+
 export function startTopicSession(p, topic) {
   const st = p.topics[topic.id] || { answers: {}, attempts: 0, done: false, skipped: false };
   p.topics[topic.id] = st;
+  const cur = p.session;
+  // the child left this topic in the middle and came back: continue at the same question, same order
+  if (unfinished(cur) && cur.topicId === topic.id) { cur.stage = 'explain'; return cur; }
+  // the child leaves another topic unfinished: keep its place to continue later
+  if (unfinished(cur) && p.topics[cur.topicId]) p.topics[cur.topicId].pending = { order: cur.order, idx: cur.idx, results: cur.results };
+  if (st.pending && st.pending.idx > 0 && st.pending.idx < st.pending.order.length) {
+    p.session = { kind: 'topic', topicId: topic.id, stage: 'explain', ...st.pending };
+    delete st.pending;
+    return p.session;
+  }
+  delete st.pending;
   const order = topicOrder(topic, st.lastOrder);
   st.lastOrder = order;
   p.session = {
@@ -198,6 +211,8 @@ export function startTopicSession(p, topic) {
 }
 
 export function startPracticeSession(p, city) {
+  const cur = p.session;
+  if (unfinished(cur) && p.topics[cur.topicId]) p.topics[cur.topicId].pending = { order: cur.order, idx: cur.idx, results: cur.results };
   const ids = city.practice.flatMap((t) => t.questions.map((q) => q.id));
   const previous = p.cities[city.id]?.lastPracticeOrder || null;
   const order = practiceOrder(ids, previous);
@@ -217,6 +232,7 @@ export function recordAnswer(p, topicId, qid, correct) {
 
 export function finishTopic(p, topic) {
   const st = p.topics[topic.id];
+  delete st.pending;
   st.done = true;
   st.attempts = (st.attempts || 0) + 1;
   const s = topicScore(p, topic);
@@ -229,6 +245,7 @@ export function skipTopic(p, topic) {
   const st = p.topics[topic.id] || { answers: {}, attempts: 0 };
   st.skipped = true;
   st.done = false;
+  delete st.pending;
   p.topics[topic.id] = st;
 }
 
@@ -251,4 +268,11 @@ export function findQuestion(subject, island, qid) {
 export function parseId(id) {
   const [subject, island, topic, q] = id.split('-');
   return { subject, island: Number(island), topic: Number(topic), q: Number(q) };
+}
+
+/** Where an unfinished attempt of the topic stopped (number of answered questions), or 0. */
+export function topicResumeAt(p, topicId) {
+  if (unfinished(p.session) && p.session.topicId === topicId) return p.session.idx;
+  const pd = p.topics[topicId]?.pending;
+  return pd && pd.idx > 0 && pd.idx < pd.order.length ? pd.idx : 0;
 }

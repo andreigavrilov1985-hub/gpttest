@@ -63,6 +63,44 @@ await step('Порядок вопросов: каждая попытка пер�
   await page.context().close();
 });
 
+await step('Вернулся в тему (с карты, из другой темы, после перезагрузки) — продолжение с того же места, без повторов', async () => {
+  const page = await newPage(browser, false);
+  const cur = () => page.evaluate(() => { const s = window.__game.progress.session; return s ? `${s.topicId}|${s.order[s.idx]}|${s.idx}` : ''; });
+  const answerOne = async () => {
+    if (await page.$('[data-testid=skip-explain]')) { await page.click('[data-testid=skip-explain]'); await page.click('[data-testid=explain-next]'); }
+    await page.waitForSelector('[data-testid=option]:not([disabled])');
+    const [, qid] = (await cur()).split('|');
+    await page.locator('[data-testid=option]').first().click();
+    await page.click('[data-testid=next-question]');
+    return qid;
+  };
+  const seen = [];
+  await page.evaluate(() => window.__game.go('topic:math-1-1'));
+  for (let i = 0; i < 3; i += 1) seen.push(await answerOne());
+  // to the map and back through the city button
+  await page.evaluate(() => window.__game.go('city:math-1'));
+  assert.match(await page.textContent('[data-testid=next-topic]'), /Продолжить тему 1 \(4\/10\)/);
+  await page.click('[data-testid=next-topic]');
+  seen.push(await answerOne());
+  // another topic in between
+  await page.evaluate(() => window.__game.go('topic:math-1-2'));
+  await answerOne();
+  await page.evaluate(() => window.__game.go('topic:math-1-1'));
+  assert.equal((await cur()).split('|')[2], '4', 'тема 1 продолжается с 5-го вопроса');
+  seen.push(await answerOne());
+  // reload in the middle
+  await page.reload();
+  await page.click('[data-testid=start]');
+  await page.evaluate(() => window.__game.go('topic:math-1-1'));
+  while (seen.length < 10) seen.push(await answerOne());
+  assert.equal(new Set(seen).size, 10, `10 разных вопросов без повторов: ${seen.join(', ')}`);
+  await page.waitForSelector('[data-testid=topic-result], .result, [data-testid=result]').catch(() => {});
+  assert.equal(await page.evaluate(() => window.__game.progress.topics['math-1-1'].done), true, 'тема завершена');
+  assert.equal(await page.evaluate(() => window.__game.progress.topics['math-1-2'].pending.idx), 1, 'место в теме 2 сохранено');
+  assert.deepEqual(page.errors, []);
+  await page.context().close();
+});
+
 await step('Голос: котёнок читает свою фразу, реакцию на ответ и субтитры мультика; мультик ждёт, пока он договорит', async () => {
   const page = await newPage(browser, true);
   await page.evaluate(() => { window.__said.length = 0; window.__game.go('topic:math-5-1'); });
