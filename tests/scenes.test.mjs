@@ -189,7 +189,7 @@ await step('Из вопроса: «Подсказка от котёнка» от
     await page.click('[data-testid=reopen-explain]');
     await page.waitForSelector('[data-testid=scene][data-step="0"]');
     await page.click('[data-testid=scene-next]');
-    await page.click('[data-testid=scene-to-question]');
+    await page.click('[data-testid=scene-to-question]', { force: true });
     assert.equal((await page.textContent('[data-testid=q-counter]')).trim(), '2/10', 'тот же вопрос');
     await page.click('[data-testid=reopen-explain]');
     await page.click('[data-testid=skip-explain]');
